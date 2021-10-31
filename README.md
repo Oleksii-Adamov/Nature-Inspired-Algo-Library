@@ -6,15 +6,15 @@
 ### 2. ????\(Not decided yet\)
 ## How to use:
 ### Genetic Algo
-		   Genetic algo requires:
-			   constants:
-					NUMBER_OF_INDIVIDUALS (number of individuals in every generation)
-					NUMBER_OF_ELITES (number of best inividuals kept for next generation)
-					NUMBER_OF_GENERATIONS
+#### Genetic algo requires:
+##### Constants:
+###### 1. NUMBER_OF_INDIVIDUALS (number of individuals in every generation)
+###### 2. NUMBER_OF_ELITES (number of best inividuals kept for next generation)
+###### 3. NUMBER_OF_GENERATIONS
 
-				classes/types:
-					Individual class with:
-						public get_fintess method (fintess must have operator < implemented)
+##### Classes/types:
+###### Individual class with:
+1. public get_fintess method (fintess must have operator < implemented)
 						public mutation method with build-in mutation_rate - 
 ```cpp
 						void mutate(Individual &a)
@@ -43,5 +43,5 @@
 
 			Example of usage:
 ```cpp
-				Individual the_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_RATE, population, breed);
+				Individual the_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS,MUTATION_RATE, population, breed);
 ```
