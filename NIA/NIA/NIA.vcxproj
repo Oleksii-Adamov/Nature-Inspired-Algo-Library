@@ -141,9 +141,6 @@
   <ItemGroup>
     <ClInclude Include="GeneticAlgo.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="GeneticAlgo.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

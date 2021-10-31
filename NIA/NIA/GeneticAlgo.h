@@ -9,7 +9,7 @@ namespace nia {
 	public:
 		Tgene chromosome[chromosome_size];
 		virtual Tfitess get_fitness() = 0;
-		virtual void mutate() = 0;
+		virtual void mutate(int mutation_rate) = 0;
 		// copy constructor
 		/*virtual IndividualInteface(const IndividualInteface& t)
 		{
@@ -46,6 +46,7 @@ namespace nia {
 	*/
 	// maybe just typename Individual, but then we don't use inheritance, so I don't know...
 	//template<typename Tgene, int chromosome_size, typename Tfitess>
+	//template <template<int> typename Individual>
 	template <typename Individual>
 	class GeneticAlgo {
 	private:
@@ -66,14 +67,17 @@ namespace nia {
 			}
 			return pool;
 		}
-		static void next_generation(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES, Individual population[], 
-			std::function <std::pair<Individual, Individual>(const Individual&, const Individual&)>& breed) {
+		static void next_generation(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES, const long long MUTATION_RATE, 
+			Individual population[],
+			/*std::function <std::pair<Individual, Individual>(const Individual&, const Individual&)>& breed*/
+			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&)
+			) {
 			int m_pool_size = NUMBER_OF_INDIVIDUALS - NUMBER_OF_ELITES;
 			Individual* m_pool = mating_pool(NUMBER_OF_INDIVIDUALS, population, m_pool_size);
 			std::sort(m_pool, m_pool + m_pool_size, comp_individ);
 			for (int i = 0; i < NUMBER_OF_ELITES; i++) {
 				population[i] = m_pool[i];
-				population[i].mutate();
+				population[i].mutate(MUTATION_RATE);
 			}
 			int ind = NUMBER_OF_ELITES;
 			for (int i = 0; ind < NUMBER_OF_INDIVIDUALS; i += 2) {
@@ -83,11 +87,11 @@ namespace nia {
 				}
 				std::pair<Individual, Individual> children = breed(m_pool[i], m_pool[i + 1]);
 				population[ind] = children.first;
-				population[ind].mutate();
+				population[ind].mutate(MUTATION_RATE);
 				ind++;
 				if (ind < NUMBER_OF_INDIVIDUALS) {
 					population[ind] = children.second;
-					population[ind].mutate();
+					population[ind].mutate(MUTATION_RATE);
 					ind++;
 				}
 			}
@@ -95,8 +99,10 @@ namespace nia {
 		}
 	public:
 		static Individual solve(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES,
-			const long long NUMBER_OF_GENERATIONS, Individual init_population[], 
-			std::function <std::pair<Individual, Individual>(const Individual&, const Individual&)>& breed)
+			const long long NUMBER_OF_GENERATIONS, const long long MUTATION_RATE, Individual init_population[], 
+			/*std::function <std::pair<Individual, Individual>(const Individual&, const Individual&)>& breed*/
+			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&)
+			)
 		{
 			Individual* population = new Individual[NUMBER_OF_INDIVIDUALS];
 			Individual prev_best = init_population[0];
@@ -107,7 +113,7 @@ namespace nia {
 				}
 			}
 			for (int i = 0; i < NUMBER_OF_GENERATIONS; i++) {
-				next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, population, breed);
+				next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_RATE, population, breed);
 				int best = 0;
 				for (int i = 1; i < NUMBER_OF_INDIVIDUALS; i++) {
 					if (population[i].get_fitness() > population[best].get_fitness()) {
