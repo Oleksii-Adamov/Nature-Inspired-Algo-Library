@@ -21,7 +21,7 @@ namespace nia {
 				classes/types:
 					Individual class with:
 						public get_fintess method (fintess must have operator < implemented)
-						public mutation method with build-in mutation_rate - void mutate(Individual &a)
+						public mutation method with build-in mutation_rate - void mutate(int mutation_rate)
 				Individual class passed as template parameter to GeneticAlgo class. If one of this methods not imlemented you'll get compile error. 
 				For convinience, you can inherit IndividualInteface astract class and implement requiered pure virtual methods. 
 
@@ -29,7 +29,7 @@ namespace nia {
 					initial(starting) population - Individual init_population[NUMBER_OF_INDIVIDUALS]
 
 				functions:
-					breed function(given two parents, returns two children)- pair<Individual, Individual> breed(Individual a, Individual b)
+					breed function(given two parents, returns two children)- std::pair<Individual, Individual> breed(const Individual& a, const Individual& b);
 
 				Genetic algo returns the fittest Individual for NUMBER_OF_GENERATIONS
 				

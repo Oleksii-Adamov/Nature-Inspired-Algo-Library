@@ -9,11 +9,11 @@
 #### Genetic algo description
 Genetic algo returns the fittest Individual for NUMBER_OF_GENERATIONS.
 				
-You may need call this function several times with random initial population, to find more accurate answer performance of algorithm higly relies on performance of get_fitness and comparation of fintess.
+You may need call this function several times with random initial population, to find more accurate answer performance of algorithm higly relies on performance of get_fitness and comparison of fintess.
 #### Genetic algo requires:
 ##### Constants:
 1. NUMBER_OF_INDIVIDUALS (number of individuals in every generation)
-2. NUMBER_OF_ELITES (number of best inividuals kept for next 
+2. NUMBER_OF_ELITES (number of best inividuals kept for next)
 3. NUMBER_OF_GENERATIONS
 
 ##### Classes/types:
@@ -22,7 +22,7 @@ You may need call this function several times with random initial population, to
 
 2. public mutation method with build-in mutation_rate - 
 ```cpp
-void mutate(Individual &a)
+void mutate(int mutation_rate);
 ```
 Individual class passed as template parameter to GeneticAlgo class. If one of this methods not imlemented you'll get compile error. For convinience, you can inherit IndividualInteface astract class and implement requiered pure virtual methods. 
 
@@ -30,14 +30,14 @@ Individual class passed as template parameter to GeneticAlgo class. If one of th
 
 initial(starting) population -
 ```cpp
-				Individual init_population[NUMBER_OF_INDIVIDUALS] 
+Individual init_population[NUMBER_OF_INDIVIDUALS];
  ```
 				
 ##### Functions:
 breed function(given two parents, returns two children) - 
 					
 ```cpp 
-pair<Individual, Individual> breed(Individual a, Individual b)
+std::pair<Individual, Individual> breed(const Individual& a, const Individual& b);
 ```
 
 
