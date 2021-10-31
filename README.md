@@ -1,8 +1,9 @@
 # Nature-Inspired-Algo-Library: In progress
 ## TO DO
 ### 1. Genetic Algo: In progress
-#### General genetic algo implemented, with Tournament Selection
-#### Planning adding more selection algorithms to choose from \(at least Roulette Wheel Selection\)
+#### General genetic algo implemented, with Tournament Selection.
+#### Unit tests for GA are implemented.
+#### Planning adding more selection algorithms to choose from \(at least Roulette Wheel Selection\).
 ### 2. ????\(Not decided yet\)
 ## How to use:
 ### Genetic Algo
