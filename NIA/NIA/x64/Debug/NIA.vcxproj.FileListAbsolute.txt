@@ -1,0 +1,2 @@
+D:\University\3-sem\Programming-project\NIA\x64\Debug\NIA.pdb
+D:\University\3-sem\Programming-project\NIA\NIA\x64\Debug\NIA.pdb
