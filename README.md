@@ -28,7 +28,7 @@ Individual class passed as template parameter to GeneticAlgo class. If one of th
 
 ##### Parameters:
 
-initial(starting) population -
+Initial(starting) population -
 ```cpp
 Individual init_population[NUMBER_OF_INDIVIDUALS];
  ```
