@@ -5,48 +5,34 @@ namespace nia {
 	
 	template<typename Tgene, int chromosome_size, typename Tfitess>
 	class IndividualInteface {
-		using Individual = IndividualInteface<Tgene, chromosome_size, Tfitess>;
 	public:
 		Tgene chromosome[chromosome_size];
 		virtual Tfitess get_fitness() = 0;
 		virtual void mutate(int mutation_rate) = 0;
-		// copy constructor
-		/*virtual IndividualInteface(const IndividualInteface& t)
-		{
-			for (int i = 0; i < chromosome_size; i++) {
-				chromosome[i] = t.chromosome[i];
-			}
-		}*/
-		/*virtual std::pair<IndividualInteface<Tgene, chromosome_size, Tfitess>, IndividualInteface<Tgene, chromosome_size, Tfitess>> 
-			breed(IndividualInteface<Tgene, chromosome_size, Tfitess>& second_parent); // first parent is this*/
 	};
 	/* genetic algo requires:
 	   constants:
-			chromosome_size
 			NUMBER_OF_INDIVIDUALS (number of individuals in every generation)
 			NUMBER_OF_ELITES (number of best inividuals kept for next generation)
 			NUMBER_OF_GENERATIONS
 
 		classes/types:
-			Gene type/class
 			Individual class with:
 				public get_fintess method (fintess must have operator < implemented)
-				mutation method with build-in mutation_rate - void mutate(Individual &a)
-				static breed method (given two parents, returns two children)- static pair<Individual, Individual> breed(Individual a, Individual b)
+				public mutation method with build-in mutation_rate - void mutate(Individual &a)
+		Individual class passed as template parameter to GeneticAlgo class. If one of this methods not imlemented you'll get compile error. 
+		For convinience, you can inherit IndividualInteface astract class and implement requiered pure virtual methods. 
 
 		parameters:
 			initial(starting) population - Individual init_population[NUMBER_OF_INDIVIDUALS]
+
 		functions:
-			mutation function with build-in mutation_rate - void mutate(Individual &a)
 			breed function(given two parents, returns two children)- pair<Individual, Individual> breed(Individual a, Individual b)
-		
+
 		Genetic algo returns the fittest Individual for NUMBER_OF_GENERATIONS
 		you may need call this function several times with random initial population, to find more accurate answer
 		performance of algorithm higly relies on performance of get_fitness and comparation of fintess
 	*/
-	// maybe just typename Individual, but then we don't use inheritance, so I don't know...
-	//template<typename Tgene, int chromosome_size, typename Tfitess>
-	//template <template<int> typename Individual>
 	template <typename Individual>
 	class GeneticAlgo {
 	private:
@@ -69,7 +55,6 @@ namespace nia {
 		}
 		static void next_generation(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES, const long long MUTATION_RATE, 
 			Individual population[],
-			/*std::function <std::pair<Individual, Individual>(const Individual&, const Individual&)>& breed*/
 			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&)
 			) {
 			int m_pool_size = NUMBER_OF_INDIVIDUALS - NUMBER_OF_ELITES;
@@ -100,7 +85,6 @@ namespace nia {
 	public:
 		static Individual solve(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES,
 			const long long NUMBER_OF_GENERATIONS, const long long MUTATION_RATE, Individual init_population[], 
-			/*std::function <std::pair<Individual, Individual>(const Individual&, const Individual&)>& breed*/
 			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&)
 			)
 		{
@@ -128,10 +112,4 @@ namespace nia {
 			return prev_best;
 		}
 	};
-	/*template<typename Tgene, int chromosome_size, typename Tfitess>
-	IndividualInteface<Tgene, chromosome_size, Tfitess> genetic_algo(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES,
-		const long long NUMBER_OF_GENERATIONS, IndividualInteface<Tgene, chromosome_size, Tfitess> init_population[NUMBER_OF_INDIVIDUALS], 
-		void(*mutate)(IndividualInteface<Tgene, chromosome_size, Tfitess>&), 
-		std::pair<IndividualInteface<Tgene, chromosome_size, Tfitess>, IndividualInteface<Tgene, chromosome_size, Tfitess>>(*breed)
-		(IndividualInteface<Tgene, chromosome_size, Tfitess>, IndividualInteface<Tgene, chromosome_size, Tfitess>));*/
 }

@@ -7,20 +7,16 @@ namespace gata {
 		int num;
 		double x, y;
 	private:
-		/*static int nint(double x) {
-			return (int)(x + 0.5);
-		}*/
 	public:
 		static double distance(City a, City b) {
 			double delta_x = a.x - b.x;
 			double delta_y = a.y - b.y;
-			return /*nint(*/sqrt(delta_x * delta_x + delta_y * delta_y)/*)*/;
+			return sqrt(delta_x * delta_x + delta_y * delta_y);
 		}
 	};
 	template<int chromosome_size>
 	class Individual : public nia::IndividualInteface<City, chromosome_size, double> { // or Route
 	public:
-		//static int mutation_rate;
 		Individual() {
 			fitness = -1;
 			route_length = -1;
@@ -81,13 +77,8 @@ namespace gata {
 			copy(NUMBER_OF_CITIES, cities, population[i].chromosome);
 		}
 	};
-	//template<int chromosome_size>
-	//std::pair<Individual<chromosome_size>, Individual<chromosome_size>> breed (const Individual<chromosome_size>& first_parent,
-	//	const Individual<chromosome_size>& second_parent) {
-	//template<typename Individual>
 	template<int chromosome_size>
-	std::pair<Individual<chromosome_size>, Individual<chromosome_size>> breed (
-		const Individual<chromosome_size>& first_parent,
+	std::pair<Individual<chromosome_size>, Individual<chromosome_size>> breed ( const Individual<chromosome_size>& first_parent,
 		const Individual<chromosome_size>& second_parent) {
 		auto city_cmp = [](const City& a, const City& b) {
 			return a.num < b.num;
@@ -128,4 +119,17 @@ namespace gata {
 		delete[] b_sub_route;
 		return std::make_pair(first_child, second_child);
 	}
+	template<int CHROMOSOME_SIZE>
+	double testTa (const int NUMBER_OF_INDIVIDUALS, const int NUMBER_OF_GENERATIONS, const int NUMBER_OF_ELITES,
+		const int MUTATION_RATE, City cities[]) {
+		Individual<CHROMOSOME_SIZE>* population = new Individual<CHROMOSOME_SIZE>[NUMBER_OF_INDIVIDUALS];
+		init_population(CHROMOSOME_SIZE, NUMBER_OF_INDIVIDUALS, population, cities);
+		Individual<CHROMOSOME_SIZE> the_fittest = nia::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
+			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_RATE, population, breed);
+		std::cerr << "[          ] ";
+		for (int i = 0; i < CHROMOSOME_SIZE; i++) {
+			std::cerr << the_fittest.chromosome[i].num << " -> ";
+		}
+		return the_fittest.get_route_length();
+	};
 }
