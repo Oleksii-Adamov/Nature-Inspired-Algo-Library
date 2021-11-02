@@ -19,7 +19,7 @@ You may need call this function several times with random initial population, to
 
 ##### Classes/types:
 ###### Individual class with:
-1. public get_fitness method (fitness must have operator < implemented)
+1. public get_fitness method (fitness must have operator > implemented)
 
 2. public mutation method with build-in mutation_rate - 
 ```cpp

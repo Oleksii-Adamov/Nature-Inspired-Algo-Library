@@ -20,7 +20,7 @@ namespace nia {
 
 				classes/types:
 					Individual class with:
-						public get_fitness method (fitness must have operator < implemented)
+						public get_fitness method (fitness must have operator > implemented)
 						public mutation method with build-in mutation_rate - void mutate(int mutation_rate)
 				Individual class passed as template parameter to GeneticAlgo class. If one of this methods not imlemented you'll get compile error. 
 				For convinience, you can inherit IndividualInteface astract class and implement requiered pure virtual methods. 
