@@ -10,7 +10,7 @@
 #### Genetic algo description
 Genetic algo returns the fittest Individual for NUMBER_OF_GENERATIONS.
 				
-You may need call this function several times with random initial population, to find more accurate answer performance of algorithm higly relies on performance of get_fitness and comparison of fintess.
+You may need call this function several times with random initial population, to find more accurate answer performance of algorithm higly relies on performance of get_fitness and comparison of fitness.
 #### Genetic algo requires:
 ##### Constants:
 1. NUMBER_OF_INDIVIDUALS (number of individuals in every generation)
@@ -19,7 +19,7 @@ You may need call this function several times with random initial population, to
 
 ##### Classes/types:
 ###### Individual class with:
-1. public get_fintess method (fintess must have operator < implemented)
+1. public get_fitness method (fitness must have operator < implemented)
 
 2. public mutation method with build-in mutation_rate - 
 ```cpp

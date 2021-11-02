@@ -20,7 +20,7 @@ namespace nia {
 
 				classes/types:
 					Individual class with:
-						public get_fintess method (fintess must have operator < implemented)
+						public get_fitness method (fitness must have operator < implemented)
 						public mutation method with build-in mutation_rate - void mutate(int mutation_rate)
 				Individual class passed as template parameter to GeneticAlgo class. If one of this methods not imlemented you'll get compile error. 
 				For convinience, you can inherit IndividualInteface astract class and implement requiered pure virtual methods. 
@@ -34,7 +34,7 @@ namespace nia {
 				Genetic algo returns the fittest Individual for NUMBER_OF_GENERATIONS
 				
 				You may need call this function several times with random initial population, to find more accurate answer
-				performance of algorithm higly relies on performance of get_fitness and comparation of fintess
+				performance of algorithm higly relies on performance of get_fitness and comparation of fitness
 
 			Example of usage:
 				Individual the_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS,

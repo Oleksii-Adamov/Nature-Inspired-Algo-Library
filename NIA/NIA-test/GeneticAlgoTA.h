@@ -2,7 +2,7 @@
 #include "../NIA/GeneticAlgo.h"
 #include <algorithm>
 namespace gata {
-	const double EPS = 1e-1;
+	const double EPS = 1e-9;
 	struct City { // or Gene
 		int num;
 		double x, y;
@@ -131,5 +131,6 @@ namespace gata {
 			std::cerr << the_fittest.chromosome[i].num << " -> ";
 		}
 		return the_fittest.get_route_length();
-	};
+		delete[] population;
+	}
 }
