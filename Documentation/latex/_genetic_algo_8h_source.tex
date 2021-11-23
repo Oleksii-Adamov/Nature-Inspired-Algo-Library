@@ -12,7 +12,7 @@
 \DoxyCodeLine{19     \textcolor{keyword}{public}:}
 \DoxyCodeLine{20         Tgene \mbox{\hyperlink{classnia_1_1_individual_inteface_adc4839922a696cfd8e2c6f9d3f758ca2}{chromosome}}[chromosome\_size];}
 \DoxyCodeLine{24         \textcolor{keyword}{virtual} Tfitess \mbox{\hyperlink{classnia_1_1_individual_inteface_a7775b803c37ce69e853258ae4b6efd45}{get\_fitness}}() = 0;}
-\DoxyCodeLine{28         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classnia_1_1_individual_inteface_a78ed09d787cdc5706e2e098df6f59c96}{mutate}}(\textcolor{keywordtype}{int} mutation\_rate) = 0;}
+\DoxyCodeLine{28         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classnia_1_1_individual_inteface_af24918421babc9b1f8cafa7e88597ae1}{mutate}}(\textcolor{keywordtype}{double} mutation\_chance) = 0;}
 \DoxyCodeLine{29     \};}
 \DoxyCodeLine{47     \textcolor{keyword}{template} <\textcolor{keyword}{typename} Indiv\textcolor{keywordtype}{id}ual>}
 \DoxyCodeLine{48     \textcolor{keyword}{class }\mbox{\hyperlink{classnia_1_1_genetic_algo}{GeneticAlgo}} \{}
@@ -20,79 +20,83 @@
 \DoxyCodeLine{50         \textcolor{keyword}{static} \textcolor{keywordtype}{bool} comp\_individ(Individual\& l, Individual\& r) \{}
 \DoxyCodeLine{51             \textcolor{keywordflow}{return} l.get\_fitness() > r.get\_fitness();}
 \DoxyCodeLine{52         \}}
-\DoxyCodeLine{53         \textcolor{keyword}{static} Individual* mating\_pool(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} NUMBER\_OF\_INDIVIDUALS, Individual population[], \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} size) \{}
+\DoxyCodeLine{53         \textcolor{keyword}{static} Individual* mating\_pool(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} NUMBER\_OF\_INDIVIDUALS, Individual population[], \textcolor{keywordtype}{size\_t} size) \{}
 \DoxyCodeLine{54             Individual* pool = \textcolor{keyword}{new} Individual[size];}
-\DoxyCodeLine{55             \textcolor{comment}{// Tournament selection}}
-\DoxyCodeLine{56             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; i++) \{}
-\DoxyCodeLine{57                 \textcolor{keywordtype}{int} index1 = rand() \% NUMBER\_OF\_INDIVIDUALS;}
-\DoxyCodeLine{58                 \textcolor{keywordtype}{int} index2 = rand() \% NUMBER\_OF\_INDIVIDUALS;}
-\DoxyCodeLine{59                 \textcolor{keywordflow}{if} (population[index1].get\_fitness() > population[index2].get\_fitness()) \{}
-\DoxyCodeLine{60                     pool[i] = population[index1];}
-\DoxyCodeLine{61                 \}}
-\DoxyCodeLine{62                 \textcolor{keywordflow}{else}}
-\DoxyCodeLine{63                     pool[i] = population[index2];}
-\DoxyCodeLine{64             \}}
-\DoxyCodeLine{65             \textcolor{keywordflow}{return} pool;}
-\DoxyCodeLine{66         \}}
-\DoxyCodeLine{67         \textcolor{keyword}{static} \textcolor{keywordtype}{void} next\_generation(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} NUMBER\_OF\_INDIVIDUALS, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} NUMBER\_OF\_ELITES, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} MUTATION\_RATE, }
-\DoxyCodeLine{68             Individual population[],}
-\DoxyCodeLine{69             std::pair<Individual, Individual>(*breed)(\textcolor{keyword}{const} Individual\&, \textcolor{keyword}{const} Individual\&)}
-\DoxyCodeLine{70             ) \{}
-\DoxyCodeLine{71             \textcolor{keywordtype}{int} m\_pool\_size = NUMBER\_OF\_INDIVIDUALS -\/ NUMBER\_OF\_ELITES;}
-\DoxyCodeLine{72             Individual* m\_pool = mating\_pool(NUMBER\_OF\_INDIVIDUALS, population, m\_pool\_size);}
-\DoxyCodeLine{73             std::sort(m\_pool, m\_pool + m\_pool\_size, comp\_individ);}
-\DoxyCodeLine{74             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NUMBER\_OF\_ELITES; i++) \{}
-\DoxyCodeLine{75                 population[i] = m\_pool[i];}
-\DoxyCodeLine{76                 population[i].mutate(MUTATION\_RATE);}
-\DoxyCodeLine{77             \}}
-\DoxyCodeLine{78             \textcolor{keywordtype}{int} ind = NUMBER\_OF\_ELITES;}
-\DoxyCodeLine{79             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; ind < NUMBER\_OF\_INDIVIDUALS; i += 2) \{}
-\DoxyCodeLine{80                 \textcolor{keywordflow}{if} (i + 1 == m\_pool\_size) \{}
-\DoxyCodeLine{81                     population[ind] = m\_pool[i];}
-\DoxyCodeLine{82                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{83                 \}}
-\DoxyCodeLine{84                 std::pair<Individual, Individual> children = breed(m\_pool[i], m\_pool[i + 1]);}
-\DoxyCodeLine{85                 population[ind] = children.first;}
-\DoxyCodeLine{86                 population[ind].mutate(MUTATION\_RATE);}
-\DoxyCodeLine{87                 ind++;}
-\DoxyCodeLine{88                 \textcolor{keywordflow}{if} (ind < NUMBER\_OF\_INDIVIDUALS) \{}
-\DoxyCodeLine{89                     population[ind] = children.second;}
-\DoxyCodeLine{90                     population[ind].mutate(MUTATION\_RATE);}
-\DoxyCodeLine{91                     ind++;}
-\DoxyCodeLine{92                 \}}
-\DoxyCodeLine{93             \}}
-\DoxyCodeLine{94             \textcolor{keyword}{delete}[] m\_pool;}
-\DoxyCodeLine{95         \}}
-\DoxyCodeLine{96     \textcolor{keyword}{public}:}
-\DoxyCodeLine{106         \textcolor{keyword}{static} Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}{solve}}(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} NUMBER\_OF\_INDIVIDUALS, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} NUMBER\_OF\_ELITES,}
-\DoxyCodeLine{107             \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} NUMBER\_OF\_GENERATIONS, \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} MUTATION\_RATE, Individual init\_population[], }
-\DoxyCodeLine{108             std::pair<Individual, Individual>(*breed)(\textcolor{keyword}{const} Individual\&, \textcolor{keyword}{const} Individual\&)}
-\DoxyCodeLine{109             )}
-\DoxyCodeLine{110         \{}
-\DoxyCodeLine{111             Individual* population = \textcolor{keyword}{new} Individual[NUMBER\_OF\_INDIVIDUALS];}
-\DoxyCodeLine{112             Individual prev\_best = init\_population[0];}
-\DoxyCodeLine{113             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NUMBER\_OF\_INDIVIDUALS; i++) \{}
-\DoxyCodeLine{114                 population[i] = init\_population[i];}
-\DoxyCodeLine{115                 \textcolor{keywordflow}{if} (prev\_best.get\_fitness() < population[i].get\_fitness()) \{}
-\DoxyCodeLine{116                     prev\_best = population[i];}
-\DoxyCodeLine{117                 \}}
-\DoxyCodeLine{118             \}}
-\DoxyCodeLine{119             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < NUMBER\_OF\_GENERATIONS; i++) \{}
-\DoxyCodeLine{120                 next\_generation(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, MUTATION\_RATE, population, breed);}
-\DoxyCodeLine{121                 \textcolor{keywordtype}{int} best = 0;}
-\DoxyCodeLine{122                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < NUMBER\_OF\_INDIVIDUALS; i++) \{}
-\DoxyCodeLine{123                     \textcolor{keywordflow}{if} (population[i].get\_fitness() > population[best].get\_fitness()) \{}
-\DoxyCodeLine{124                         best = i;}
-\DoxyCodeLine{125                     \}}
-\DoxyCodeLine{126                 \}}
-\DoxyCodeLine{127                 \textcolor{keywordflow}{if} (prev\_best.get\_route\_length() == -\/2 || population[best].get\_route\_length() < prev\_best.get\_route\_length()) \{}
-\DoxyCodeLine{128                     prev\_best = population[best];}
-\DoxyCodeLine{129                 \}}
-\DoxyCodeLine{130             \}}
-\DoxyCodeLine{131             \textcolor{keyword}{delete}[] population;}
-\DoxyCodeLine{132             \textcolor{keywordflow}{return} prev\_best;}
-\DoxyCodeLine{133         \}}
-\DoxyCodeLine{134     \};}
-\DoxyCodeLine{135 \}}
+\DoxyCodeLine{55             std::random\_device rd;  \textcolor{comment}{//Will be used to obtain a seed for the random number engine}}
+\DoxyCodeLine{56             std::seed\_seq seed\{ rd(), \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\textcolor{keyword}{>}(time(\textcolor{keyword}{nullptr})) \}; \textcolor{comment}{// in case random\_device is not implemented, fall back to time(0)}}
+\DoxyCodeLine{57             std::mt19937 gen(seed); \textcolor{comment}{//Standard mersenne\_twister\_engine seeded with seed}}
+\DoxyCodeLine{58             std::uniform\_int\_distribution<size\_t> pos\_dis(0, NUMBER\_OF\_INDIVIDUALS -\/ 1);}
+\DoxyCodeLine{59             \textcolor{comment}{// Tournament selection}}
+\DoxyCodeLine{60             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < size; i++) \{}
+\DoxyCodeLine{61                 \textcolor{keywordtype}{size\_t} index1 = pos\_dis(gen);}
+\DoxyCodeLine{62                 \textcolor{keywordtype}{size\_t} index2 = pos\_dis(gen);}
+\DoxyCodeLine{63                 \textcolor{keywordflow}{if} (population[index1].get\_fitness() > population[index2].get\_fitness()) \{}
+\DoxyCodeLine{64                     pool[i] = population[index1];}
+\DoxyCodeLine{65                 \}}
+\DoxyCodeLine{66                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{67                     pool[i] = population[index2];}
+\DoxyCodeLine{68             \}}
+\DoxyCodeLine{69             \textcolor{keywordflow}{return} pool;}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71         \textcolor{keyword}{static} \textcolor{keywordtype}{void} next\_generation(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} NUMBER\_OF\_INDIVIDUALS, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} NUMBER\_OF\_ELITES, \textcolor{keyword}{const} \textcolor{keywordtype}{double} MUTATION\_CHANCE,}
+\DoxyCodeLine{72             Individual population[],}
+\DoxyCodeLine{73             std::pair<Individual, Individual>(*breed)(\textcolor{keyword}{const} Individual\&, \textcolor{keyword}{const} Individual\&)}
+\DoxyCodeLine{74             ) \{}
+\DoxyCodeLine{75             \textcolor{keywordtype}{size\_t} m\_pool\_size = NUMBER\_OF\_INDIVIDUALS -\/ NUMBER\_OF\_ELITES;}
+\DoxyCodeLine{76             Individual* m\_pool = mating\_pool(NUMBER\_OF\_INDIVIDUALS, population, m\_pool\_size);}
+\DoxyCodeLine{77             std::sort(m\_pool, m\_pool + m\_pool\_size, comp\_individ);}
+\DoxyCodeLine{78             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < NUMBER\_OF\_ELITES; i++) \{}
+\DoxyCodeLine{79                 population[i] = m\_pool[i];}
+\DoxyCodeLine{80                 population[i].mutate(MUTATION\_CHANCE);}
+\DoxyCodeLine{81             \}}
+\DoxyCodeLine{82             \textcolor{keywordtype}{size\_t} ind = NUMBER\_OF\_ELITES;}
+\DoxyCodeLine{83             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; ind < NUMBER\_OF\_INDIVIDUALS; i += 2) \{}
+\DoxyCodeLine{84                 \textcolor{keywordflow}{if} (i + 1 == m\_pool\_size) \{}
+\DoxyCodeLine{85                     population[ind] = m\_pool[i];}
+\DoxyCodeLine{86                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{87                 \}}
+\DoxyCodeLine{88                 std::pair<Individual, Individual> children = breed(m\_pool[i], m\_pool[i + 1]);}
+\DoxyCodeLine{89                 population[ind] = children.first;}
+\DoxyCodeLine{90                 population[ind].mutate(MUTATION\_CHANCE);}
+\DoxyCodeLine{91                 ind++;}
+\DoxyCodeLine{92                 \textcolor{keywordflow}{if} (ind < NUMBER\_OF\_INDIVIDUALS) \{}
+\DoxyCodeLine{93                     population[ind] = children.second;}
+\DoxyCodeLine{94                     population[ind].mutate(MUTATION\_CHANCE);}
+\DoxyCodeLine{95                     ind++;}
+\DoxyCodeLine{96                 \}}
+\DoxyCodeLine{97             \}}
+\DoxyCodeLine{98             \textcolor{keyword}{delete}[] m\_pool;}
+\DoxyCodeLine{99         \}}
+\DoxyCodeLine{100     \textcolor{keyword}{public}:}
+\DoxyCodeLine{110         \textcolor{keyword}{static} Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}{solve}}(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} NUMBER\_OF\_INDIVIDUALS, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} NUMBER\_OF\_ELITES,}
+\DoxyCodeLine{111             \textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} NUMBER\_OF\_GENERATIONS, \textcolor{keyword}{const} \textcolor{keywordtype}{double} MUTATION\_CHANCE, Individual init\_population[],}
+\DoxyCodeLine{112             std::pair<Individual, Individual>(*breed)(\textcolor{keyword}{const} Individual\&, \textcolor{keyword}{const} Individual\&)}
+\DoxyCodeLine{113             )}
+\DoxyCodeLine{114         \{}
+\DoxyCodeLine{115             Individual* population = \textcolor{keyword}{new} Individual[NUMBER\_OF\_INDIVIDUALS];}
+\DoxyCodeLine{116             Individual prev\_best = init\_population[0];}
+\DoxyCodeLine{117             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < NUMBER\_OF\_INDIVIDUALS; i++) \{}
+\DoxyCodeLine{118                 population[i] = init\_population[i];}
+\DoxyCodeLine{119                 \textcolor{keywordflow}{if} (prev\_best.get\_fitness() < population[i].get\_fitness()) \{}
+\DoxyCodeLine{120                     prev\_best = population[i];}
+\DoxyCodeLine{121                 \}}
+\DoxyCodeLine{122             \}}
+\DoxyCodeLine{123             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} \textcolor{keywordtype}{long} i = 0; i < NUMBER\_OF\_GENERATIONS; i++) \{}
+\DoxyCodeLine{124                 next\_generation(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, MUTATION\_CHANCE, population, breed);}
+\DoxyCodeLine{125                 \textcolor{keywordtype}{size\_t} best = 0;}
+\DoxyCodeLine{126                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 1; j < NUMBER\_OF\_INDIVIDUALS; j++) \{}
+\DoxyCodeLine{127                     \textcolor{keywordflow}{if} (population[j].get\_fitness() > population[best].get\_fitness()) \{}
+\DoxyCodeLine{128                         best = j;}
+\DoxyCodeLine{129                     \}}
+\DoxyCodeLine{130                 \}}
+\DoxyCodeLine{131                 \textcolor{keywordflow}{if} (prev\_best.get\_route\_length() == -\/2 || population[best].get\_route\_length() < prev\_best.get\_route\_length()) \{}
+\DoxyCodeLine{132                     prev\_best = population[best];}
+\DoxyCodeLine{133                 \}}
+\DoxyCodeLine{134             \}}
+\DoxyCodeLine{135             \textcolor{keyword}{delete}[] population;}
+\DoxyCodeLine{136             \textcolor{keywordflow}{return} prev\_best;}
+\DoxyCodeLine{137         \}}
+\DoxyCodeLine{138     \};}
+\DoxyCodeLine{139 \}}
 
 \end{DoxyCode}

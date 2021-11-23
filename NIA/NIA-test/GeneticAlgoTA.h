@@ -1,6 +1,8 @@
 #pragma once
 #include "../NIA/GeneticAlgo.h"
 #include <algorithm>
+#include <random>
+#include <ctime>
 namespace gata {
 	const double EPS = 1e-9;
 	struct City { // or Gene
@@ -20,6 +22,10 @@ namespace gata {
 		Individual() {
 			fitness = -1;
 			route_length = -1;
+			// generating random sequence
+			std::random_device rd;  //Will be used to obtain a seed for the random number engine
+			std::seed_seq seed{ rd(), static_cast<unsigned int>(time(nullptr)) }; // in case random_device is not implemented, fall back to time(0)
+			gen.seed(seed); //Standard mersenne_twister_engine seeded with seed
 		}
 		double get_fitness() override {
 			if (abs(fitness - (-1)) < EPS) calc_fitness();
@@ -28,6 +34,7 @@ namespace gata {
 	private:
 		double fitness;
 		double route_length;
+		std::mt19937 gen;
 		static void swap_cities(City& a, City& b) {
 			City t = a;
 			a = b;
@@ -51,10 +58,15 @@ namespace gata {
 			fitness = 1 / ((double)get_route_length());
 		}
 	public:
-		void mutate(int mutation_rate) override {
+		std::mt19937 get_gen() const {
+			return gen;
+		}
+		void mutate(double mutation_chance) override {
+			std::uniform_real_distribution<> chance_dis(0.0, 1.0);
+			std::uniform_int_distribution<> pos_dis(0, chromosome_size - 1);
 			for (int i = 0; i < chromosome_size; i++) {
-				if (rand() < mutation_rate) {
-					int j = rand() % chromosome_size;
+				if (chance_dis(gen) < mutation_chance) {
+					int j = pos_dis(gen);
 					swap_cities(i, j);
 				}
 			}
@@ -71,9 +83,11 @@ namespace gata {
 	};
 	template<int chromosome_size>
 	void init_population (int NUMBER_OF_CITIES, int NUMBER_OF_INDIVIDUALS, Individual<chromosome_size> population[], City cities[]) {
-		srand(time(0));
+		std::random_device rd;  //Will be used to obtain a seed for the random number engine
+		std::seed_seq seed{ rd(), static_cast<unsigned int>(time(nullptr)) }; // in case random_device is not implemented, fall back to time(0)
+		std::mt19937 gen(seed); //Standard mersenne_twister_engine seeded with seed
 		for (int i = 0; i < NUMBER_OF_INDIVIDUALS; i++) {
-			std::random_shuffle(cities, cities + NUMBER_OF_CITIES);
+			std::shuffle(cities, cities + NUMBER_OF_CITIES, gen);
 			copy(NUMBER_OF_CITIES, cities, population[i].chromosome);
 		}
 	};
@@ -85,7 +99,8 @@ namespace gata {
 		};
 		Individual<chromosome_size> first_child;
 		Individual<chromosome_size> second_child;
-		int geneA = rand() % chromosome_size, geneB = rand() % chromosome_size;
+		std::uniform_int_distribution<> pos_dis(0, chromosome_size - 1);
+		int geneA = pos_dis(first_parent.get_gen()), geneB = pos_dis(second_parent.get_gen());
 		int start_gene = std::min(geneA, geneB), end_gene = std::max(geneA, geneB), sub_route_size = end_gene - start_gene + 1;
 		City* a_sub_route = new City[sub_route_size];
 		City* b_sub_route = new City[sub_route_size];
@@ -121,11 +136,11 @@ namespace gata {
 	}
 	template<int CHROMOSOME_SIZE>
 	double testTa (const int NUMBER_OF_INDIVIDUALS, const int NUMBER_OF_GENERATIONS, const int NUMBER_OF_ELITES,
-		const int MUTATION_RATE, City cities[]) {
+		const double MUTATION_CHANCE, City cities[]) {
 		Individual<CHROMOSOME_SIZE>* population = new Individual<CHROMOSOME_SIZE>[NUMBER_OF_INDIVIDUALS];
 		init_population(CHROMOSOME_SIZE, NUMBER_OF_INDIVIDUALS, population, cities);
 		Individual<CHROMOSOME_SIZE> the_fittest = nia::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
-			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_RATE, population, breed);
+			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed);
 		std::cerr << "[          ] ";
 		for (int i = 0; i < CHROMOSOME_SIZE; i++) {
 			std::cerr << the_fittest.chromosome[i].num << " -> ";

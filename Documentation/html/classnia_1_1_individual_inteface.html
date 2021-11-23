@@ -85,9 +85,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7775b803c37ce69e853258ae4b6efd45"><td class="memItemLeft" align="right" valign="top">virtual Tfitess&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#a7775b803c37ce69e853258ae4b6efd45">get_fitness</a> ()=0</td></tr>
 <tr class="memdesc:a7775b803c37ce69e853258ae4b6efd45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to get fitness from Individual (using already done calculations for better performance is welcome)  <a href="classnia_1_1_individual_inteface.html#a7775b803c37ce69e853258ae4b6efd45">More...</a><br /></td></tr>
 <tr class="separator:a7775b803c37ce69e853258ae4b6efd45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78ed09d787cdc5706e2e098df6f59c96"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#a78ed09d787cdc5706e2e098df6f59c96">mutate</a> (int mutation_rate)=0</td></tr>
-<tr class="memdesc:a78ed09d787cdc5706e2e098df6f59c96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to mutate Individual with given 0 &lt;= chance &lt;= 1  <a href="classnia_1_1_individual_inteface.html#a78ed09d787cdc5706e2e098df6f59c96">More...</a><br /></td></tr>
-<tr class="separator:a78ed09d787cdc5706e2e098df6f59c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24918421babc9b1f8cafa7e88597ae1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#af24918421babc9b1f8cafa7e88597ae1">mutate</a> (double mutation_chance)=0</td></tr>
+<tr class="memdesc:af24918421babc9b1f8cafa7e88597ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to mutate Individual with given 0 &lt;= mutation_chance &lt;= 1  <a href="classnia_1_1_individual_inteface.html#af24918421babc9b1f8cafa7e88597ae1">More...</a><br /></td></tr>
+<tr class="separator:af24918421babc9b1f8cafa7e88597ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -135,8 +135,8 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
 
 </div>
 </div>
-<a id="a78ed09d787cdc5706e2e098df6f59c96" name="a78ed09d787cdc5706e2e098df6f59c96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78ed09d787cdc5706e2e098df6f59c96">&#9670;&nbsp;</a></span>mutate()</h2>
+<a id="af24918421babc9b1f8cafa7e88597ae1" name="af24918421babc9b1f8cafa7e88597ae1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af24918421babc9b1f8cafa7e88597ae1">&#9670;&nbsp;</a></span>mutate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,8 +149,8 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classnia_1_1_individual_inteface.html">nia::IndividualInteface</a>&lt; Tgene, chromosome_size, Tfitess &gt;::mutate </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>mutation_rate</em></td><td>)</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>mutation_chance</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -161,7 +161,7 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Method to mutate Individual with given 0 &lt;= chance &lt;= 1 </p>
+<p>Method to mutate Individual with given 0 &lt;= mutation_chance &lt;= 1 </p>
 
 </div>
 </div>

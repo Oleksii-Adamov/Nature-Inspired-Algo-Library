@@ -81,8 +81,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af7bd41cd052b6335a9e82cc2fb486200"><td class="memItemLeft" align="right" valign="top">static Individual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_genetic_algo.html#af7bd41cd052b6335a9e82cc2fb486200">solve</a> (const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const long long MUTATION_RATE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;))</td></tr>
-<tr class="separator:af7bd41cd052b6335a9e82cc2fb486200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e05f3e07f35f3d23498dde2905f8fae"><td class="memItemLeft" align="right" valign="top">static Individual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_genetic_algo.html#a6e05f3e07f35f3d23498dde2905f8fae">solve</a> (const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;))</td></tr>
+<tr class="separator:a6e05f3e07f35f3d23498dde2905f8fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Individual&gt;<br />
@@ -98,12 +98,12 @@ class nia::GeneticAlgo&lt; Individual &gt;</div><p >Class that implements Geneti
   </dd>
 </dl>
 <p>You may need call solve method several times with random initial population, to find more accurate answers. Performance of algorithm highly relies on performance of get_fitness and comparison of fitness.<br  />
- Example of usage: </p><div class="fragment"><div class="line">Individual the_fittest = <a class="code hl_function" href="classnia_1_1_genetic_algo.html#af7bd41cd052b6335a9e82cc2fb486200">nia::GeneticAlgo&lt;Individual&gt;::solve</a>(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, </div>
-<div class="line">MUTATION_RATE, population, breed);</div>
-<div class="ttc" id="aclassnia_1_1_genetic_algo_html_af7bd41cd052b6335a9e82cc2fb486200"><div class="ttname"><a href="classnia_1_1_genetic_algo.html#af7bd41cd052b6335a9e82cc2fb486200">nia::GeneticAlgo::solve</a></div><div class="ttdeci">static Individual solve(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const long long MUTATION_RATE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;))</div><div class="ttdef"><b>Definition:</b> GeneticAlgo.h:106</div></div>
+ Example of usage: </p><div class="fragment"><div class="line">Individual the_fittest = <a class="code hl_function" href="classnia_1_1_genetic_algo.html#a6e05f3e07f35f3d23498dde2905f8fae">nia::GeneticAlgo&lt;Individual&gt;::solve</a>(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, </div>
+<div class="line">MUTATION_CHANCE, population, breed);</div>
+<div class="ttc" id="aclassnia_1_1_genetic_algo_html_a6e05f3e07f35f3d23498dde2905f8fae"><div class="ttname"><a href="classnia_1_1_genetic_algo.html#a6e05f3e07f35f3d23498dde2905f8fae">nia::GeneticAlgo::solve</a></div><div class="ttdeci">static Individual solve(const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;))</div><div class="ttdef"><b>Definition:</b> GeneticAlgo.h:110</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="af7bd41cd052b6335a9e82cc2fb486200" name="af7bd41cd052b6335a9e82cc2fb486200"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7bd41cd052b6335a9e82cc2fb486200">&#9670;&nbsp;</a></span>solve()</h2>
+<a id="a6e05f3e07f35f3d23498dde2905f8fae" name="a6e05f3e07f35f3d23498dde2905f8fae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e05f3e07f35f3d23498dde2905f8fae">&#9670;&nbsp;</a></span>solve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -116,13 +116,13 @@ template&lt;typename Individual &gt; </div>
         <tr>
           <td class="memname">static Individual <a class="el" href="classnia_1_1_genetic_algo.html">nia::GeneticAlgo</a>&lt; Individual &gt;::solve </td>
           <td>(</td>
-          <td class="paramtype">const long long&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>NUMBER_OF_INDIVIDUALS</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const long long&#160;</td>
+          <td class="paramtype">const size_t&#160;</td>
           <td class="paramname"><em>NUMBER_OF_ELITES</em>, </td>
         </tr>
         <tr>
@@ -134,8 +134,8 @@ template&lt;typename Individual &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const long long&#160;</td>
-          <td class="paramname"><em>MUTATION_RATE</em>, </td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>MUTATION_CHANCE</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -166,7 +166,7 @@ template&lt;typename Individual &gt; </div>
     <tr><td class="paramdir">[in]</td><td class="paramname">NUMBER_OF_INDIVIDUALS</td><td>number of individuals in every generation </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">NUMBER_OF_ELITES</td><td>number of best individuals kept for next generation </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">NUMBER_OF_GENERATIONS</td><td>number of generations this algorithm will process </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">MUTATION_RATE</td><td>mutation rate that will be passed in Individual.mutate(MUTATION_RATE) method </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">MUTATION_CHANCE</td><td>0 &lt;= mutation chance &lt;= 1 that will be passed in Individual.mutate(MUTATION_CHANCE) method </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">init_population</td><td>initial(starting) population </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">breed</td><td>breed function(given two parents, returns two children), aka crossover </td></tr>
   </table>

@@ -12,7 +12,7 @@ Class that implements Genetic Algorithm in solve method.
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}{solve}} (const long long NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS, const long long NUMBER\+\_\+\+OF\+\_\+\+ELITES, const long long NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS, const long long MUTATION\+\_\+\+RATE, Individual init\+\_\+population\mbox{[}$\,$\mbox{]}, std\+::pair$<$ Individual, Individual $>$($\ast$breed)(const Individual \&, const Individual \&))
+static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}{solve}} (const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS, const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+ELITES, const long long NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS, const double MUTATION\+\_\+\+CHANCE, Individual init\+\_\+population\mbox{[}$\,$\mbox{]}, std\+::pair$<$ Individual, Individual $>$($\ast$breed)(const Individual \&, const Individual \&))
 \end{DoxyCompactItemize}
 
 
@@ -37,19 +37,19 @@ Class that implements Genetic Algorithm in solve method.
 You may need call solve method several times with random initial population, to find more accurate answers. Performance of algorithm highly relies on performance of get\+\_\+fitness and comparison of fitness.~\newline
  Example of usage\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Individual the\_fittest = \mbox{\hyperlink{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}{nia::GeneticAlgo<Individual>::solve}}(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, NUMBER\_OF\_GENERATIONS, }
-\DoxyCodeLine{MUTATION\_RATE, population, breed);}
+\DoxyCodeLine{Individual the\_fittest = \mbox{\hyperlink{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}{nia::GeneticAlgo<Individual>::solve}}(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, NUMBER\_OF\_GENERATIONS, }
+\DoxyCodeLine{MUTATION\_CHANCE, population, breed);}
 
 \end{DoxyCode}
  
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}\label{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}} 
+\mbox{\Hypertarget{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}\label{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}} 
 \index{nia::GeneticAlgo$<$ Individual $>$@{nia::GeneticAlgo$<$ Individual $>$}!solve@{solve}}
 \index{solve@{solve}!nia::GeneticAlgo$<$ Individual $>$@{nia::GeneticAlgo$<$ Individual $>$}}
 \doxysubsubsection{\texorpdfstring{solve()}{solve()}}
 {\footnotesize\ttfamily template$<$typename Individual $>$ \\
-static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+Algo}}$<$ Individual $>$\+::solve (\begin{DoxyParamCaption}\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+ELITES,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS,  }\item[{const long long}]{MUTATION\+\_\+\+RATE,  }\item[{Individual}]{init\+\_\+population\mbox{[}$\,$\mbox{]},  }\item[{std\+::pair$<$ Individual, Individual $>$($\ast$)(const Individual \&, const Individual \&)}]{breed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+Algo}}$<$ Individual $>$\+::solve (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS,  }\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+ELITES,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS,  }\item[{const double}]{MUTATION\+\_\+\+CHANCE,  }\item[{Individual}]{init\+\_\+population\mbox{[}$\,$\mbox{]},  }\item[{std\+::pair$<$ Individual, Individual $>$($\ast$)(const Individual \&, const Individual \&)}]{breed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -59,7 +59,7 @@ static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+
 \hline
 \mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS} & number of generations this algorithm will process \\
 \hline
-\mbox{\texttt{ in}}  & {\em MUTATION\+\_\+\+RATE} & mutation rate that will be passed in Individual.\+mutate(\+MUTATION\+\_\+\+RATE) method \\
+\mbox{\texttt{ in}}  & {\em MUTATION\+\_\+\+CHANCE} & 0 \texorpdfstring{$<$}{<}= mutation chance \texorpdfstring{$<$}{<}= 1 that will be passed in Individual.\+mutate(\+MUTATION\+\_\+\+CHANCE) method \\
 \hline
 \mbox{\texttt{ in}}  & {\em init\+\_\+population} & initial(starting) population \\
 \hline

@@ -14,8 +14,8 @@ Interface for Individual.
 \item 
 virtual Tfitess \mbox{\hyperlink{classnia_1_1_individual_inteface_a7775b803c37ce69e853258ae4b6efd45}{get\+\_\+fitness}} ()=0
 \begin{DoxyCompactList}\small\item\em Method to get fitness from Individual (using already done calculations for better performance is welcome) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface_a78ed09d787cdc5706e2e098df6f59c96}{mutate}} (int mutation\+\_\+rate)=0
-\begin{DoxyCompactList}\small\item\em Method to mutate Individual with given 0 \texorpdfstring{$<$}{<}= chance \texorpdfstring{$<$}{<}= 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface_af24918421babc9b1f8cafa7e88597ae1}{mutate}} (double mutation\+\_\+chance)=0
+\begin{DoxyCompactList}\small\item\em Method to mutate Individual with given 0 \texorpdfstring{$<$}{<}= mutation\+\_\+chance \texorpdfstring{$<$}{<}= 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -51,16 +51,16 @@ virtual Tfitess \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Indi
 
 Method to get fitness from Individual (using already done calculations for better performance is welcome) 
 
-\mbox{\Hypertarget{classnia_1_1_individual_inteface_a78ed09d787cdc5706e2e098df6f59c96}\label{classnia_1_1_individual_inteface_a78ed09d787cdc5706e2e098df6f59c96}} 
+\mbox{\Hypertarget{classnia_1_1_individual_inteface_af24918421babc9b1f8cafa7e88597ae1}\label{classnia_1_1_individual_inteface_af24918421babc9b1f8cafa7e88597ae1}} 
 \index{nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}!mutate@{mutate}}
 \index{mutate@{mutate}!nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}}
 \doxysubsubsection{\texorpdfstring{mutate()}{mutate()}}
 {\footnotesize\ttfamily template$<$typename Tgene , int chromosome\+\_\+size, typename Tfitess $>$ \\
-virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Individual\+Inteface}}$<$ Tgene, chromosome\+\_\+size, Tfitess $>$\+::mutate (\begin{DoxyParamCaption}\item[{int}]{mutation\+\_\+rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Individual\+Inteface}}$<$ Tgene, chromosome\+\_\+size, Tfitess $>$\+::mutate (\begin{DoxyParamCaption}\item[{double}]{mutation\+\_\+chance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
-Method to mutate Individual with given 0 \texorpdfstring{$<$}{<}= chance \texorpdfstring{$<$}{<}= 1 
+Method to mutate Individual with given 0 \texorpdfstring{$<$}{<}= mutation\+\_\+chance \texorpdfstring{$<$}{<}= 1 
 
 
 
