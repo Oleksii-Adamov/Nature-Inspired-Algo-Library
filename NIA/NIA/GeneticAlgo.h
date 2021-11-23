@@ -40,8 +40,7 @@ namespace nia {
 		Performance of algorithm highly relies on performance of get_fitness and comparison of fitness.\n
 		Example of usage:
 		\code
-		Individual the_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, 
-		MUTATION_CHANCE, population, breed);
+		Individual the_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed);
 		\endcode		
 	*/
 	template <typename Individual>
