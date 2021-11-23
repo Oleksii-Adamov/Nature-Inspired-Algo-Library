@@ -2,6 +2,11 @@
 \label{classnia_1_1_genetic_algo}\index{nia::GeneticAlgo$<$ Individual $>$@{nia::GeneticAlgo$<$ Individual $>$}}
 
 
+Class that implements Genetic Algorithm in solve method.  
+
+
+
+
 {\ttfamily \#include $<$Genetic\+Algo.\+h$>$}
 
 \doxysubsection*{Static Public Member Functions}
@@ -11,6 +16,33 @@ static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_af7bd41cd052b6335a9
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Individual$>$\newline
+class nia\+::\+Genetic\+Algo$<$ Individual $>$}
+Class that implements Genetic Algorithm in solve method. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Individual} & Individual class with\+:~\newline
+ public get\+\_\+fitness method (fitness must have operator \texorpdfstring{$>$}{>} implemented)~\newline
+ public mutation method with build-\/in mutation\+\_\+rate 
+\begin{DoxyCode}{1}
+\DoxyCodeLine{\textcolor{keywordtype}{void} mutate(\textcolor{keywordtype}{int} mutation\_rate) }
+
+\end{DoxyCode}
+ Individual class passed as template parameter to \mbox{\hyperlink{classnia_1_1_genetic_algo}{Genetic\+Algo}} class. If one of this methods not implemented you\textquotesingle{}ll get compile error.~\newline
+ For convenience, you can inherit \mbox{\hyperlink{classnia_1_1_individual_inteface}{Individual\+Inteface}} abstract class and implement required pure virtual methods.\\
+\hline
+\end{DoxyTemplParams}
+You may need call solve method several times with random initial population, to find more accurate answers. Performance of algorithm highly relies on performance of get\+\_\+fitness and comparison of fitness.~\newline
+ Example of usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Individual the\_fittest = \mbox{\hyperlink{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}{nia::GeneticAlgo<Individual>::solve}}(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, NUMBER\_OF\_GENERATIONS, }
+\DoxyCodeLine{MUTATION\_RATE, population, breed);}
+
+\end{DoxyCode}
+ 
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}\label{classnia_1_1_genetic_algo_af7bd41cd052b6335a9e82cc2fb486200}} 
 \index{nia::GeneticAlgo$<$ Individual $>$@{nia::GeneticAlgo$<$ Individual $>$}!solve@{solve}}
@@ -19,6 +51,24 @@ static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_af7bd41cd052b6335a9
 {\footnotesize\ttfamily template$<$typename Individual $>$ \\
 static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+Algo}}$<$ Individual $>$\+::solve (\begin{DoxyParamCaption}\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+ELITES,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS,  }\item[{const long long}]{MUTATION\+\_\+\+RATE,  }\item[{Individual}]{init\+\_\+population\mbox{[}$\,$\mbox{]},  }\item[{std\+::pair$<$ Individual, Individual $>$($\ast$)(const Individual \&, const Individual \&)}]{breed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS} & number of individuals in every generation \\
+\hline
+\mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+ELITES} & number of best individuals kept for next generation \\
+\hline
+\mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS} & number of generations this algorithm will process \\
+\hline
+\mbox{\texttt{ in}}  & {\em MUTATION\+\_\+\+RATE} & mutation rate that will be passed in Individual.\+mutate(\+MUTATION\+\_\+\+RATE) method \\
+\hline
+\mbox{\texttt{ in}}  & {\em init\+\_\+population} & initial(starting) population \\
+\hline
+\mbox{\texttt{ in}}  & {\em breed} & breed function(given two parents, returns two children), aka crossover \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The fittest Individual for NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

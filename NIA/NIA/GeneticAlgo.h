@@ -1,44 +1,48 @@
 #pragma once
+/*!
+\file
+\brief Header that contains implementation of genetic algorithm
+*/
 #include <utility>
 #include <functional>
 namespace nia {
-	
+	/// <summary>
+	/// Interface for Individual.
+	/// </summary>
+	/// \tparam Tgene Type of gene
+	/// \tparam chromosome_size Size of chromosome for each Individual
+	/// \tparam Tfitess Type of fitness of Individual
+	// <typeparam name="Tgene" Type of gene, Tgene chromosome[cromosome size] will be created></typeparam>
+	// <typeparam name="Tfitess" Type of fitness of Individual></typeparam>
 	template<typename Tgene, int chromosome_size, typename Tfitess>
 	class IndividualInteface {
 	public:
 		Tgene chromosome[chromosome_size];
+		/// <summary>
+		/// Method to get fitness from Individual (using already done calculations for better performance is welcome) 
+		/// </summary>
 		virtual Tfitess get_fitness() = 0;
+		/// <summary>
+		/// Method to mutate Individual with given 0 <= chance <= 1
+		/// </summary>
 		virtual void mutate(int mutation_rate) = 0;
 	};
-	/*
-	   How to use:
-		   Genetic algo requires:
-			   constants:
-					NUMBER_OF_INDIVIDUALS (number of individuals in every generation)
-					NUMBER_OF_ELITES (number of best inividuals kept for next generation)
-					NUMBER_OF_GENERATIONS
+	/*!
+	* \brief Class that implements Genetic Algorithm in solve method.
+	
+		\tparam Individual Individual class with:\n
+				public get_fitness method (fitness must have operator > implemented)\n
+				public mutation method with build-in mutation_rate \code void mutate(int mutation_rate) \endcode
+		Individual class passed as template parameter to GeneticAlgo class. If one of this methods not implemented you'll get compile error.\n 
+		For convenience, you can inherit IndividualInteface abstract class and implement required pure virtual methods. 
 
-				classes/types:
-					Individual class with:
-						public get_fitness method (fitness must have operator > implemented)
-						public mutation method with build-in mutation_rate - void mutate(int mutation_rate)
-				Individual class passed as template parameter to GeneticAlgo class. If one of this methods not imlemented you'll get compile error. 
-				For convinience, you can inherit IndividualInteface astract class and implement requiered pure virtual methods. 
-
-				parameters:
-					initial(starting) population - Individual init_population[NUMBER_OF_INDIVIDUALS]
-
-				functions:
-					breed function(given two parents, returns two children)- std::pair<Individual, Individual> breed(const Individual& a, const Individual& b);
-
-				Genetic algo returns the fittest Individual for NUMBER_OF_GENERATIONS
-				
-				You may need call this function several times with random initial population, to find more accurate answer
-				performance of algorithm higly relies on performance of get_fitness and comparation of fitness
-
-			Example of usage:
-				Individual the_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS,
-				MUTATION_RATE, population, breed);
+		You may need call solve method several times with random initial population, to find more accurate answers.
+		Performance of algorithm highly relies on performance of get_fitness and comparison of fitness.\n
+		Example of usage:
+		\code
+		Individual the_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, 
+		MUTATION_RATE, population, breed);
+		\endcode		
 	*/
 	template <typename Individual>
 	class GeneticAlgo {
@@ -90,6 +94,15 @@ namespace nia {
 			delete[] m_pool;
 		}
 	public:
+		/*!
+		* \param[in] NUMBER_OF_INDIVIDUALS number of individuals in every generation
+		* \param[in] NUMBER_OF_ELITES number of best individuals kept for next generation
+		* \param[in] NUMBER_OF_GENERATIONS number of generations this algorithm will process
+		* \param[in] MUTATION_RATE mutation rate that will be passed in Individual.mutate(MUTATION_RATE) method
+		* \param[in] init_population initial(starting) population
+		* \param[in] breed breed function(given two parents, returns two children), aka crossover
+		* \return The fittest Individual for NUMBER_OF_GENERATIONS
+		*/
 		static Individual solve(const long long NUMBER_OF_INDIVIDUALS, const long long NUMBER_OF_ELITES,
 			const long long NUMBER_OF_GENERATIONS, const long long MUTATION_RATE, Individual init_population[], 
 			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&)

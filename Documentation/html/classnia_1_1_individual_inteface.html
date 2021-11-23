@@ -75,13 +75,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Interface for Individual.  
+ <a href="classnia_1_1_individual_inteface.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_genetic_algo_8h_source.html">GeneticAlgo.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7775b803c37ce69e853258ae4b6efd45"><td class="memItemLeft" align="right" valign="top">virtual Tfitess&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#a7775b803c37ce69e853258ae4b6efd45">get_fitness</a> ()=0</td></tr>
+<tr class="memdesc:a7775b803c37ce69e853258ae4b6efd45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to get fitness from Individual (using already done calculations for better performance is welcome)  <a href="classnia_1_1_individual_inteface.html#a7775b803c37ce69e853258ae4b6efd45">More...</a><br /></td></tr>
 <tr class="separator:a7775b803c37ce69e853258ae4b6efd45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78ed09d787cdc5706e2e098df6f59c96"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#a78ed09d787cdc5706e2e098df6f59c96">mutate</a> (int mutation_rate)=0</td></tr>
+<tr class="memdesc:a78ed09d787cdc5706e2e098df6f59c96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to mutate Individual with given 0 &lt;= chance &lt;= 1  <a href="classnia_1_1_individual_inteface.html#a78ed09d787cdc5706e2e098df6f59c96">More...</a><br /></td></tr>
 <tr class="separator:a78ed09d787cdc5706e2e098df6f59c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -89,7 +94,18 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:adc4839922a696cfd8e2c6f9d3f758ca2"><td class="memItemLeft" align="right" valign="top">Tgene&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#adc4839922a696cfd8e2c6f9d3f758ca2">chromosome</a> [chromosome_size]</td></tr>
 <tr class="separator:adc4839922a696cfd8e2c6f9d3f758ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Tgene, int chromosome_size, typename Tfitess&gt;<br />
+class nia::IndividualInteface&lt; Tgene, chromosome_size, Tfitess &gt;</div><p >Interface for Individual. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Tgene</td><td>Type of gene </td></tr>
+    <tr><td class="paramname">chromosome_size</td><td>Size of chromosome for each Individual </td></tr>
+    <tr><td class="paramname">Tfitess</td><td>Type of fitness of Individual </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7775b803c37ce69e853258ae4b6efd45" name="a7775b803c37ce69e853258ae4b6efd45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7775b803c37ce69e853258ae4b6efd45">&#9670;&nbsp;</a></span>get_fitness()</h2>
 
@@ -114,6 +130,8 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Method to get fitness from Individual (using already done calculations for better performance is welcome) </p>
 
 </div>
 </div>
@@ -142,6 +160,8 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Method to mutate Individual with given 0 &lt;= chance &lt;= 1 </p>
 
 </div>
 </div>
