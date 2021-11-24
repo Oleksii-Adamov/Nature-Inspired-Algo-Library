@@ -27,7 +27,7 @@ namespace nia {
 		/// <summary>
 		/// Method to mutate Individual with given 0 <= mutation_chance <= 1
 		/// </summary>
-		virtual void mutate(double mutation_chance) = 0;
+		virtual void mutate(double mutation_chance, std::mt19937& gen) = 0;
 	};
 	/*!
 	* \brief Class that implements Genetic Algorithm in solve method.
@@ -51,11 +51,8 @@ namespace nia {
 		static bool comp_individ(Individual& l, Individual& r) {
 			return l.get_fitness() > r.get_fitness();
 		}
-		static Individual* mating_pool(const size_t NUMBER_OF_INDIVIDUALS, Individual population[], size_t size) {
+		static Individual* mating_pool(const size_t NUMBER_OF_INDIVIDUALS, Individual population[], size_t size, std::mt19937& gen) {
 			Individual* pool = new Individual[size];
-			std::random_device rd;  //Will be used to obtain a seed for the random number engine
-			std::seed_seq seed{ rd(), static_cast<unsigned int>(time(nullptr)) }; // in case random_device is not implemented, fall back to time(0)
-			std::mt19937 gen(seed); //Standard mersenne_twister_engine seeded with seed
 			std::uniform_int_distribution<size_t> pos_dis(0, NUMBER_OF_INDIVIDUALS - 1);
 			// Tournament selection
 			for (size_t i = 0; i < size; i++) {
@@ -71,14 +68,14 @@ namespace nia {
 		}
 		static void next_generation(const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES, const double MUTATION_CHANCE,
 			Individual population[],
-			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&)
+			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&, std::mt19937&), std::mt19937& gen
 			) {
 			size_t m_pool_size = NUMBER_OF_INDIVIDUALS - NUMBER_OF_ELITES;
-			Individual* m_pool = mating_pool(NUMBER_OF_INDIVIDUALS, population, m_pool_size);
+			Individual* m_pool = mating_pool(NUMBER_OF_INDIVIDUALS, population, m_pool_size, gen);
 			std::sort(m_pool, m_pool + m_pool_size, comp_individ);
 			for (size_t i = 0; i < NUMBER_OF_ELITES; i++) {
 				population[i] = m_pool[i];
-				population[i].mutate(MUTATION_CHANCE);
+				population[i].mutate(MUTATION_CHANCE, gen);
 			}
 			size_t ind = NUMBER_OF_ELITES;
 			for (size_t i = 0; ind < NUMBER_OF_INDIVIDUALS; i += 2) {
@@ -86,13 +83,13 @@ namespace nia {
 					population[ind] = m_pool[i];
 					break;
 				}
-				std::pair<Individual, Individual> children = breed(m_pool[i], m_pool[i + 1]);
+				std::pair<Individual, Individual> children = breed(m_pool[i], m_pool[i + 1], gen);
 				population[ind] = children.first;
-				population[ind].mutate(MUTATION_CHANCE);
+				population[ind].mutate(MUTATION_CHANCE, gen);
 				ind++;
 				if (ind < NUMBER_OF_INDIVIDUALS) {
 					population[ind] = children.second;
-					population[ind].mutate(MUTATION_CHANCE);
+					population[ind].mutate(MUTATION_CHANCE, gen);
 					ind++;
 				}
 			}
@@ -105,14 +102,19 @@ namespace nia {
 		* \param[in] NUMBER_OF_GENERATIONS number of generations this algorithm will process
 		* \param[in] MUTATION_CHANCE 0 <= mutation chance <= 1 that will be passed in Individual.mutate(MUTATION_CHANCE) method
 		* \param[in] init_population initial(starting) population
-		* \param[in] breed breed function(given two parents, returns two children), aka crossover
+		* \param[in] breed breed function(given two parents and random generator, returns two children), aka crossover
 		* \return The fittest Individual for NUMBER_OF_GENERATIONS
 		*/
 		static Individual solve(const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES,
 			const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[],
-			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&)
+			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&, std::mt19937&)
 			)
 		{
+			// generating random sequence
+			std::random_device rd;  //Will be used to obtain a seed for the random number engine
+			std::seed_seq seed{ rd(), static_cast<unsigned int>(time(nullptr)) }; // in case random_device is not implemented, fall back to time(0)
+			std::mt19937 gen(seed); //Standard mersenne_twister_engine seeded with seed
+			// copying initial population
 			Individual* population = new Individual[NUMBER_OF_INDIVIDUALS];
 			Individual prev_best = init_population[0];
 			for (size_t i = 0; i < NUMBER_OF_INDIVIDUALS; i++) {
@@ -121,8 +123,9 @@ namespace nia {
 					prev_best = population[i];
 				}
 			}
+			// looping through generations
 			for (long long i = 0; i < NUMBER_OF_GENERATIONS; i++) {
-				next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_CHANCE, population, breed);
+				next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_CHANCE, population, breed, gen);
 				size_t best = 0;
 				for (size_t j = 1; j < NUMBER_OF_INDIVIDUALS; j++) {
 					if (population[j].get_fitness() > population[best].get_fitness()) {

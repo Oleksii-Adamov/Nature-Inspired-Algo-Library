@@ -3,6 +3,6 @@
   <Executable>D:\University\3-sem\Programming-project\NIA\x64\Debug\NIA-test.exe</Executable>
   <TestDurations>
     <TestDuration Test="TestCaseName.TestName" Duration="1" />
-    <TestDuration Test="GeneticAlgoTest.TA_Test" Duration="260" />
+    <TestDuration Test="GeneticAlgoTest.TA_Test" Duration="8" />
   </TestDurations>
 </GtaTestDurations>
