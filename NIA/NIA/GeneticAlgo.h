@@ -5,6 +5,8 @@
 */
 #include <utility>
 #include <functional>
+#include <random>
+#include <algorithm>
 namespace nia {
 	/// <summary>
 	/// Interface for Individual.

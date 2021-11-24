@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <random>
 #include <ctime>
+#include <iostream>
 namespace gata {
 	const double EPS = 1e-9;
 	struct City { // or Gene
@@ -41,16 +42,16 @@ namespace gata {
 			b = t;
 		}
 		void swap_cities(int i, int j) {
-			swap_cities(chromosome[i], chromosome[j]);
+			swap_cities(this->chromosome[i], this->chromosome[j]);
 		}
 		void calc_route_length() {
 			route_length = 0;
 			for (int i = 0; i < chromosome_size; i++) {
 				if (i + 1 != chromosome_size) {
-					route_length += City::distance(chromosome[i], chromosome[i + 1]);
+					route_length += City::distance(this->chromosome[i], this->chromosome[i + 1]);
 				}
 				else {
-					route_length += City::distance(chromosome[i], chromosome[0]);
+					route_length += City::distance(this->chromosome[i], this->chromosome[0]);
 				}
 			}
 		}
@@ -58,8 +59,8 @@ namespace gata {
 			fitness = 1 / ((double)get_route_length());
 		}
 	public:
-		std::mt19937 get_gen() const {
-			return gen;
+		std::mt19937* get_gen() {
+			return &gen;
 		}
 		void mutate(double mutation_chance) override {
 			std::uniform_real_distribution<> chance_dis(0.0, 1.0);
@@ -99,8 +100,9 @@ namespace gata {
 		};
 		Individual<chromosome_size> first_child;
 		Individual<chromosome_size> second_child;
+		std::mt19937 gen(static_cast<unsigned int>(time(nullptr))); //Standard mersenne_twister_engine seeded with seed
 		std::uniform_int_distribution<> pos_dis(0, chromosome_size - 1);
-		int geneA = pos_dis(first_parent.get_gen()), geneB = pos_dis(second_parent.get_gen());
+		int geneA = pos_dis(gen), geneB = pos_dis(gen);
 		int start_gene = std::min(geneA, geneB), end_gene = std::max(geneA, geneB), sub_route_size = end_gene - start_gene + 1;
 		City* a_sub_route = new City[sub_route_size];
 		City* b_sub_route = new City[sub_route_size];
@@ -146,6 +148,17 @@ namespace gata {
 			std::cerr << the_fittest.chromosome[i].num << " -> ";
 		}
 		return the_fittest.get_route_length();
+		delete[] population;
+	}
+
+	template<int CHROMOSOME_SIZE>
+	Individual<CHROMOSOME_SIZE> calc_ans(const int NUMBER_OF_INDIVIDUALS, const int NUMBER_OF_GENERATIONS, const int NUMBER_OF_ELITES,
+		const double MUTATION_CHANCE, City cities[]) {
+		Individual<CHROMOSOME_SIZE>* population = new Individual<CHROMOSOME_SIZE>[NUMBER_OF_INDIVIDUALS];
+		init_population(CHROMOSOME_SIZE, NUMBER_OF_INDIVIDUALS, population, cities);
+		Individual<CHROMOSOME_SIZE> the_fittest = nia::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
+			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed);
+		return the_fittest;
 		delete[] population;
 	}
 }
