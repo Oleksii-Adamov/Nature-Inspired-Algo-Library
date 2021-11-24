@@ -7,6 +7,7 @@
 #include <functional>
 #include <random>
 #include <algorithm>
+#include <iostream>
 namespace nia {
 	/// <summary>
 	/// Interface for Individual.
@@ -34,7 +35,7 @@ namespace nia {
 	
 		\tparam Individual Individual class with:\n
 				public get_fitness method (fitness must have operator > implemented)\n
-				public mutation method with build-in mutation_rate \code void mutate(int mutation_rate) \endcode
+				public mutation method with build-in mutation_rate \code void mutate(double mutation_chance, std::mt19937& gen) \endcode
 		Individual class passed as template parameter to GeneticAlgo class. If one of this methods not implemented you'll get compile error.\n 
 		For convenience, you can inherit IndividualInteface abstract class and implement required pure virtual methods. 
 
@@ -100,7 +101,7 @@ namespace nia {
 		* \param[in] NUMBER_OF_INDIVIDUALS number of individuals in every generation
 		* \param[in] NUMBER_OF_ELITES number of best individuals kept for next generation
 		* \param[in] NUMBER_OF_GENERATIONS number of generations this algorithm will process
-		* \param[in] MUTATION_CHANCE 0 <= mutation chance <= 1 that will be passed in Individual.mutate(MUTATION_CHANCE) method
+		* \param[in] MUTATION_CHANCE 0 <= mutation chance <= 1 that will be passed in Individual.mutate method
 		* \param[in] init_population initial(starting) population
 		* \param[in] breed breed function(given two parents and random generator, returns two children), aka crossover
 		* \return The fittest Individual for NUMBER_OF_GENERATIONS
@@ -135,6 +136,7 @@ namespace nia {
 				if (prev_best.get_route_length() == -2 || population[best].get_route_length() < prev_best.get_route_length()) {
 					prev_best = population[best];
 				}
+				//std::cout << prev_best.get_route_length() << std::endl;
 			}
 			delete[] population;
 			return prev_best;

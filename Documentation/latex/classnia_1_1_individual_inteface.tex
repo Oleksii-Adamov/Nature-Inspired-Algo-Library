@@ -14,7 +14,7 @@ Interface for Individual.
 \item 
 virtual Tfitess \mbox{\hyperlink{classnia_1_1_individual_inteface_a7775b803c37ce69e853258ae4b6efd45}{get\+\_\+fitness}} ()=0
 \begin{DoxyCompactList}\small\item\em Method to get fitness from Individual (using already done calculations for better performance is welcome) \end{DoxyCompactList}\item 
-virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface_af24918421babc9b1f8cafa7e88597ae1}{mutate}} (double mutation\+\_\+chance)=0
+virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface_a2efc9baf8476ca1d66ff13ca8daa490d}{mutate}} (double mutation\+\_\+chance, std\+::mt19937 \&gen)=0
 \begin{DoxyCompactList}\small\item\em Method to mutate Individual with given 0 \texorpdfstring{$<$}{<}= mutation\+\_\+chance \texorpdfstring{$<$}{<}= 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -51,12 +51,12 @@ virtual Tfitess \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Indi
 
 Method to get fitness from Individual (using already done calculations for better performance is welcome) 
 
-\mbox{\Hypertarget{classnia_1_1_individual_inteface_af24918421babc9b1f8cafa7e88597ae1}\label{classnia_1_1_individual_inteface_af24918421babc9b1f8cafa7e88597ae1}} 
+\mbox{\Hypertarget{classnia_1_1_individual_inteface_a2efc9baf8476ca1d66ff13ca8daa490d}\label{classnia_1_1_individual_inteface_a2efc9baf8476ca1d66ff13ca8daa490d}} 
 \index{nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}!mutate@{mutate}}
 \index{mutate@{mutate}!nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}}
 \doxysubsubsection{\texorpdfstring{mutate()}{mutate()}}
 {\footnotesize\ttfamily template$<$typename Tgene , int chromosome\+\_\+size, typename Tfitess $>$ \\
-virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Individual\+Inteface}}$<$ Tgene, chromosome\+\_\+size, Tfitess $>$\+::mutate (\begin{DoxyParamCaption}\item[{double}]{mutation\+\_\+chance }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+virtual void \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Individual\+Inteface}}$<$ Tgene, chromosome\+\_\+size, Tfitess $>$\+::mutate (\begin{DoxyParamCaption}\item[{double}]{mutation\+\_\+chance,  }\item[{std\+::mt19937 \&}]{gen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
 
 
 
@@ -76,4 +76,4 @@ Tgene \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Individual\+In
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_genetic_algo_8h}{Genetic\+Algo.\+h}}\end{DoxyCompactItemize}
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_genetic_algo_8h}{Genetic\+Algo.\+h}}\end{DoxyCompactItemize}

@@ -85,9 +85,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7775b803c37ce69e853258ae4b6efd45"><td class="memItemLeft" align="right" valign="top">virtual Tfitess&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#a7775b803c37ce69e853258ae4b6efd45">get_fitness</a> ()=0</td></tr>
 <tr class="memdesc:a7775b803c37ce69e853258ae4b6efd45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to get fitness from Individual (using already done calculations for better performance is welcome)  <a href="classnia_1_1_individual_inteface.html#a7775b803c37ce69e853258ae4b6efd45">More...</a><br /></td></tr>
 <tr class="separator:a7775b803c37ce69e853258ae4b6efd45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af24918421babc9b1f8cafa7e88597ae1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#af24918421babc9b1f8cafa7e88597ae1">mutate</a> (double mutation_chance)=0</td></tr>
-<tr class="memdesc:af24918421babc9b1f8cafa7e88597ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to mutate Individual with given 0 &lt;= mutation_chance &lt;= 1  <a href="classnia_1_1_individual_inteface.html#af24918421babc9b1f8cafa7e88597ae1">More...</a><br /></td></tr>
-<tr class="separator:af24918421babc9b1f8cafa7e88597ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2efc9baf8476ca1d66ff13ca8daa490d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_individual_inteface.html#a2efc9baf8476ca1d66ff13ca8daa490d">mutate</a> (double mutation_chance, std::mt19937 &amp;gen)=0</td></tr>
+<tr class="memdesc:a2efc9baf8476ca1d66ff13ca8daa490d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to mutate Individual with given 0 &lt;= mutation_chance &lt;= 1  <a href="classnia_1_1_individual_inteface.html#a2efc9baf8476ca1d66ff13ca8daa490d">More...</a><br /></td></tr>
+<tr class="separator:a2efc9baf8476ca1d66ff13ca8daa490d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -135,8 +135,8 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
 
 </div>
 </div>
-<a id="af24918421babc9b1f8cafa7e88597ae1" name="af24918421babc9b1f8cafa7e88597ae1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af24918421babc9b1f8cafa7e88597ae1">&#9670;&nbsp;</a></span>mutate()</h2>
+<a id="a2efc9baf8476ca1d66ff13ca8daa490d" name="a2efc9baf8476ca1d66ff13ca8daa490d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2efc9baf8476ca1d66ff13ca8daa490d">&#9670;&nbsp;</a></span>mutate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -150,8 +150,18 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
           <td class="memname">virtual void <a class="el" href="classnia_1_1_individual_inteface.html">nia::IndividualInteface</a>&lt; Tgene, chromosome_size, Tfitess &gt;::mutate </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>mutation_chance</em></td><td>)</td>
+          <td class="paramname"><em>mutation_chance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::mt19937 &amp;&#160;</td>
+          <td class="paramname"><em>gen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -183,7 +193,7 @@ template&lt;typename Tgene , int chromosome_size, typename Tfitess &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_genetic_algo_8h_source.html">GeneticAlgo.h</a></li>
+<li>D:/University/3-sem/Programming-project/NIA/NIA/<a class="el" href="_genetic_algo_8h_source.html">GeneticAlgo.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

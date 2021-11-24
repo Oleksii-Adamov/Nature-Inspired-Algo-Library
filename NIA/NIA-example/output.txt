@@ -1,0 +1,10 @@
+NUMBER_OF_CITIES 51
+NUMBER_OF_INDIVIDUALS 500
+NUMBER_OF_GENERATIONS 100000
+NUMBER_OF_ELITES 2
+MUTATION_CHANCE 0.006
+Has been done for 272.222 seconds
+min_length = 477.224
+Accuracy: 87.9755%
+Route
+23 -> 43 -> 24 -> 14 -> 25 -> 18 -> 12 -> 5 -> 49 -> 10 -> 39 -> 30 -> 34 -> 21 -> 29 -> 20 -> 35 -> 36 -> 3 -> 28 -> 31 -> 8 -> 48 -> 6 -> 47 -> 17 -> 37 -> 15 -> 33 -> 45 -> 44 -> 42 -> 19 -> 40 -> 41 -> 13 -> 4 -> 46 -> 51 -> 27 -> 1 -> 32 -> 11 -> 38 -> 9 -> 50 -> 16 -> 2 -> 22 -> 26 -> 7 -> 23

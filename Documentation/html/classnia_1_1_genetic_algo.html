@@ -81,8 +81,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6e05f3e07f35f3d23498dde2905f8fae"><td class="memItemLeft" align="right" valign="top">static Individual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_genetic_algo.html#a6e05f3e07f35f3d23498dde2905f8fae">solve</a> (const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;))</td></tr>
-<tr class="separator:a6e05f3e07f35f3d23498dde2905f8fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43f4b4b0fdb83e6934092d59db1af43"><td class="memItemLeft" align="right" valign="top">static Individual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnia_1_1_genetic_algo.html#ae43f4b4b0fdb83e6934092d59db1af43">solve</a> (const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;, std::mt19937 &amp;))</td></tr>
+<tr class="separator:ae43f4b4b0fdb83e6934092d59db1af43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename Individual&gt;<br />
@@ -91,18 +91,18 @@ class nia::GeneticAlgo&lt; Individual &gt;</div><p >Class that implements Geneti
   <table class="tparams">
     <tr><td class="paramname">Individual</td><td>Individual class with:<br  />
  public get_fitness method (fitness must have operator &gt; implemented)<br  />
- public mutation method with build-in mutation_rate <div class="fragment"><div class="line"><span class="keywordtype">void</span> mutate(<span class="keywordtype">int</span> mutation_rate) </div>
+ public mutation method with build-in mutation_rate <div class="fragment"><div class="line"><span class="keywordtype">void</span> mutate(<span class="keywordtype">double</span> mutation_chance, std::mt19937&amp; gen) </div>
 </div><!-- fragment --> Individual class passed as template parameter to <a class="el" href="classnia_1_1_genetic_algo.html" title="Class that implements Genetic Algorithm in solve method.">GeneticAlgo</a> class. If one of this methods not implemented you'll get compile error.<br  />
  For convenience, you can inherit <a class="el" href="classnia_1_1_individual_inteface.html" title="Interface for Individual.">IndividualInteface</a> abstract class and implement required pure virtual methods.</td></tr>
   </table>
   </dd>
 </dl>
 <p>You may need call solve method several times with random initial population, to find more accurate answers. Performance of algorithm highly relies on performance of get_fitness and comparison of fitness.<br  />
- Example of usage: </p><div class="fragment"><div class="line">Individual the_fittest = <a class="code hl_function" href="classnia_1_1_genetic_algo.html#a6e05f3e07f35f3d23498dde2905f8fae">nia::GeneticAlgo&lt;Individual&gt;::solve</a>(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed);</div>
-<div class="ttc" id="aclassnia_1_1_genetic_algo_html_a6e05f3e07f35f3d23498dde2905f8fae"><div class="ttname"><a href="classnia_1_1_genetic_algo.html#a6e05f3e07f35f3d23498dde2905f8fae">nia::GeneticAlgo::solve</a></div><div class="ttdeci">static Individual solve(const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;))</div><div class="ttdef"><b>Definition:</b> GeneticAlgo.h:111</div></div>
+ Example of usage: </p><div class="fragment"><div class="line">Individual the_fittest = <a class="code hl_function" href="classnia_1_1_genetic_algo.html#ae43f4b4b0fdb83e6934092d59db1af43">nia::GeneticAlgo&lt;Individual&gt;::solve</a>(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed);</div>
+<div class="ttc" id="aclassnia_1_1_genetic_algo_html_ae43f4b4b0fdb83e6934092d59db1af43"><div class="ttname"><a href="classnia_1_1_genetic_algo.html#ae43f4b4b0fdb83e6934092d59db1af43">nia::GeneticAlgo::solve</a></div><div class="ttdeci">static Individual solve(const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES, const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[], std::pair&lt; Individual, Individual &gt;(*breed)(const Individual &amp;, const Individual &amp;, std::mt19937 &amp;))</div><div class="ttdef"><b>Definition:</b> GeneticAlgo.h:109</div></div>
 </div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6e05f3e07f35f3d23498dde2905f8fae" name="a6e05f3e07f35f3d23498dde2905f8fae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e05f3e07f35f3d23498dde2905f8fae">&#9670;&nbsp;</a></span>solve()</h2>
+<a id="ae43f4b4b0fdb83e6934092d59db1af43" name="ae43f4b4b0fdb83e6934092d59db1af43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43f4b4b0fdb83e6934092d59db1af43">&#9670;&nbsp;</a></span>solve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +145,7 @@ template&lt;typename Individual &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::pair&lt; Individual, Individual &gt;(*)(const Individual &amp;, const Individual &amp;)&#160;</td>
+          <td class="paramtype">std::pair&lt; Individual, Individual &gt;(*)(const Individual &amp;, const Individual &amp;, std::mt19937 &amp;)&#160;</td>
           <td class="paramname"><em>breed</em>&#160;</td>
         </tr>
         <tr>
@@ -165,9 +165,9 @@ template&lt;typename Individual &gt; </div>
     <tr><td class="paramdir">[in]</td><td class="paramname">NUMBER_OF_INDIVIDUALS</td><td>number of individuals in every generation </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">NUMBER_OF_ELITES</td><td>number of best individuals kept for next generation </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">NUMBER_OF_GENERATIONS</td><td>number of generations this algorithm will process </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">MUTATION_CHANCE</td><td>0 &lt;= mutation chance &lt;= 1 that will be passed in Individual.mutate(MUTATION_CHANCE) method </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">MUTATION_CHANCE</td><td>0 &lt;= mutation chance &lt;= 1 that will be passed in Individual.mutate method </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">init_population</td><td>initial(starting) population </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">breed</td><td>breed function(given two parents, returns two children), aka crossover </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">breed</td><td>breed function(given two parents and random generator, returns two children), aka crossover </td></tr>
   </table>
   </dd>
 </dl>
@@ -176,7 +176,7 @@ template&lt;typename Individual &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="_genetic_algo_8h_source.html">GeneticAlgo.h</a></li>
+<li>D:/University/3-sem/Programming-project/NIA/NIA/<a class="el" href="_genetic_algo_8h_source.html">GeneticAlgo.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

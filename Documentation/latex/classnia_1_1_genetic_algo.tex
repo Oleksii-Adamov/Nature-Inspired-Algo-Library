@@ -12,7 +12,7 @@ Class that implements Genetic Algorithm in solve method.
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}{solve}} (const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS, const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+ELITES, const long long NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS, const double MUTATION\+\_\+\+CHANCE, Individual init\+\_\+population\mbox{[}$\,$\mbox{]}, std\+::pair$<$ Individual, Individual $>$($\ast$breed)(const Individual \&, const Individual \&))
+static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo_ae43f4b4b0fdb83e6934092d59db1af43}{solve}} (const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS, const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+ELITES, const long long NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS, const double MUTATION\+\_\+\+CHANCE, Individual init\+\_\+population\mbox{[}$\,$\mbox{]}, std\+::pair$<$ Individual, Individual $>$($\ast$breed)(const Individual \&, const Individual \&, std\+::mt19937 \&))
 \end{DoxyCompactItemize}
 
 
@@ -27,7 +27,7 @@ Class that implements Genetic Algorithm in solve method.
  public get\+\_\+fitness method (fitness must have operator \texorpdfstring{$>$}{>} implemented)~\newline
  public mutation method with build-\/in mutation\+\_\+rate 
 \begin{DoxyCode}{1}
-\DoxyCodeLine{\textcolor{keywordtype}{void} mutate(\textcolor{keywordtype}{int} mutation\_rate) }
+\DoxyCodeLine{\textcolor{keywordtype}{void} mutate(\textcolor{keywordtype}{double} mutation\_chance, std::mt19937\& gen) }
 
 \end{DoxyCode}
  Individual class passed as template parameter to \mbox{\hyperlink{classnia_1_1_genetic_algo}{Genetic\+Algo}} class. If one of this methods not implemented you\textquotesingle{}ll get compile error.~\newline
@@ -37,18 +37,18 @@ Class that implements Genetic Algorithm in solve method.
 You may need call solve method several times with random initial population, to find more accurate answers. Performance of algorithm highly relies on performance of get\+\_\+fitness and comparison of fitness.~\newline
  Example of usage\+: 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{Individual the\_fittest = \mbox{\hyperlink{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}{nia::GeneticAlgo<Individual>::solve}}(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, NUMBER\_OF\_GENERATIONS, MUTATION\_CHANCE, population, breed);}
+\DoxyCodeLine{Individual the\_fittest = \mbox{\hyperlink{classnia_1_1_genetic_algo_ae43f4b4b0fdb83e6934092d59db1af43}{nia::GeneticAlgo<Individual>::solve}}(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, NUMBER\_OF\_GENERATIONS, MUTATION\_CHANCE, population, breed);}
 
 \end{DoxyCode}
  
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}\label{classnia_1_1_genetic_algo_a6e05f3e07f35f3d23498dde2905f8fae}} 
+\mbox{\Hypertarget{classnia_1_1_genetic_algo_ae43f4b4b0fdb83e6934092d59db1af43}\label{classnia_1_1_genetic_algo_ae43f4b4b0fdb83e6934092d59db1af43}} 
 \index{nia::GeneticAlgo$<$ Individual $>$@{nia::GeneticAlgo$<$ Individual $>$}!solve@{solve}}
 \index{solve@{solve}!nia::GeneticAlgo$<$ Individual $>$@{nia::GeneticAlgo$<$ Individual $>$}}
 \doxysubsubsection{\texorpdfstring{solve()}{solve()}}
 {\footnotesize\ttfamily template$<$typename Individual $>$ \\
-static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+Algo}}$<$ Individual $>$\+::solve (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS,  }\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+ELITES,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS,  }\item[{const double}]{MUTATION\+\_\+\+CHANCE,  }\item[{Individual}]{init\+\_\+population\mbox{[}$\,$\mbox{]},  }\item[{std\+::pair$<$ Individual, Individual $>$($\ast$)(const Individual \&, const Individual \&)}]{breed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+Algo}}$<$ Individual $>$\+::solve (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS,  }\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+ELITES,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS,  }\item[{const double}]{MUTATION\+\_\+\+CHANCE,  }\item[{Individual}]{init\+\_\+population\mbox{[}$\,$\mbox{]},  }\item[{std\+::pair$<$ Individual, Individual $>$($\ast$)(const Individual \&, const Individual \&, std\+::mt19937 \&)}]{breed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -58,11 +58,11 @@ static Individual \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+
 \hline
 \mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS} & number of generations this algorithm will process \\
 \hline
-\mbox{\texttt{ in}}  & {\em MUTATION\+\_\+\+CHANCE} & 0 \texorpdfstring{$<$}{<}= mutation chance \texorpdfstring{$<$}{<}= 1 that will be passed in Individual.\+mutate(\+MUTATION\+\_\+\+CHANCE) method \\
+\mbox{\texttt{ in}}  & {\em MUTATION\+\_\+\+CHANCE} & 0 \texorpdfstring{$<$}{<}= mutation chance \texorpdfstring{$<$}{<}= 1 that will be passed in Individual.\+mutate method \\
 \hline
 \mbox{\texttt{ in}}  & {\em init\+\_\+population} & initial(starting) population \\
 \hline
-\mbox{\texttt{ in}}  & {\em breed} & breed function(given two parents, returns two children), aka crossover \\
+\mbox{\texttt{ in}}  & {\em breed} & breed function(given two parents and random generator, returns two children), aka crossover \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -72,4 +72,4 @@ The fittest Individual for NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_genetic_algo_8h}{Genetic\+Algo.\+h}}\end{DoxyCompactItemize}
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_genetic_algo_8h}{Genetic\+Algo.\+h}}\end{DoxyCompactItemize}
