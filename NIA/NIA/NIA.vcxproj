@@ -176,6 +176,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GeneticAlgo.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Visualization.h" />
   </ItemGroup>
   <ItemGroup>

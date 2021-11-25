@@ -9,11 +9,12 @@
 namespace viz {
     class Visualization {
     private:
-        float* positions = nullptr;
+        double* positions = nullptr;
         unsigned int positions_buffer_id;
-        float* ans_positions = nullptr;
+        //float* ans_positions = nullptr;
+        double* ans_positions = nullptr;
         unsigned int ans_buffer_id;
-        size_t positins_size;
+        size_t positions_size;
         size_t positions_cur_count = 1;
         int max_value;
         int min_value;

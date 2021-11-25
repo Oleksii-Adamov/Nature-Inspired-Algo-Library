@@ -7,11 +7,23 @@
 #include <thread>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "Point.h"
 namespace viz {
     void Visualization::init_buffers() {
+        // initialization buffer for positions
         glGenBuffers(1, &positions_buffer_id);
         glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
-        glBufferData(GL_ARRAY_BUFFER, positins_size, positions, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, positions_size * sizeof(Point<double>), positions, GL_DYNAMIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, sizeof(Point<double>), 0);
+        // initialization buffer for answer
+        if (ans_positions != nullptr) {
+            glGenBuffers(1, &ans_buffer_id);
+            glBindBuffer(GL_ARRAY_BUFFER, ans_buffer_id);
+            glBufferData(GL_ARRAY_BUFFER, sizeof(Point<double>), ans_positions, GL_STATIC_DRAW);
+            glEnableVertexAttribArray(0);
+            glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, sizeof(Point<double>), 0);
+        }
     }
 }
 int viz::test()
