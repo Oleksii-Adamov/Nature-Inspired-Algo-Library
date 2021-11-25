@@ -176,10 +176,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GeneticAlgo.h" />
-    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Visualization.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Visualization.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

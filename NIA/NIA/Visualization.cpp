@@ -1,8 +1,19 @@
-#include "Renderer.h"
+/*!
+\file
+\brief Implementation of Visualization class
+*/
+#include "Visualization.h"
 #include <chrono>
 #include <thread>
 #include <GLFW/glfw3.h>
 #include <iostream>
+namespace viz {
+    void Visualization::init_buffers() {
+        glGenBuffers(1, &positions_buffer_id);
+        glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
+        glBufferData(GL_ARRAY_BUFFER, positins_size, positions, GL_DYNAMIC_DRAW);
+    }
+}
 int viz::test()
 {
     GLFWwindow* window;

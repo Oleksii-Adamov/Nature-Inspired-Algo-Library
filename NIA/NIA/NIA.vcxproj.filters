@@ -18,12 +18,12 @@
     <ClInclude Include="GeneticAlgo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="Visualization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Renderer.cpp">
+    <ClCompile Include="Visualization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
