@@ -1,7 +1,8 @@
 #include "Renderer.h"
 #include <chrono>
 #include <thread>
-
+#include <GLFW/glfw3.h>
+#include <iostream>
 int viz::test()
 {
     GLFWwindow* window;
@@ -9,7 +10,7 @@ int viz::test()
     /* Initialize the library */
     if (!glfwInit())
         return -1;
-
+    
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
     if (!window)
@@ -20,7 +21,10 @@ int viz::test()
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
-
+    if (glewInit() != GLEW_OK) {
+        glfwTerminate();
+        return -2;
+    }
     glClear(GL_COLOR_BUFFER_BIT);
     glBegin(GL_TRIANGLES);
     glVertex2f(-0.5f, -0.5f);
