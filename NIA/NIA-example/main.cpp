@@ -2,11 +2,13 @@
 #include <chrono>
 #include "GeneticAlgo.h"
 #include "GeneticAlgoTA.h"
+#include "Renderer.h"
 int main() {
-	std::ifstream in("input51.txt");
+	int state = viz::test();
+	/*std::ifstream in("input51.txt");
 	const int NUMBER_OF_CITIES = 51;
 	const int NUMBER_OF_INDIVIDUALS = 500;
-	const double MUTATION_CHANCE = 0.006;
+	const double MUTATION_CHANCE = 0.01;
 	const int NUMBER_OF_GENERATIONS = 100000;
 	const int NUMBER_OF_ELITES = 2;
 	const int CORRECT_ANS = 426; // 51 - 426 - best accur = 98%, 76 - 538 - accur = 88%, 70 - 675 - accur = 94.5%
@@ -30,5 +32,5 @@ int main() {
 	for (int i = 0; i < NUMBER_OF_CITIES; i++) {
 		out << solution.chromosome[i].num << " -> ";
 	}
-	out << solution.chromosome[0].num << "\n";
+	out << solution.chromosome[0].num << "\n";*/
 }

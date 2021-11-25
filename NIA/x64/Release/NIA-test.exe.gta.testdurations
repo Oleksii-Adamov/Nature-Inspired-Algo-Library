@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Executable>D:\University\3-sem\Programming-project\NIA\x64\Release\NIA-test.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="GeneticAlgoTest.TA_Test" Duration="4" />
+  </TestDurations>
+</GtaTestDurations>

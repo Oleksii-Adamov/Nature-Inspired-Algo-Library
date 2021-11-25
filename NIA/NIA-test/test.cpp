@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../NIA/GeneticAlgo.h"
+#include "GeneticAlgo.h"
 #include "GeneticAlgoTA.h"
 TEST(GeneticAlgoTest, TA_Test) {
 	using namespace gata;

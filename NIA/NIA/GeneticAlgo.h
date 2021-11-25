@@ -136,7 +136,7 @@ namespace nia {
 				if (prev_best.get_route_length() == -2 || population[best].get_route_length() < prev_best.get_route_length()) {
 					prev_best = population[best];
 				}
-				//std::cout << prev_best.get_route_length() << std::endl;
+				std::cout << prev_best.get_route_length() << std::endl;
 			}
 			delete[] population;
 			return prev_best;
