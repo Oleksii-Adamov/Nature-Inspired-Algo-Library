@@ -6,6 +6,8 @@
 #define GLEW_STATIC
 #include "../Dependencies/GLEW/include/GL/glew.h"
 #include <GLFW/glfw3.h>
+#include "../Dependencies/GLM/glm/glm.hpp"
+#include "../Dependencies/GLM/glm/gtc/matrix_transform.hpp"
 #include <string>
 namespace vis {
     class Visualization {
@@ -18,12 +20,17 @@ namespace vis {
         double max_value;
         unsigned int program_shader;
         bool is_initialized = false;
+        glm::mat4 proj;
+        int u_proj_location;
+        int u_size_location;
+        int u_color_location;
         void init_buffers();
         void parse_shader(const std::string& filepath, std::string& vertex_shader, std::string& fragment_shader);
         unsigned int compile_shader(unsigned int type, const std::string& source);
         unsigned int create_shader(const std::string& vertex_shader, const std::string& fragment_shader);
         void init_shader();
         void private_init();
+        
     public:
         GLFWwindow* window;
         /// <summary>

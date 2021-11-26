@@ -2,9 +2,10 @@
 #version 330 core
 
 layout(location = 0) in vec4 position;
-
+uniform mat4 u_proj;
+uniform vec4 u_size;
 void main() {
-	gl_Position = position;
+	gl_Position = u_proj * (position * u_size);
 }
 
 #shader fragment

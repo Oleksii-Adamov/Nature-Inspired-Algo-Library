@@ -26,26 +26,24 @@ namespace vis {
             (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
             type, severity, message);
     }
-    void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
-        glViewport(0, 0, width, height);
-    }
+
     void Visualization::init_buffers() {
         // initialization buffer for positions
         glGenBuffers(1, &positions_buffer_id);
         glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
-        glBufferData(GL_ARRAY_BUFFER, positions_size * sizeof(Point<double>), NULL, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, positions_size * sizeof(Point<float>), NULL, GL_DYNAMIC_DRAW);
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, sizeof(Point<double>), 0);
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
         // initialization buffer for answer
         if (!(ans_value < 0)) {
             glGenBuffers(1, &ans_buffer_id);
             glBindBuffer(GL_ARRAY_BUFFER, ans_buffer_id);
             // positions for drawing line between (0,ans) and (number_of_points - 1,ans)
             // to do normalize
-            double ans_positions[4] = { 0.0, ans_value, 1.0, ans_value };
-            glBufferData(GL_ARRAY_BUFFER, 2 * sizeof(Point<double>), ans_positions, GL_STATIC_DRAW);
+            float ans_positions[4] = { 0.0f, (float)(ans_value / max_value), 1.0f, (float)(ans_value / max_value) };
+            glBufferData(GL_ARRAY_BUFFER, 2 * sizeof(Point<float>), ans_positions, GL_STATIC_DRAW);
             glEnableVertexAttribArray(0);
-            glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, sizeof(Point<double>), 0);
+            glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
         }
     }
     void Visualization::parse_shader(const std::string& filepath, std::string& vertex_shader, std::string& fragment_shader) {
@@ -122,6 +120,8 @@ namespace vis {
         parse_shader("../Resources/Graph.shader", vertex_shader, fragment_shader);
         program_shader = create_shader(vertex_shader, fragment_shader);
         glUseProgram(program_shader);
+        u_size_location = glGetUniformLocation(program_shader, "u_size");
+        u_proj_location = glGetUniformLocation(program_shader, "u_proj");
     }
     void Visualization::private_init() {
         if (is_initialized) {
@@ -134,8 +134,8 @@ namespace vis {
         }
 
         // Create a windowed mode window and its OpenGL context
-       window = glfwCreateWindow(/*640*/1920, /*480*/1080, "Graph", NULL/*glfwGetPrimaryMonitor()*/, NULL);
-       glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+        window = glfwCreateWindow(/*640*/1920, /*480*/1080, "Graph", NULL/*glfwGetPrimaryMonitor()*/, NULL);
+       //glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
         /*const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
         glfwWindowHint(GLFW_RED_BITS, mode->redBits);
@@ -198,15 +198,22 @@ namespace vis {
         // clearing
         glClear(GL_COLOR_BUFFER_BIT);
         // render
+        // setting projection matrix uniform and size vector uniform to scale with window and maximum value of x and y
+        int width, height;
+        glfwGetFramebufferSize(window, &width, &height);
+        glViewport(0, 0, width, height);
+        proj = glm::ortho(0.0f, (float)width, 0.0f, (float)height);
+        glUniform4f(u_size_location, (float)width, (float)height, 1.0f, 1.0f);
+        glUniformMatrix4fv(u_proj_location, 1, GL_FALSE, &proj[0][0]);
+        // drawing graph
         glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, sizeof(Point<double>), 0);
-        glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);
-            
-        if (!(ans_value < 0)) {
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
+        glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);    
+        if (!(ans_value < 0)) { // drawing ans line
             glBindBuffer(GL_ARRAY_BUFFER, ans_buffer_id);
             glEnableVertexAttribArray(0);
-            glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, sizeof(Point<double>), 0);
+            glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
             glDrawArrays(GL_LINES, 0, 2);
         }
         // Swap front and back buffers
@@ -217,9 +224,9 @@ namespace vis {
 }
     void Visualization::add_and_draw(double value) {
         // to do normalize
-        double x_and_y[2] = { double(positions_cur_count) / positions_size , value };
+        float x_and_y[2] = { (float)(double(positions_cur_count) / positions_size) , (float)(value / max_value)};
         glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
-        glBufferSubData(GL_ARRAY_BUFFER, 2 * positions_cur_count * sizeof(double), 2 * sizeof(double), x_and_y);
+        glBufferSubData(GL_ARRAY_BUFFER, positions_cur_count * sizeof(Point<float>), sizeof(Point<float>), x_and_y);
         positions_cur_count++;
         draw();
     }
@@ -229,7 +236,7 @@ namespace vis {
             glDeleteBuffers(1, &positions_buffer_id);
             if (!(ans_value < 0))
                 glDeleteBuffers(1, &ans_buffer_id);
+            glfwTerminate();
         }
-        glfwTerminate();
     }
 }
