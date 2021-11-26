@@ -1,0 +1,42 @@
+\hypertarget{_visualization_8h_source}{}\doxysection{Visualization.\+h}
+\label{_visualization_8h_source}\index{D:/University/3-\/sem/Programming-\/project/NIA/NIA/Visualization.h@{D:/University/3-\/sem/Programming-\/project/NIA/NIA/Visualization.h}}
+\mbox{\hyperlink{_visualization_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define GLEW\_STATIC}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}../Dependencies/GLEW/include/GL/glew.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacevis}{vis}} \{}
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{classvis_1_1_visualization}{Visualization}} \{}
+\DoxyCodeLine{11     \textcolor{keyword}{private}:}
+\DoxyCodeLine{12         \textcolor{keywordtype}{double}* positions = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{13         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} positions\_buffer\_id;}
+\DoxyCodeLine{14         \textcolor{comment}{//float* ans\_positions = nullptr;}}
+\DoxyCodeLine{15         \textcolor{keywordtype}{double}* ans\_positions = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{16         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ans\_buffer\_id;}
+\DoxyCodeLine{17         \textcolor{keywordtype}{size\_t} positions\_size;}
+\DoxyCodeLine{18         \textcolor{keywordtype}{size\_t} positions\_cur\_count = 0;}
+\DoxyCodeLine{19         \textcolor{keywordtype}{double} max\_value;}
+\DoxyCodeLine{20         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} program\_shader;}
+\DoxyCodeLine{21         \textcolor{keywordtype}{bool} is\_initialized = \textcolor{keyword}{false};}
+\DoxyCodeLine{22         GLFWwindow* window;}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} init\_buffers();}
+\DoxyCodeLine{24         \textcolor{keywordtype}{void} parse\_shader(\textcolor{keyword}{const} std::string\& filepath, std::string\& vertex\_shader, std::string\& fragment\_shader);}
+\DoxyCodeLine{25         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} compile\_shader(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} type, \textcolor{keyword}{const} std::string\& source);}
+\DoxyCodeLine{26         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} create\_shader(\textcolor{keyword}{const} std::string\& vertex\_shader, \textcolor{keyword}{const} std::string\& fragment\_shader);}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} init\_shader();}
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} private\_init();}
+\DoxyCodeLine{29     \textcolor{keyword}{public}:}
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classvis_1_1_visualization_a8348c05844efa9b33ee48a45cf866baf}{draw}}();}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{classvis_1_1_visualization_a6df8e6f9d3f4e6c778c1b8bb88125804}{add\_and\_draw}}(\textcolor{keywordtype}{double} value);}
+\DoxyCodeLine{39         \mbox{\hyperlink{classvis_1_1_visualization_a24a6dd86f519220173485e0e2ebb32dc}{\string~Visualization}}();}
+\DoxyCodeLine{45         \mbox{\hyperlink{classvis_1_1_visualization_af5e7f4b06c99a4e74ef4d9d0a3790fa4}{Visualization}}(\textcolor{keywordtype}{size\_t} number\_of\_values, \textcolor{keywordtype}{double} maximim\_value);}
+\DoxyCodeLine{52         \mbox{\hyperlink{classvis_1_1_visualization_af5e7f4b06c99a4e74ef4d9d0a3790fa4}{Visualization}}(\textcolor{keywordtype}{size\_t} number\_of\_values, \textcolor{keywordtype}{double} maximim\_value, \textcolor{keywordtype}{double} ans\_value);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} \mbox{\hyperlink{classvis_1_1_visualization_ad7b4f4db9996095c39df87cb93cf74a5}{init}}(\textcolor{keywordtype}{size\_t} number\_of\_values, \textcolor{keywordtype}{double} maximim\_value);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{67         \textcolor{keywordtype}{void} \mbox{\hyperlink{classvis_1_1_visualization_ad7b4f4db9996095c39df87cb93cf74a5}{init}}(\textcolor{keywordtype}{size\_t} number\_of\_values, \textcolor{keywordtype}{double} maximim\_value, \textcolor{keywordtype}{double} ans\_value);}
+\DoxyCodeLine{68     \};}
+\DoxyCodeLine{69 \}}
+
+\end{DoxyCode}

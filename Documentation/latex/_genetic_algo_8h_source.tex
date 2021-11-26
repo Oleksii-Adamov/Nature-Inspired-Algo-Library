@@ -99,7 +99,7 @@
 \DoxyCodeLine{136                 \textcolor{keywordflow}{if} (prev\_best.get\_route\_length() == -\/2 || population[best].get\_route\_length() < prev\_best.get\_route\_length()) \{}
 \DoxyCodeLine{137                     prev\_best = population[best];}
 \DoxyCodeLine{138                 \}}
-\DoxyCodeLine{139                 \textcolor{comment}{//std::cout << prev\_best.get\_route\_length() << std::endl;}}
+\DoxyCodeLine{139                 std::cout << prev\_best.get\_route\_length() << std::endl;}
 \DoxyCodeLine{140             \}}
 \DoxyCodeLine{141             \textcolor{keyword}{delete}[] population;}
 \DoxyCodeLine{142             \textcolor{keywordflow}{return} prev\_best;}

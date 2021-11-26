@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['get_5ffitness_0',['get_fitness',['../classnia_1_1_individual_inteface.html#a7775b803c37ce69e853258ae4b6efd45',1,'nia::IndividualInteface']]]
+  ['add_5fand_5fdraw_0',['add_and_draw',['../classvis_1_1_visualization.html#a6df8e6f9d3f4e6c778c1b8bb88125804',1,'vis::Visualization']]]
 ];

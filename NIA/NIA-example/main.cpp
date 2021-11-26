@@ -1,10 +1,21 @@
 #include <fstream>
 #include <chrono>
+#include <thread>
 #include "GeneticAlgo.h"
 #include "GeneticAlgoTA.h"
-#include "Renderer.h"
+#include "Visualization.h"
+
 int main() {
-	int state = viz::test();
+	try {
+		vis::Visualization visualization(3, 1.0, 0.9);
+		visualization.add_and_draw(0.0);
+		visualization.add_and_draw(0.2);
+		visualization.add_and_draw(0.9);
+		std::this_thread::sleep_for(std::chrono::seconds(5));
+	}
+	catch (std::string s) {
+		std::cout << s;
+	}
 	/*std::ifstream in("input51.txt");
 	const int NUMBER_OF_CITIES = 51;
 	const int NUMBER_OF_INDIVIDUALS = 500;

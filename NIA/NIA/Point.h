@@ -3,7 +3,7 @@
 \file
 \brief declaration and definition of Point struct
 */
-namespace viz {
+namespace vis {
 	/// <summary>
 	/// Simple struct that stores two values of template type, as x and y.
 	/// </summary>
