@@ -122,6 +122,7 @@ namespace vis {
         glUseProgram(program_shader);
         u_size_location = glGetUniformLocation(program_shader, "u_size");
         u_proj_location = glGetUniformLocation(program_shader, "u_proj");
+        u_color_location = glGetUniformLocation(program_shader, "u_color");
     }
     void Visualization::private_init() {
         if (is_initialized) {
@@ -206,11 +207,13 @@ namespace vis {
         glUniform4f(u_size_location, (float)width, (float)height, 1.0f, 1.0f);
         glUniformMatrix4fv(u_proj_location, 1, GL_FALSE, &proj[0][0]);
         // drawing graph
+        glUniform4f(u_color_location, 0.0f, 1.0f, 0.0f, 1.0f);
         glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
         glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);    
         if (!(ans_value < 0)) { // drawing ans line
+            glUniform4f(u_color_location, 1.0f, 0.0f, 0.0f, 1.0f);
             glBindBuffer(GL_ARRAY_BUFFER, ans_buffer_id);
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
