@@ -18,7 +18,6 @@ namespace vis {
         double max_value;
         unsigned int program_shader;
         bool is_initialized = false;
-        GLFWwindow* window;
         void init_buffers();
         void parse_shader(const std::string& filepath, std::string& vertex_shader, std::string& fragment_shader);
         unsigned int compile_shader(unsigned int type, const std::string& source);
@@ -26,6 +25,7 @@ namespace vis {
         void init_shader();
         void private_init();
     public:
+        GLFWwindow* window;
         /// <summary>
         /// draws graph of data stored in this class
         /// </summary>

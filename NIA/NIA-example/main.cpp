@@ -11,7 +11,11 @@ int main() {
 		visualization.add_and_draw(0.0);
 		visualization.add_and_draw(0.2);
 		visualization.add_and_draw(0.9);
-		std::this_thread::sleep_for(std::chrono::seconds(5));
+		//std::this_thread::sleep_for(std::chrono::seconds(5));
+		while (!glfwWindowShouldClose(visualization.window))
+		{
+			visualization.draw();
+		}
 	}
 	catch (std::string s) {
 		std::cout << s;

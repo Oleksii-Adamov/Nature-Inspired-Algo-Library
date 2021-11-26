@@ -26,7 +26,9 @@ namespace vis {
             (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
             type, severity, message);
     }
-
+    void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+        glViewport(0, 0, width, height);
+    }
     void Visualization::init_buffers() {
         // initialization buffer for positions
         glGenBuffers(1, &positions_buffer_id);
@@ -132,8 +134,9 @@ namespace vis {
         }
 
         // Create a windowed mode window and its OpenGL context
-       // window = glfwCreateWindow(/*640*/1920, /*480*/1080, "Graph", /*NULL*/glfwGetPrimaryMonitor(), NULL);
-        const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+       window = glfwCreateWindow(/*640*/1920, /*480*/1080, "Graph", NULL/*glfwGetPrimaryMonitor()*/, NULL);
+       glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+        /*const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
         glfwWindowHint(GLFW_RED_BITS, mode->redBits);
         glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
@@ -145,7 +148,7 @@ namespace vis {
         {
             throw (std::string)"Cannot create window!";
             this->~Visualization();
-        }
+        }*/
         
         // Make the window's context current
         glfwMakeContextCurrent(window);
@@ -210,7 +213,7 @@ namespace vis {
         glfwSwapBuffers(window);
         // Poll for and process events
         glfwPollEvents();
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        //std::this_thread::sleep_for(std::chrono::seconds(5));
 }
     void Visualization::add_and_draw(double value) {
         // to do normalize
