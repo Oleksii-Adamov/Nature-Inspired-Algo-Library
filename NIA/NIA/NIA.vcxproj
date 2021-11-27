@@ -175,11 +175,13 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AntColonyOptTSP.h" />
     <ClInclude Include="GeneticAlgo.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Visualization.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AntColonyOptTSP.cpp" />
     <ClCompile Include="Visualization.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

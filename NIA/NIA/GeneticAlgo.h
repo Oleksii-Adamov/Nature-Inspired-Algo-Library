@@ -196,9 +196,8 @@ namespace nia {
 								best = j;
 							}
 						}
-						if (prev_best.get_route_length() == -2 || population[best].get_route_length() < prev_best.get_route_length()) {
+						if (population[best].get_fitness() > prev_best.get_fitness())
 							prev_best = population[best];
-						}
 						prev = population[best];
 						//end = std::chrono::high_resolution_clock::now();
 						//average_calc_time += ((double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()) / NUMBER_OF_GENERATIONS;
