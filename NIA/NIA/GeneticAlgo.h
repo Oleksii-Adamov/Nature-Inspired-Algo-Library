@@ -10,6 +10,19 @@
 #include <iostream>
 #include "Visualization.h"
 namespace nia {
+	void add_and_draw(vis::Visualization* visual, double new_value) {
+		visual->add_and_draw(new_value);
+		//std::this_thread::sleep_for(std::chrono::seconds(5));
+	}
+	void init_visualization(vis::Visualization* visual, size_t number_of_values, double maximim_value, double ans_value) {
+		if (!(ans_value < 0)) {
+			visual->init(number_of_values + 1, maximim_value, ans_value);
+		}
+		else {
+			visual->init(number_of_values + 1, maximim_value);
+		}
+		//std::this_thread::sleep_for(std::chrono::seconds(3));
+	}
 	/// <summary>
 	/// Interface for Individual.
 	/// </summary>
@@ -106,6 +119,7 @@ namespace nia {
 		* \param[in] init_population initial(starting) population
 		* \param[in] breed breed function(given two parents and random generator, returns two children), aka crossover
 		* \param[in] visualization_ptr pointer to uninitialized (method init haven't been called) Visualization instance, pass nullptr or nothing, if you don't want visualization
+		* \param[in] draw_thread pointer to thread where drawing will be done (must be initialized if visualization_ptr is initialized, otherwise std::string exception)
 		* \param[in] max_fitness maximum fitness that could be represented in visualization (must be initialized with value > 0, otherwise std::string exception)
 		* \param[in] ans optional parameter that represents fitness of correct answer > 0 (affects only visualization)
 		* \return The fittest Individual for NUMBER_OF_GENERATIONS
@@ -113,20 +127,24 @@ namespace nia {
 		static Individual solve(const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES,
 			const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[],
 			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&, std::mt19937&), vis::Visualization* visualization_ptr = nullptr, 
-			const double max_fitness = -1, const double ans = -1
+			std::thread* draw_thread = nullptr, const double max_fitness = -1, const double ans = -1
 			)
 		{
+			/*if (visualization_ptr != nullptr) {
+				if (draw_thread == nullptr)
+					throw (std::string)"Genetic algo: draw_thread is nullptr";
+				if (max_fitness < 0)
+					throw (std::string)"Genetic algo: max_fitness < 0";
+				*draw_thread = std::thread(init_visualization, visualization_ptr, NUMBER_OF_GENERATIONS, max_fitness, ans);
+			}*/
 			if (visualization_ptr != nullptr) {
-				if (max_fitness > 0) {
-					if (!(ans < 0)) {
-						visualization_ptr->init(NUMBER_OF_GENERATIONS + 1, max_fitness, ans);
-					}
-					else {
-						visualization_ptr->init(NUMBER_OF_GENERATIONS + 1, max_fitness);
-					}
+				if (max_fitness < 0)
+					throw (std::string)"Genetic algo: max_fitness < 0";
+				if (!(ans < 0)) {
+					visualization_ptr->init(NUMBER_OF_GENERATIONS + 1, max_fitness, ans);
 				}
 				else {
-					throw (std::string)"Genetic algo: max_fitness < 0";
+					visualization_ptr->init(NUMBER_OF_GENERATIONS + 1, max_fitness);
 				}
 			}
 			// generating random sequence
@@ -142,10 +160,27 @@ namespace nia {
 					prev_best = population[i];
 				}
 			}
-			if (visualization_ptr != nullptr) visualization_ptr->add_and_draw(prev_best.get_fitness());
+			/*if (visualization_ptr != nullptr) {
+				draw_thread->join();
+				*draw_thread = std::thread(add_and_draw, visualization_ptr, prev_best.get_fitness());
+			}*/
+			visualization_ptr->add_and_draw(prev_best.get_fitness());
+			std::thread algo_thread;
 			// looping through generations
 			for (long long i = 0; i < NUMBER_OF_GENERATIONS; i++) {
-				next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_CHANCE, population, breed, gen);
+				size_t best = 0;
+				algo_thread = std::thread([&] {
+					next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_CHANCE, population, breed, gen);
+					for (size_t j = 1; j < NUMBER_OF_INDIVIDUALS; j++) {
+						if (population[j].get_fitness() > population[best].get_fitness()) {
+							best = j;
+						}
+					}
+					if (prev_best.get_route_length() == -2 || population[best].get_route_length() < prev_best.get_route_length()) {
+						prev_best = population[best];
+					}
+					});
+				/*next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_CHANCE, population, breed, gen);
 				size_t best = 0;
 				for (size_t j = 1; j < NUMBER_OF_INDIVIDUALS; j++) {
 					if (population[j].get_fitness() > population[best].get_fitness()) {
@@ -154,9 +189,14 @@ namespace nia {
 				}
 				if (prev_best.get_route_length() == -2 || population[best].get_route_length() < prev_best.get_route_length()) {
 					prev_best = population[best];
+				}*/
+				algo_thread.join();
+				if (visualization_ptr != nullptr) {
+					/*draw_thread->join();
+					*draw_thread = std::thread(add_and_draw, visualization_ptr, population[best].get_fitness());*/
+					visualization_ptr->add_and_draw(population[best].get_fitness());
 				}
-				if (visualization_ptr != nullptr) visualization_ptr->add_and_draw(population[best].get_fitness());
-				std::cout << prev_best.get_route_length() << std::endl;
+				//std::cout << prev_best.get_route_length() << std::endl;
 			}
 			delete[] population;
 			return prev_best;

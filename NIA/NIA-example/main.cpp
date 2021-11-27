@@ -26,7 +26,7 @@ int main() {
 		const int NUMBER_OF_CITIES = 51;
 		const int NUMBER_OF_INDIVIDUALS = 500;
 		const double MUTATION_CHANCE = 0.006;
-		const int NUMBER_OF_GENERATIONS = 10000;
+		const int NUMBER_OF_GENERATIONS = 1000;
 		const int NUMBER_OF_ELITES = 2;
 		const int CORRECT_ANS = 426; // 51 - 426 - best accur = 98%, 76 - 538 - accur = 88%, 70 - 675 - accur = 94.5%
 		gata::City input[NUMBER_OF_CITIES];
@@ -37,8 +37,9 @@ int main() {
 		in.close();
 		auto start = std::chrono::high_resolution_clock::now();
 		vis::Visualization visualization;
+		std::thread draw_thread;
 		gata::Individual<NUMBER_OF_CITIES> solution = gata::calc_ans<NUMBER_OF_CITIES>(NUMBER_OF_INDIVIDUALS, NUMBER_OF_GENERATIONS, NUMBER_OF_ELITES,
-			MUTATION_CHANCE, input, &visualization, CORRECT_ANS);
+			MUTATION_CHANCE, input, &visualization, &draw_thread, CORRECT_ANS);
 		auto end = std::chrono::high_resolution_clock::now();
 		std::ofstream out("output.txt");
 		out << "NUMBER_OF_CITIES " << NUMBER_OF_CITIES << "\n" << "NUMBER_OF_INDIVIDUALS " << NUMBER_OF_INDIVIDUALS << "\n"

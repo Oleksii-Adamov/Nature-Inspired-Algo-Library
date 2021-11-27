@@ -10,11 +10,15 @@
 #include "../Dependencies/GLM/glm/gtc/matrix_transform.hpp"
 #include <string>
 namespace vis {
+    /// <summary>
+    /// Class for visualization of data in a form of graph. Graph is green, answer is red.
+    /// </summary>
     class Visualization {
     private:
         unsigned int positions_buffer_id;
         double ans_value = -1.0;
         unsigned int ans_buffer_id;
+        //unsigned int axis_buffer_id;
         size_t positions_size;
         size_t positions_cur_count = 0;
         double max_value;
@@ -24,6 +28,7 @@ namespace vis {
         int u_proj_location;
         int u_size_location;
         int u_color_location;
+        //bool is_last_draw_positions = false;
         void init_buffers();
         void parse_shader(const std::string& filepath, std::string& vertex_shader, std::string& fragment_shader);
         unsigned int compile_shader(unsigned int type, const std::string& source);
@@ -55,7 +60,7 @@ namespace vis {
         /// </summary>
         /// \param[in] number_of_values number of values you are planning to pass (affects horizontal scale)
         /// \param[in] maximim_value maximum value > 0 that your value could take (affects vertical scale)
-        void init(size_t number_of_values, double maximim_value);
+        void init(size_t number_of_values, double maximim_value, double input_ans_value = -1);
 
         /// <summary>
         /// Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std::string exception
@@ -63,6 +68,6 @@ namespace vis {
         /// \param[in] number_of_values number of values you are planning to pass (affects horizontal scale)
         /// \param[in] maximim_value maximum value > 0 that your value could take (affects vertical scale)
         /// \param[in] ans_value value of answer > 0 a horizontal line between (0, ans_value) and (number_of_values - 1, ans_value) would be drawn 
-        void init(size_t number_of_values, double maximim_value, double ans_value);
+        //void init(size_t number_of_values, double maximim_value, double ans_value);
     };
 }
