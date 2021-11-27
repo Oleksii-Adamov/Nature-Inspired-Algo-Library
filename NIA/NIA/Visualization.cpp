@@ -44,18 +44,6 @@ namespace vis {
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
         }
-        /*
-        // initialization of buffer for axis
-        glGenBuffers(1, &axis_buffer_id);
-        glBindBuffer(GL_ARRAY_BUFFER, axis_buffer_id);
-        // positions for drawing line between (0, 0) and (0, max_value), and between (0, 0) and (NUMBER_OF_GENERATIONS, 0), with a bit of offset
-        float offset_x = (float)((double)1 / (double)positions_size);
-        float offset_y = (float)(0.01f * max_value);
-        float axis_positions[8] = { offset_x, offset_y, offset_x, 1.0f, offset_x, offset_y, 1.0f, offset_y};
-        glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(Point<float>), axis_positions, GL_STATIC_DRAW);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
-        */
     }
     void Visualization::parse_shader(const std::string& filepath, std::string& vertex_shader, std::string& fragment_shader) {
         vertex_shader = "";
@@ -177,23 +165,13 @@ namespace vis {
             ans_value = input_ans_value;
         private_init();
     }
-    /*
-    void Visualization::init(size_t number_of_values, double maximim_value, double input_ans_value) {
-        if (maximim_value < 0)
-            throw (std::string)"maximim_value < 0";
-        if (input_ans_value < 0)
-            throw (std::string)"ans_value < 0";
-        positions_size = number_of_values;
-        max_value = maximim_value;
-        ans_value = input_ans_value;
-        private_init();
-    }*/
 
     void Visualization::draw() {
         if (!glfwWindowShouldClose(window)) {
             // clearing
             glClear(GL_COLOR_BUFFER_BIT);
             // render
+
             // setting projection matrix uniform and size vector uniform to scale with window and maximum value of x and y
             int width, height;
             glfwGetFramebufferSize(window, &width, &height);
@@ -201,20 +179,13 @@ namespace vis {
             proj = glm::ortho(0.0f, (float)width, 0.0f, (float)height);
             glUniform4f(u_size_location, (float)width, (float)height, 1.0f, 1.0f);
             glUniformMatrix4fv(u_proj_location, 1, GL_FALSE, &proj[0][0]);
+
             // drawing graph
             glUniform4f(u_color_location, 0.0f, 1.0f, 0.0f, 1.0f);
             glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
             glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);
-
-            /*bool last_draw_positions = false;
-            if (is_last_draw_positions) {
-               // glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
-                //glEnableVertexAttribArray(0);
-                //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
-                glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);
-            }*/
             
             if (!(ans_value < 0)) { // drawing ans line
                 glUniform4f(u_color_location, 1.0f, 0.0f, 0.0f, 1.0f);
@@ -224,31 +195,10 @@ namespace vis {
                 glDrawArrays(GL_LINES, 0, 2);
             }
 
-            /*
-            // drawing axis
-            glUniform4f(u_color_location, 0.0f, 0.0f, 1.0f, 1.0f);
-            glBindBuffer(GL_ARRAY_BUFFER, axis_buffer_id);
-            glEnableVertexAttribArray(0);
-            glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
-            glDrawArrays(GL_LINES, 0, 4);
-            */
-
-           /* if (!is_last_draw_positions) {
-                //glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
-                //glEnableVertexAttribArray(0);
-                //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
-                glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);
-                last_draw_positions = true;
-            }
-            else {
-                // draw 
-            }*/
-
             // Swap front and back buffers
             glfwSwapBuffers(window);
             // Poll for and process events
             glfwPollEvents();
-            //std::this_thread::sleep_for(std::chrono::seconds(5));
         }
         else {
             glfwHideWindow(window);

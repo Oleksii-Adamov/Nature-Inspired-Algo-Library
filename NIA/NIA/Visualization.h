@@ -40,7 +40,7 @@ namespace vis {
         /// <summary>
         /// GLFWwindow window that can be used to control whether the window is closed
         /// </summary>
-        GLFWwindow* window;
+        GLFWwindow* window = nullptr;
         /// <summary>
         /// draws graph of data stored in this class
         /// </summary>
