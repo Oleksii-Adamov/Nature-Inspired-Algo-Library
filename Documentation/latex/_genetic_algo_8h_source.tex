@@ -77,51 +77,62 @@
 \DoxyCodeLine{117             )}
 \DoxyCodeLine{118         \{}
 \DoxyCodeLine{119             \textcolor{keywordflow}{if} (visualization\_ptr != \textcolor{keyword}{nullptr}) \{}
-\DoxyCodeLine{120                 \textcolor{keywordflow}{if} (max\_fitness > 0) \{}
-\DoxyCodeLine{121                     \textcolor{keywordflow}{if} (!(ans < 0)) \{}
-\DoxyCodeLine{122                         visualization\_ptr-\/>init(NUMBER\_OF\_GENERATIONS + 1, max\_fitness, ans);}
-\DoxyCodeLine{123                     \}}
-\DoxyCodeLine{124                     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{125                         visualization\_ptr-\/>init(NUMBER\_OF\_GENERATIONS + 1, max\_fitness);}
-\DoxyCodeLine{126                     \}}
+\DoxyCodeLine{120                 \textcolor{keywordflow}{if} (max\_fitness < 0)}
+\DoxyCodeLine{121                     \textcolor{keywordflow}{throw} (std::string)\textcolor{stringliteral}{"{}Genetic algo: max\_fitness < 0"{}};}
+\DoxyCodeLine{122                 \textcolor{keywordflow}{if} (!(ans < 0)) \{}
+\DoxyCodeLine{123                     visualization\_ptr-\/>init(NUMBER\_OF\_GENERATIONS + 1, max\_fitness, ans);}
+\DoxyCodeLine{124                 \}}
+\DoxyCodeLine{125                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{126                     visualization\_ptr-\/>init(NUMBER\_OF\_GENERATIONS + 1, max\_fitness);}
 \DoxyCodeLine{127                 \}}
-\DoxyCodeLine{128                 \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{129                     \textcolor{keywordflow}{throw} (std::string)\textcolor{stringliteral}{"{}Genetic algo: max\_fitness < 0"{}};}
-\DoxyCodeLine{130                 \}}
-\DoxyCodeLine{131             \}}
-\DoxyCodeLine{132             \textcolor{comment}{// generating random sequence}}
-\DoxyCodeLine{133             std::random\_device rd;  \textcolor{comment}{//Will be used to obtain a seed for the random number engine}}
-\DoxyCodeLine{134             std::seed\_seq seed\{ rd(), \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\textcolor{keyword}{>}(time(\textcolor{keyword}{nullptr})) \}; \textcolor{comment}{// in case random\_device is not implemented, fall back to time(0)}}
-\DoxyCodeLine{135             std::mt19937 gen(seed); \textcolor{comment}{//Standard mersenne\_twister\_engine seeded with seed}}
-\DoxyCodeLine{136             \textcolor{comment}{// copying initial population}}
-\DoxyCodeLine{137             Individual* population = \textcolor{keyword}{new} Individual[NUMBER\_OF\_INDIVIDUALS];}
-\DoxyCodeLine{138             Individual prev\_best = init\_population[0];}
-\DoxyCodeLine{139             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < NUMBER\_OF\_INDIVIDUALS; i++) \{}
-\DoxyCodeLine{140                 population[i] = init\_population[i];}
-\DoxyCodeLine{141                 \textcolor{keywordflow}{if} (prev\_best.get\_fitness() < population[i].get\_fitness()) \{}
-\DoxyCodeLine{142                     prev\_best = population[i];}
-\DoxyCodeLine{143                 \}}
-\DoxyCodeLine{144             \}}
-\DoxyCodeLine{145             \textcolor{keywordflow}{if} (visualization\_ptr != \textcolor{keyword}{nullptr}) visualization\_ptr-\/>add\_and\_draw(prev\_best.get\_fitness());}
-\DoxyCodeLine{146             \textcolor{comment}{// looping through generations}}
-\DoxyCodeLine{147             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} \textcolor{keywordtype}{long} i = 0; i < NUMBER\_OF\_GENERATIONS; i++) \{}
-\DoxyCodeLine{148                 next\_generation(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, MUTATION\_CHANCE, population, breed, gen);}
+\DoxyCodeLine{128             \}}
+\DoxyCodeLine{129             \textcolor{comment}{// generating random sequence}}
+\DoxyCodeLine{130             std::random\_device rd;  \textcolor{comment}{//Will be used to obtain a seed for the random number engine}}
+\DoxyCodeLine{131             std::seed\_seq seed\{ rd(), \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int}\textcolor{keyword}{>}(time(\textcolor{keyword}{nullptr})) \}; \textcolor{comment}{// in case random\_device is not implemented, fall back to time(0)}}
+\DoxyCodeLine{132             std::mt19937 gen(seed); \textcolor{comment}{//Standard mersenne\_twister\_engine seeded with seed}}
+\DoxyCodeLine{133             \textcolor{comment}{// copying initial population}}
+\DoxyCodeLine{134             Individual* population = \textcolor{keyword}{new} Individual[NUMBER\_OF\_INDIVIDUALS];}
+\DoxyCodeLine{135             Individual prev\_best = init\_population[0];}
+\DoxyCodeLine{136             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < NUMBER\_OF\_INDIVIDUALS; i++) \{}
+\DoxyCodeLine{137                 population[i] = init\_population[i];}
+\DoxyCodeLine{138                 \textcolor{keywordflow}{if} (prev\_best.get\_fitness() < population[i].get\_fitness()) \{}
+\DoxyCodeLine{139                     prev\_best = population[i];}
+\DoxyCodeLine{140                 \}}
+\DoxyCodeLine{141             \}}
+\DoxyCodeLine{142             Individual prev = prev\_best;}
+\DoxyCodeLine{143             std::thread algo\_thread;}
+\DoxyCodeLine{144             \textcolor{comment}{// looping through generations}}
+\DoxyCodeLine{145             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{long} \textcolor{keywordtype}{long} i = 0; i < NUMBER\_OF\_GENERATIONS; i++) \{}
+\DoxyCodeLine{146                 \textcolor{comment}{// algo will execute on different thread while previous graph is drawing}}
+\DoxyCodeLine{147                 \textcolor{keywordflow}{if} (algo\_thread.joinable())}
+\DoxyCodeLine{148                     algo\_thread.join();}
 \DoxyCodeLine{149                 \textcolor{keywordtype}{size\_t} best = 0;}
-\DoxyCodeLine{150                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 1; j < NUMBER\_OF\_INDIVIDUALS; j++) \{}
-\DoxyCodeLine{151                     \textcolor{keywordflow}{if} (population[j].get\_fitness() > population[best].get\_fitness()) \{}
-\DoxyCodeLine{152                         best = j;}
-\DoxyCodeLine{153                     \}}
-\DoxyCodeLine{154                 \}}
-\DoxyCodeLine{155                 \textcolor{keywordflow}{if} (prev\_best.get\_route\_length() == -\/2 || population[best].get\_route\_length() < prev\_best.get\_route\_length()) \{}
-\DoxyCodeLine{156                     prev\_best = population[best];}
-\DoxyCodeLine{157                 \}}
-\DoxyCodeLine{158                 \textcolor{keywordflow}{if} (visualization\_ptr != \textcolor{keyword}{nullptr}) visualization\_ptr-\/>add\_and\_draw(population[best].get\_fitness());}
-\DoxyCodeLine{159                 std::cout << prev\_best.get\_route\_length() << std::endl;}
-\DoxyCodeLine{160             \}}
-\DoxyCodeLine{161             \textcolor{keyword}{delete}[] population;}
-\DoxyCodeLine{162             \textcolor{keywordflow}{return} prev\_best;}
-\DoxyCodeLine{163         \}}
-\DoxyCodeLine{164     \};}
-\DoxyCodeLine{165 \}}
+\DoxyCodeLine{150                 algo\_thread = std::thread([\&] \{}
+\DoxyCodeLine{151                     next\_generation(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, MUTATION\_CHANCE, population, breed, gen);}
+\DoxyCodeLine{152                     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} j = 1; j < NUMBER\_OF\_INDIVIDUALS; j++) \{}
+\DoxyCodeLine{153                         \textcolor{keywordflow}{if} (population[j].get\_fitness() > population[best].get\_fitness()) \{}
+\DoxyCodeLine{154                             best = j;}
+\DoxyCodeLine{155                         \}}
+\DoxyCodeLine{156                     \}}
+\DoxyCodeLine{157                     \textcolor{keywordflow}{if} (prev\_best.get\_route\_length() == -\/2 || population[best].get\_route\_length() < prev\_best.get\_route\_length()) \{}
+\DoxyCodeLine{158                         prev\_best = population[best];}
+\DoxyCodeLine{159                     \}}
+\DoxyCodeLine{160                     prev = population[best];}
+\DoxyCodeLine{161                     \});}
+\DoxyCodeLine{162                 \textcolor{comment}{// drawing previous}}
+\DoxyCodeLine{163                 \textcolor{keywordflow}{if} (visualization\_ptr != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{164                     visualization\_ptr-\/>add\_and\_draw(prev.get\_fitness());}
+\DoxyCodeLine{165                 \}}
+\DoxyCodeLine{166             \}}
+\DoxyCodeLine{167             \textcolor{keywordflow}{if} (algo\_thread.joinable())}
+\DoxyCodeLine{168                 algo\_thread.join();}
+\DoxyCodeLine{169             \textcolor{keywordflow}{if} (visualization\_ptr != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{170                 visualization\_ptr-\/>add\_and\_draw(prev.get\_fitness());}
+\DoxyCodeLine{171             \}}
+\DoxyCodeLine{172             \textcolor{keyword}{delete}[] population;}
+\DoxyCodeLine{173             \textcolor{keywordflow}{return} prev\_best;}
+\DoxyCodeLine{174         \}}
+\DoxyCodeLine{175     \};}
+\DoxyCodeLine{176 \}}
 
 \end{DoxyCode}

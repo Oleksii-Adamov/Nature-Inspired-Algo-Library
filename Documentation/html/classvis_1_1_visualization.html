@@ -75,6 +75,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Class for visualization of data in a form of graph. Graph is green, answer is red.  
+ <a href="classvis_1_1_visualization.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_visualization_8h_source.html">Visualization.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -89,12 +92,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a24a6dd86f519220173485e0e2ebb32dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2019f9444f65392fa647853ee380921a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvis_1_1_visualization.html#a2019f9444f65392fa647853ee380921a">Visualization</a> ()</td></tr>
 <tr class="separator:a2019f9444f65392fa647853ee380921a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7b4f4db9996095c39df87cb93cf74a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvis_1_1_visualization.html#ad7b4f4db9996095c39df87cb93cf74a5">init</a> (size_t number_of_values, double maximim_value)</td></tr>
-<tr class="memdesc:ad7b4f4db9996095c39df87cb93cf74a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std::string exception  <a href="classvis_1_1_visualization.html#ad7b4f4db9996095c39df87cb93cf74a5">More...</a><br /></td></tr>
-<tr class="separator:ad7b4f4db9996095c39df87cb93cf74a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb0d4957ad8b21429338f0981a5f28ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvis_1_1_visualization.html#acb0d4957ad8b21429338f0981a5f28ae">init</a> (size_t number_of_values, double maximim_value, double ans_value)</td></tr>
-<tr class="memdesc:acb0d4957ad8b21429338f0981a5f28ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std::string exception  <a href="classvis_1_1_visualization.html#acb0d4957ad8b21429338f0981a5f28ae">More...</a><br /></td></tr>
-<tr class="separator:acb0d4957ad8b21429338f0981a5f28ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc4e0ba6dce6119f19eecfcf76c74ac5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classvis_1_1_visualization.html#adc4e0ba6dce6119f19eecfcf76c74ac5">init</a> (size_t number_of_values, double maximim_value, double input_ans_value=-1)</td></tr>
+<tr class="memdesc:adc4e0ba6dce6119f19eecfcf76c74ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std::string exception  <a href="classvis_1_1_visualization.html#adc4e0ba6dce6119f19eecfcf76c74ac5">More...</a><br /></td></tr>
+<tr class="separator:adc4e0ba6dce6119f19eecfcf76c74ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -102,7 +102,9 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:ae18cad9e5316ff9397ca01e529c05493"><td class="mdescLeft">&#160;</td><td class="mdescRight">GLFWwindow window that can be used to control whether the window is closed  <a href="classvis_1_1_visualization.html#ae18cad9e5316ff9397ca01e529c05493">More...</a><br /></td></tr>
 <tr class="separator:ae18cad9e5316ff9397ca01e529c05493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Class for visualization of data in a form of graph. Graph is green, answer is red. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a24a6dd86f519220173485e0e2ebb32dc" name="a24a6dd86f519220173485e0e2ebb32dc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a24a6dd86f519220173485e0e2ebb32dc">&#9670;&nbsp;</a></span>~Visualization()</h2>
 
@@ -183,45 +185,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad7b4f4db9996095c39df87cb93cf74a5" name="ad7b4f4db9996095c39df87cb93cf74a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7b4f4db9996095c39df87cb93cf74a5">&#9670;&nbsp;</a></span>init() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vis::Visualization::init </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>number_of_values</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>maximim_value</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std::string exception </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">number_of_values</td><td>number of values you are planning to pass (affects horizontal scale) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">maximim_value</td><td>maximum value &gt; 0 that your value could take (affects vertical scale) </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="acb0d4957ad8b21429338f0981a5f28ae" name="acb0d4957ad8b21429338f0981a5f28ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb0d4957ad8b21429338f0981a5f28ae">&#9670;&nbsp;</a></span>init() <span class="overload">[2/2]</span></h2>
+<a id="adc4e0ba6dce6119f19eecfcf76c74ac5" name="adc4e0ba6dce6119f19eecfcf76c74ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc4e0ba6dce6119f19eecfcf76c74ac5">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -242,7 +207,7 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>ans_value</em>&#160;</td>
+          <td class="paramname"><em>input_ans_value</em> = <code>-1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -257,8 +222,6 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">number_of_values</td><td>number of values you are planning to pass (affects horizontal scale) </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">maximim_value</td><td>maximum value &gt; 0 that your value could take (affects vertical scale) </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ans_value</td><td>value of answer &gt; 0 a horizontal line between (0, ans_value) and (number_of_values - 1, ans_value) would be drawn <br  />
- </td></tr>
   </table>
   </dd>
 </dl>

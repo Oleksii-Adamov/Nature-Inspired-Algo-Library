@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['init_0',['init',['../classvis_1_1_visualization.html#ad7b4f4db9996095c39df87cb93cf74a5',1,'vis::Visualization::init(size_t number_of_values, double maximim_value)'],['../classvis_1_1_visualization.html#acb0d4957ad8b21429338f0981a5f28ae',1,'vis::Visualization::init(size_t number_of_values, double maximim_value, double ans_value)']]]
+  ['init_0',['init',['../classvis_1_1_visualization.html#adc4e0ba6dce6119f19eecfcf76c74ac5',1,'vis::Visualization']]]
 ];
