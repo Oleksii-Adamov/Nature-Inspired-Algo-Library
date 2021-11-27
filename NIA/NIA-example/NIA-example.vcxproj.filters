@@ -23,4 +23,9 @@
     <Text Include="input51.txt" />
     <Text Include="output.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\NIA-test\GeneticAlgoTA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

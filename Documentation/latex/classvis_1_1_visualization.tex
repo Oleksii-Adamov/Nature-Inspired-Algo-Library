@@ -13,14 +13,17 @@ void \mbox{\hyperlink{classvis_1_1_visualization_a6df8e6f9d3f4e6c778c1b8bb881258
 \begin{DoxyCompactList}\small\item\em Add new value to connect with previous value, which will result in updating of graph rendered in window \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classvis_1_1_visualization_a24a6dd86f519220173485e0e2ebb32dc}{$\sim$\+Visualization}} ()
 \item 
-\mbox{\hyperlink{classvis_1_1_visualization_af5e7f4b06c99a4e74ef4d9d0a3790fa4}{Visualization}} (size\+\_\+t number\+\_\+of\+\_\+values, double maximim\+\_\+value)
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classvis_1_1_visualization}{Visualization}} Constructor \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classvis_1_1_visualization_a4906927aac6b049f0d7ee873ec5a9c73}{Visualization}} (size\+\_\+t number\+\_\+of\+\_\+values, double maximim\+\_\+value, double ans\+\_\+value)
+\mbox{\hyperlink{classvis_1_1_visualization_a2019f9444f65392fa647853ee380921a}{Visualization}} ()
 \item 
 void \mbox{\hyperlink{classvis_1_1_visualization_ad7b4f4db9996095c39df87cb93cf74a5}{init}} (size\+\_\+t number\+\_\+of\+\_\+values, double maximim\+\_\+value)
 \begin{DoxyCompactList}\small\item\em Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std\+::string exception \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classvis_1_1_visualization_acb0d4957ad8b21429338f0981a5f28ae}{init}} (size\+\_\+t number\+\_\+of\+\_\+values, double maximim\+\_\+value, double ans\+\_\+value)
 \begin{DoxyCompactList}\small\item\em Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std\+::string exception \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+GLFWwindow $\ast$ \mbox{\hyperlink{classvis_1_1_visualization_ae18cad9e5316ff9397ca01e529c05493}{window}}
+\begin{DoxyCompactList}\small\item\em GLFWwindow window that can be used to control whether the window is closed \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -30,46 +33,12 @@ void \mbox{\hyperlink{classvis_1_1_visualization_acb0d4957ad8b21429338f0981a5f28
 \doxysubsubsection{\texorpdfstring{$\sim$Visualization()}{~Visualization()}}
 {\footnotesize\ttfamily vis\+::\+Visualization\+::$\sim$\+Visualization (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{classvis_1_1_visualization_af5e7f4b06c99a4e74ef4d9d0a3790fa4}\label{classvis_1_1_visualization_af5e7f4b06c99a4e74ef4d9d0a3790fa4}} 
+\mbox{\Hypertarget{classvis_1_1_visualization_a2019f9444f65392fa647853ee380921a}\label{classvis_1_1_visualization_a2019f9444f65392fa647853ee380921a}} 
 \index{vis::Visualization@{vis::Visualization}!Visualization@{Visualization}}
 \index{Visualization@{Visualization}!vis::Visualization@{vis::Visualization}}
-\doxysubsubsection{\texorpdfstring{Visualization()}{Visualization()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily vis\+::\+Visualization\+::\+Visualization (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{number\+\_\+of\+\_\+values,  }\item[{double}]{maximim\+\_\+value }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{Visualization()}{Visualization()}}
+{\footnotesize\ttfamily vis\+::\+Visualization\+::\+Visualization (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-
-
-\mbox{\hyperlink{classvis_1_1_visualization}{Visualization}} Constructor 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em number\+\_\+of\+\_\+values} & number of values you are planning to pass (affects horizontal scale) \\
-\hline
-\mbox{\texttt{ in}}  & {\em maximim\+\_\+value} & maximum value \texorpdfstring{$>$}{>} 0 that your value could take (affects vertical scale) ~\newline
- \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classvis_1_1_visualization_a4906927aac6b049f0d7ee873ec5a9c73}\label{classvis_1_1_visualization_a4906927aac6b049f0d7ee873ec5a9c73}} 
-\index{vis::Visualization@{vis::Visualization}!Visualization@{Visualization}}
-\index{Visualization@{Visualization}!vis::Visualization@{vis::Visualization}}
-\doxysubsubsection{\texorpdfstring{Visualization()}{Visualization()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily vis\+::\+Visualization\+::\+Visualization (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{number\+\_\+of\+\_\+values,  }\item[{double}]{maximim\+\_\+value,  }\item[{double}]{ans\+\_\+value }\end{DoxyParamCaption})}
-
-
-
-
-
-\mbox{\hyperlink{classvis_1_1_visualization}{Visualization}} Constructor 
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{ in}}  & {\em number\+\_\+of\+\_\+values} & number of values you are planning to pass (affects horizontal scale) \\
-\hline
-\mbox{\texttt{ in}}  & {\em maximim\+\_\+value} & maximum value \texorpdfstring{$>$}{>} 0 that your value could take (affects vertical scale) \\
-\hline
-\mbox{\texttt{ in}}  & {\em ans\+\_\+value} & value of answer \texorpdfstring{$>$}{>} 0 a horizontal line between (0, ans\+\_\+value) and (number\+\_\+of\+\_\+values -\/ 1, ans\+\_\+value) would be drawn ~\newline
- \\
-\hline
-\end{DoxyParams}
 
 
 \doxysubsection{Member Function Documentation}
@@ -135,6 +104,19 @@ Initialization needed if constructor without arguments was used. Initialization 
  \\
 \hline
 \end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classvis_1_1_visualization_ae18cad9e5316ff9397ca01e529c05493}\label{classvis_1_1_visualization_ae18cad9e5316ff9397ca01e529c05493}} 
+\index{vis::Visualization@{vis::Visualization}!window@{window}}
+\index{window@{window}!vis::Visualization@{vis::Visualization}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily GLFWwindow$\ast$ vis\+::\+Visualization\+::window}
+
+
+
+GLFWwindow window that can be used to control whether the window is closed 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

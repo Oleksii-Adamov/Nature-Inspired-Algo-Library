@@ -1,6 +1,6 @@
 /*!
 \file
-\brief Implementation of Visualization class
+\brief Implementation of Visualization class. Graph is green, answer is red, axis are blue
 */
 #include "Visualization.h"
 #include <chrono>
@@ -39,7 +39,6 @@ namespace vis {
             glGenBuffers(1, &ans_buffer_id);
             glBindBuffer(GL_ARRAY_BUFFER, ans_buffer_id);
             // positions for drawing line between (0,ans) and (number_of_points - 1,ans)
-            // to do normalize
             float ans_positions[4] = { 0.0f, (float)(ans_value / max_value), 1.0f, (float)(ans_value / max_value) };
             glBufferData(GL_ARRAY_BUFFER, 2 * sizeof(Point<float>), ans_positions, GL_STATIC_DRAW);
             glEnableVertexAttribArray(0);
@@ -136,20 +135,6 @@ namespace vis {
 
         // Create a windowed mode window and its OpenGL context
         window = glfwCreateWindow(/*640*/1920, /*480*/1080, "Graph", NULL/*glfwGetPrimaryMonitor()*/, NULL);
-       //glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-        /*const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-
-        glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-        glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-        glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-        glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
-
-        GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "My Title", glfwGetPrimaryMonitor(), NULL);
-        if (!window)
-        {
-            throw (std::string)"Cannot create window!";
-            this->~Visualization();
-        }*/
         
         // Make the window's context current
         glfwMakeContextCurrent(window);
@@ -167,18 +152,9 @@ namespace vis {
         init_shader();
         is_initialized = true;
     }
-    Visualization::Visualization(size_t number_of_values, double maximim_value)
-        : positions_size(number_of_values), max_value(maximim_value)
-    {
-        private_init();
-    }
-
-    Visualization::Visualization(size_t number_of_values, double maximim_value, double input_ans_value)
-        : positions_size(number_of_values), max_value(maximim_value), ans_value(input_ans_value)
-    {
-        if (input_ans_value < 0)
-            throw (std::string)"ans_value < 0";
-        private_init();
+    
+    Visualization::Visualization() {
+        // do nothing
     }
     void Visualization::init(size_t number_of_values, double maximim_value) {
         positions_size = number_of_values;
@@ -196,42 +172,51 @@ namespace vis {
     }
 
     void Visualization::draw() {
-        // clearing
-        glClear(GL_COLOR_BUFFER_BIT);
-        // render
-        // setting projection matrix uniform and size vector uniform to scale with window and maximum value of x and y
-        int width, height;
-        glfwGetFramebufferSize(window, &width, &height);
-        glViewport(0, 0, width, height);
-        proj = glm::ortho(0.0f, (float)width, 0.0f, (float)height);
-        glUniform4f(u_size_location, (float)width, (float)height, 1.0f, 1.0f);
-        glUniformMatrix4fv(u_proj_location, 1, GL_FALSE, &proj[0][0]);
-        // drawing graph
-        glUniform4f(u_color_location, 0.0f, 1.0f, 0.0f, 1.0f);
-        glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
-        glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);    
-        if (!(ans_value < 0)) { // drawing ans line
-            glUniform4f(u_color_location, 1.0f, 0.0f, 0.0f, 1.0f);
-            glBindBuffer(GL_ARRAY_BUFFER, ans_buffer_id);
+        if (!glfwWindowShouldClose(window)) {
+            // clearing
+            glClear(GL_COLOR_BUFFER_BIT);
+            // render
+            // setting projection matrix uniform and size vector uniform to scale with window and maximum value of x and y
+            int width, height;
+            glfwGetFramebufferSize(window, &width, &height);
+            glViewport(0, 0, width, height);
+            proj = glm::ortho(0.0f, (float)width, 0.0f, (float)height);
+            glUniform4f(u_size_location, (float)width, (float)height, 1.0f, 1.0f);
+            glUniformMatrix4fv(u_proj_location, 1, GL_FALSE, &proj[0][0]);
+            // drawing graph
+            glUniform4f(u_color_location, 0.0f, 1.0f, 0.0f, 1.0f);
+            glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
-            glDrawArrays(GL_LINES, 0, 2);
+            glDrawArrays(GL_LINE_STRIP, 0, positions_cur_count);
+            if (!(ans_value < 0)) { // drawing ans line
+                glUniform4f(u_color_location, 1.0f, 0.0f, 0.0f, 1.0f);
+                glBindBuffer(GL_ARRAY_BUFFER, ans_buffer_id);
+                glEnableVertexAttribArray(0);
+                glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Point<float>), 0);
+                glDrawArrays(GL_LINES, 0, 2);
+            }
+            // Swap front and back buffers
+            glfwSwapBuffers(window);
+            // Poll for and process events
+            glfwPollEvents();
+            //std::this_thread::sleep_for(std::chrono::seconds(5));
         }
-        // Swap front and back buffers
-        glfwSwapBuffers(window);
-        // Poll for and process events
-        glfwPollEvents();
-        //std::this_thread::sleep_for(std::chrono::seconds(5));
-}
+        else {
+            glfwHideWindow(window);
+        }
+    }
     void Visualization::add_and_draw(double value) {
-        // to do normalize
-        float x_and_y[2] = { (float)(double(positions_cur_count) / positions_size) , (float)(value / max_value)};
-        glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
-        glBufferSubData(GL_ARRAY_BUFFER, positions_cur_count * sizeof(Point<float>), sizeof(Point<float>), x_and_y);
-        positions_cur_count++;
-        draw();
+        if (!glfwWindowShouldClose(window)) {
+            float x_and_y[2] = { (float)(double(positions_cur_count) / positions_size) , (float)(value / max_value) };
+            glBindBuffer(GL_ARRAY_BUFFER, positions_buffer_id);
+            glBufferSubData(GL_ARRAY_BUFFER, positions_cur_count * sizeof(Point<float>), sizeof(Point<float>), x_and_y);
+            positions_cur_count++;
+            draw();
+        }
+        else {
+            glfwHideWindow(window);
+        }
     }
     Visualization::~Visualization() {
         if (is_initialized) {

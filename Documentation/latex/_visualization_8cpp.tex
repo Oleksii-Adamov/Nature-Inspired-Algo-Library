@@ -2,13 +2,12 @@
 \label{_visualization_8cpp}\index{D:/University/3-\/sem/Programming-\/project/NIA/NIA/Visualization.cpp@{D:/University/3-\/sem/Programming-\/project/NIA/NIA/Visualization.cpp}}
 
 
-Implementation of Visualization class.  
+Implementation of Visualization class. Graph is green, answer is red, axis are blue.  
 
 
 {\ttfamily \#include \char`\"{}Visualization.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$chrono$>$}\newline
 {\ttfamily \#include $<$thread$>$}\newline
-{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$fstream$>$}\newline
 {\ttfamily \#include \char`\"{}Point.\+h\char`\"{}}\newline
@@ -17,8 +16,13 @@ Implementation of Visualization class.
 \item 
 namespace \mbox{\hyperlink{namespacevis}{vis}}
 \end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void GLAPIENTRY \mbox{\hyperlink{namespacevis_abb9543e9beefd43bc5755e49b9346b2e}{vis\+::\+Message\+Callback}} (GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar $\ast$message, const void $\ast$user\+Param)
+\begin{DoxyCompactList}\small\item\em Function to handle OPENGL errors \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Implementation of Visualization class. 
+Implementation of Visualization class. Graph is green, answer is red, axis are blue. 
 

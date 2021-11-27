@@ -5,7 +5,7 @@
 */
 #define GLEW_STATIC
 #include "../Dependencies/GLEW/include/GL/glew.h"
-#include <GLFW/glfw3.h>
+#include "../Dependencies/GLFW/include/GLFW/glfw3.h"
 #include "../Dependencies/GLM/glm/glm.hpp"
 #include "../Dependencies/GLM/glm/gtc/matrix_transform.hpp"
 #include <string>
@@ -32,6 +32,9 @@ namespace vis {
         void private_init();
         
     public:
+        /// <summary>
+        /// GLFWwindow window that can be used to control whether the window is closed
+        /// </summary>
         GLFWwindow* window;
         /// <summary>
         /// draws graph of data stored in this class
@@ -42,20 +45,10 @@ namespace vis {
         /// </summary>
         /// \param[in] value value (unnormalized - just plain value you have)
         void add_and_draw(double value);
+
         ~Visualization();
-        /// <summary>
-        /// Visualization Constructor
-        /// </summary>
-        /// \param[in] number_of_values number of values you are planning to pass (affects horizontal scale)
-        /// \param[in] maximim_value maximum value > 0 that your value could take (affects vertical scale) 
-        Visualization(size_t number_of_values, double maximim_value);
-        /// <summary>
-       /// Visualization Constructor
-       /// </summary>
-       /// \param[in] number_of_values number of values you are planning to pass (affects horizontal scale)
-       /// \param[in] maximim_value maximum value > 0 that your value could take (affects vertical scale) 
-       /// \param[in] ans_value value of answer > 0 a horizontal line between (0, ans_value) and (number_of_values - 1, ans_value) would be drawn 
-        Visualization(size_t number_of_values, double maximim_value, double ans_value);
+
+        Visualization();
 
         /// <summary>
         /// Initialization needed if constructor without arguments was used. Initialization could be done only once, otherwise throws std::string exception

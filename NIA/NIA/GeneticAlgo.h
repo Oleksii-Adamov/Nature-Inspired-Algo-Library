@@ -8,6 +8,7 @@
 #include <random>
 #include <algorithm>
 #include <iostream>
+#include "Visualization.h"
 namespace nia {
 	/// <summary>
 	/// Interface for Individual.
@@ -104,13 +105,30 @@ namespace nia {
 		* \param[in] MUTATION_CHANCE 0 <= mutation chance <= 1 that will be passed in Individual.mutate method
 		* \param[in] init_population initial(starting) population
 		* \param[in] breed breed function(given two parents and random generator, returns two children), aka crossover
+		* \param[in] visualization_ptr pointer to uninitialized (method init haven't been called) Visualization instance, pass nullptr or nothing, if you don't want visualization
+		* \param[in] max_fitness maximum fitness that could be represented in visualization (must be initialized with value > 0, otherwise std::string exception)
+		* \param[in] ans optional parameter that represents fitness of correct answer > 0 (affects only visualization)
 		* \return The fittest Individual for NUMBER_OF_GENERATIONS
 		*/
 		static Individual solve(const size_t NUMBER_OF_INDIVIDUALS, const size_t NUMBER_OF_ELITES,
 			const long long NUMBER_OF_GENERATIONS, const double MUTATION_CHANCE, Individual init_population[],
-			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&, std::mt19937&)
+			std::pair<Individual, Individual>(*breed)(const Individual&, const Individual&, std::mt19937&), vis::Visualization* visualization_ptr = nullptr, 
+			const double max_fitness = -1, const double ans = -1
 			)
 		{
+			if (visualization_ptr != nullptr) {
+				if (max_fitness > 0) {
+					if (!(ans < 0)) {
+						visualization_ptr->init(NUMBER_OF_GENERATIONS + 1, max_fitness, ans);
+					}
+					else {
+						visualization_ptr->init(NUMBER_OF_GENERATIONS + 1, max_fitness);
+					}
+				}
+				else {
+					throw (std::string)"Genetic algo: max_fitness < 0";
+				}
+			}
 			// generating random sequence
 			std::random_device rd;  //Will be used to obtain a seed for the random number engine
 			std::seed_seq seed{ rd(), static_cast<unsigned int>(time(nullptr)) }; // in case random_device is not implemented, fall back to time(0)
@@ -124,6 +142,7 @@ namespace nia {
 					prev_best = population[i];
 				}
 			}
+			if (visualization_ptr != nullptr) visualization_ptr->add_and_draw(prev_best.get_fitness());
 			// looping through generations
 			for (long long i = 0; i < NUMBER_OF_GENERATIONS; i++) {
 				next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_CHANCE, population, breed, gen);
@@ -136,6 +155,7 @@ namespace nia {
 				if (prev_best.get_route_length() == -2 || population[best].get_route_length() < prev_best.get_route_length()) {
 					prev_best = population[best];
 				}
+				if (visualization_ptr != nullptr) visualization_ptr->add_and_draw(population[best].get_fitness());
 				std::cout << prev_best.get_route_length() << std::endl;
 			}
 			delete[] population;

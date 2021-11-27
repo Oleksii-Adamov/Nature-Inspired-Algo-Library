@@ -158,6 +158,9 @@
       <Project>{bf80524e-4a28-4f6f-a3eb-5ed89d7572aa}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\NIA-test\GeneticAlgoTA.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

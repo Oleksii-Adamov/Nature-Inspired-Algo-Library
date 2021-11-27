@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../structvis_1_1_point.html#ac4ea896fc52de4482e676669c9a85695',1,'vis::Point']]]
+  ['x_0',['x',['../structvis_1_1_point.html#aca2fcda1c33a94b0b1fbcbad1bfa14dd',1,'vis::Point']]]
 ];
