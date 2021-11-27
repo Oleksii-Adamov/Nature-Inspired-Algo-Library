@@ -39,7 +39,7 @@ int main() {
 		vis::Visualization visualization;
 		std::thread draw_thread;
 		gata::Individual<NUMBER_OF_CITIES> solution = gata::calc_ans<NUMBER_OF_CITIES>(NUMBER_OF_INDIVIDUALS, NUMBER_OF_GENERATIONS, NUMBER_OF_ELITES,
-			MUTATION_CHANCE, input, &visualization, &draw_thread, CORRECT_ANS);
+			MUTATION_CHANCE, input, &visualization, CORRECT_ANS);
 		auto end = std::chrono::high_resolution_clock::now();
 		std::ofstream out("output.txt");
 		out << "NUMBER_OF_CITIES " << NUMBER_OF_CITIES << "\n" << "NUMBER_OF_INDIVIDUALS " << NUMBER_OF_INDIVIDUALS << "\n"

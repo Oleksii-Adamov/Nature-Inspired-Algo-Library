@@ -145,7 +145,7 @@ namespace gata {
 
 	template<int CHROMOSOME_SIZE>
 	Individual<CHROMOSOME_SIZE> calc_ans(const int NUMBER_OF_INDIVIDUALS, const int NUMBER_OF_GENERATIONS, const int NUMBER_OF_ELITES,
-		const double MUTATION_CHANCE, City cities[], vis::Visualization* visualization_ptr = nullptr, std::thread* draw_thread = nullptr, const int correct_ans = -1) {
+		const double MUTATION_CHANCE, City cities[], vis::Visualization* visualization_ptr = nullptr, const int correct_ans = -1) {
 		double correct_fitness = -1;
 		if (correct_ans != -1) {
 			correct_fitness = 1 / ((double)correct_ans);
@@ -153,7 +153,7 @@ namespace gata {
 		Individual<CHROMOSOME_SIZE>* population = new Individual<CHROMOSOME_SIZE>[NUMBER_OF_INDIVIDUALS];
 		init_population(CHROMOSOME_SIZE, NUMBER_OF_INDIVIDUALS, population, cities);
 		Individual<CHROMOSOME_SIZE> the_fittest = nia::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
-			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed, visualization_ptr, draw_thread, correct_fitness + 0.05*correct_fitness, correct_fitness);
+			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed, visualization_ptr, correct_fitness + 0.05*correct_fitness, correct_fitness);
 		delete[] population;
 		return the_fittest;
 	}
