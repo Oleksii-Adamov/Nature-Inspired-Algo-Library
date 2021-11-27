@@ -1,0 +1,79 @@
+\hypertarget{classnia_1_1ga_1_1_individual_inteface}{}\doxysection{nia\+::ga\+::Individual\+Inteface\texorpdfstring{$<$}{<} Tgene, chromosome\+\_\+size, Tfitess \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classnia_1_1ga_1_1_individual_inteface}\index{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}}
+
+
+Interface for Individual.  
+
+
+
+
+{\ttfamily \#include $<$Genetic\+Algo.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual Tfitess \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface_a2cab8ac5d06a1d0f30d5f18ec75a2889}{get\+\_\+fitness}} ()=0
+\begin{DoxyCompactList}\small\item\em Method to get fitness from Individual (using already done calculations for better performance is welcome) \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface_a5428822545dbba8379c34c322e896861}{mutate}} (double mutation\+\_\+chance, std\+::mt19937 \&gen)=0
+\begin{DoxyCompactList}\small\item\em Method to mutate Individual with given 0 \texorpdfstring{$<$}{<}= mutation\+\_\+chance \texorpdfstring{$<$}{<}= 1 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Tgene \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface_ae9765e5f04b99abc186c1a5452f88c65}{chromosome}} \mbox{[}chromosome\+\_\+size\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Tgene, int chromosome\+\_\+size, typename Tfitess$>$\newline
+class nia\+::ga\+::\+Individual\+Inteface$<$ Tgene, chromosome\+\_\+size, Tfitess $>$}
+Interface for Individual. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Tgene} & Type of gene \\
+\hline
+{\em chromosome\+\_\+size} & Size of chromosome for each Individual \\
+\hline
+{\em Tfitess} & Type of fitness of Individual \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnia_1_1ga_1_1_individual_inteface_a2cab8ac5d06a1d0f30d5f18ec75a2889}\label{classnia_1_1ga_1_1_individual_inteface_a2cab8ac5d06a1d0f30d5f18ec75a2889}} 
+\index{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}!get\_fitness@{get\_fitness}}
+\index{get\_fitness@{get\_fitness}!nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}}
+\doxysubsubsection{\texorpdfstring{get\_fitness()}{get\_fitness()}}
+{\footnotesize\ttfamily template$<$typename Tgene , int chromosome\+\_\+size, typename Tfitess $>$ \\
+virtual Tfitess \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface}{nia\+::ga\+::\+Individual\+Inteface}}$<$ Tgene, chromosome\+\_\+size, Tfitess $>$\+::get\+\_\+fitness (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to get fitness from Individual (using already done calculations for better performance is welcome) 
+
+\mbox{\Hypertarget{classnia_1_1ga_1_1_individual_inteface_a5428822545dbba8379c34c322e896861}\label{classnia_1_1ga_1_1_individual_inteface_a5428822545dbba8379c34c322e896861}} 
+\index{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}!mutate@{mutate}}
+\index{mutate@{mutate}!nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}}
+\doxysubsubsection{\texorpdfstring{mutate()}{mutate()}}
+{\footnotesize\ttfamily template$<$typename Tgene , int chromosome\+\_\+size, typename Tfitess $>$ \\
+virtual void \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface}{nia\+::ga\+::\+Individual\+Inteface}}$<$ Tgene, chromosome\+\_\+size, Tfitess $>$\+::mutate (\begin{DoxyParamCaption}\item[{double}]{mutation\+\_\+chance,  }\item[{std\+::mt19937 \&}]{gen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Method to mutate Individual with given 0 \texorpdfstring{$<$}{<}= mutation\+\_\+chance \texorpdfstring{$<$}{<}= 1 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classnia_1_1ga_1_1_individual_inteface_ae9765e5f04b99abc186c1a5452f88c65}\label{classnia_1_1ga_1_1_individual_inteface_ae9765e5f04b99abc186c1a5452f88c65}} 
+\index{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}!chromosome@{chromosome}}
+\index{chromosome@{chromosome}!nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$@{nia::ga::IndividualInteface$<$ Tgene, chromosome\_size, Tfitess $>$}}
+\doxysubsubsection{\texorpdfstring{chromosome}{chromosome}}
+{\footnotesize\ttfamily template$<$typename Tgene , int chromosome\+\_\+size, typename Tfitess $>$ \\
+Tgene \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface}{nia\+::ga\+::\+Individual\+Inteface}}$<$ Tgene, chromosome\+\_\+size, Tfitess $>$\+::chromosome\mbox{[}chromosome\+\_\+size\mbox{]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_genetic_algo_8h}{Genetic\+Algo.\+h}}\end{DoxyCompactItemize}

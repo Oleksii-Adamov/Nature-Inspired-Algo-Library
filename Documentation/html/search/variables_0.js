@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['chromosome_0',['chromosome',['../classnia_1_1_individual_inteface.html#adc4839922a696cfd8e2c6f9d3f758ca2',1,'nia::IndividualInteface']]]
+  ['chromosome_0',['chromosome',['../classnia_1_1ga_1_1_individual_inteface.html#ae9765e5f04b99abc186c1a5452f88c65',1,'nia::ga::IndividualInteface']]]
 ];

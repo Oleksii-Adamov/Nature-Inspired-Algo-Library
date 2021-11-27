@@ -1,0 +1,83 @@
+\hypertarget{classnia_1_1ga_1_1_genetic_algo}{}\doxysection{nia\+::ga\+::Genetic\+Algo\texorpdfstring{$<$}{<} Individual \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classnia_1_1ga_1_1_genetic_algo}\index{nia::ga::GeneticAlgo$<$ Individual $>$@{nia::ga::GeneticAlgo$<$ Individual $>$}}
+
+
+Class that implements Genetic Algorithm in solve method.  
+
+
+
+
+{\ttfamily \#include $<$Genetic\+Algo.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Individual \mbox{\hyperlink{classnia_1_1ga_1_1_genetic_algo_aac8787918196205bef3fb3333566560c}{solve}} (const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS, const size\+\_\+t NUMBER\+\_\+\+OF\+\_\+\+ELITES, const long long NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS, const double MUTATION\+\_\+\+CHANCE, Individual init\+\_\+population\mbox{[}$\,$\mbox{]}, std\+::pair$<$ Individual, Individual $>$($\ast$breed)(const Individual \&, const Individual \&, std\+::mt19937 \&), \mbox{\hyperlink{namespacenia_1_1ga_ae498c860b98fee776bb3835bf9109567}{SELECTION}} selection, \mbox{\hyperlink{classvis_1_1_visualization}{vis\+::\+Visualization}} $\ast$visualization\+\_\+ptr=nullptr, const double max\+\_\+fitness=-\/1, const double ans=-\/1)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Individual$>$\newline
+class nia\+::ga\+::\+Genetic\+Algo$<$ Individual $>$}
+Class that implements Genetic Algorithm in solve method. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Individual} & Individual class with\+:~\newline
+ public get\+\_\+fitness method (fitness must have operator \texorpdfstring{$>$}{>} implemented)~\newline
+ public mutation method with build-\/in mutation\+\_\+rate 
+\begin{DoxyCode}{1}
+\DoxyCodeLine{\textcolor{keywordtype}{void} mutate(\textcolor{keywordtype}{double} mutation\_chance, std::mt19937\& gen) }
+
+\end{DoxyCode}
+ Individual class passed as template parameter to \mbox{\hyperlink{classnia_1_1ga_1_1_genetic_algo}{Genetic\+Algo}} class. If one of this methods not implemented you\textquotesingle{}ll get compile error.~\newline
+ For convenience, you can inherit \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface}{Individual\+Inteface}} abstract class and implement required pure virtual methods.\\
+\hline
+\end{DoxyTemplParams}
+You may need call solve method several times with random initial population, to find more accurate answers. Performance of algorithm highly relies on performance of get\+\_\+fitness and comparison of fitness.~\newline
+ Example of usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Individual the\_fittest = nia::GeneticAlgo<Individual>::solve(NUMBER\_OF\_INDIVIDUALS, NUMBER\_OF\_ELITES, NUMBER\_OF\_GENERATIONS, MUTATION\_CHANCE, population, breed);}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnia_1_1ga_1_1_genetic_algo_aac8787918196205bef3fb3333566560c}\label{classnia_1_1ga_1_1_genetic_algo_aac8787918196205bef3fb3333566560c}} 
+\index{nia::ga::GeneticAlgo$<$ Individual $>$@{nia::ga::GeneticAlgo$<$ Individual $>$}!solve@{solve}}
+\index{solve@{solve}!nia::ga::GeneticAlgo$<$ Individual $>$@{nia::ga::GeneticAlgo$<$ Individual $>$}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily template$<$typename Individual $>$ \\
+static Individual \mbox{\hyperlink{classnia_1_1ga_1_1_genetic_algo}{nia\+::ga\+::\+Genetic\+Algo}}$<$ Individual $>$\+::solve (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS,  }\item[{const size\+\_\+t}]{NUMBER\+\_\+\+OF\+\_\+\+ELITES,  }\item[{const long long}]{NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS,  }\item[{const double}]{MUTATION\+\_\+\+CHANCE,  }\item[{Individual}]{init\+\_\+population\mbox{[}$\,$\mbox{]},  }\item[{std\+::pair$<$ Individual, Individual $>$($\ast$)(const Individual \&, const Individual \&, std\+::mt19937 \&)}]{breed,  }\item[{\mbox{\hyperlink{namespacenia_1_1ga_ae498c860b98fee776bb3835bf9109567}{SELECTION}}}]{selection,  }\item[{\mbox{\hyperlink{classvis_1_1_visualization}{vis\+::\+Visualization}} $\ast$}]{visualization\+\_\+ptr = {\ttfamily nullptr},  }\item[{const double}]{max\+\_\+fitness = {\ttfamily -\/1},  }\item[{const double}]{ans = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+INDIVIDUALS} & number of individuals in every generation \\
+\hline
+\mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+ELITES} & number of best individuals kept for next generation \\
+\hline
+\mbox{\texttt{ in}}  & {\em NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS} & number of generations this algorithm will process \\
+\hline
+\mbox{\texttt{ in}}  & {\em MUTATION\+\_\+\+CHANCE} & 0 \texorpdfstring{$<$}{<}= mutation chance \texorpdfstring{$<$}{<}= 1 that will be passed in Individual.\+mutate method \\
+\hline
+\mbox{\texttt{ in}}  & {\em init\+\_\+population} & initial(starting) population \\
+\hline
+\mbox{\texttt{ in}}  & {\em breed} & breed function(given two parents and random generator, returns two children), aka crossover \\
+\hline
+\mbox{\texttt{ in}}  & {\em selection} & type of selection, you can choose from \mbox{\hyperlink{namespacenia_1_1ga_ae498c860b98fee776bb3835bf9109567a46ba89eb960127fef8af5df131a5212a}{ga\+::\+SELECTION\+::\+TOURNAMENT}} and \mbox{\hyperlink{namespacenia_1_1ga_ae498c860b98fee776bb3835bf9109567ab9902cb6fbd07f4d204d8575e29193df}{ga\+::\+SELECTION\+::\+ROULETTE\+\_\+\+WHEEL}} \\
+\hline
+\mbox{\texttt{ in}}  & {\em visualization\+\_\+ptr} & pointer to uninitialized (method init haven\textquotesingle{}t been called) Visualization instance, pass nullptr or nothing, if you don\textquotesingle{}t want visualization \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+fitness} & maximum fitness that could be represented in visualization (must be initialized with value \texorpdfstring{$>$}{>} 0, otherwise std\+::string exception) \\
+\hline
+\mbox{\texttt{ in}}  & {\em ans} & optional parameter that represents fitness of correct answer \texorpdfstring{$>$}{>} 0 (affects only visualization) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The fittest Individual for NUMBER\+\_\+\+OF\+\_\+\+GENERATIONS 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_genetic_algo_8h}{Genetic\+Algo.\+h}}\end{DoxyCompactItemize}

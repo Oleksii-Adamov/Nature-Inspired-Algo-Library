@@ -22,7 +22,7 @@ int main() {
 		auto start = std::chrono::high_resolution_clock::now();
 		vis::Visualization visualization;
 		gata::Individual<NUMBER_OF_CITIES> solution = gata::calc_ans<NUMBER_OF_CITIES>(NUMBER_OF_INDIVIDUALS, NUMBER_OF_GENERATIONS, NUMBER_OF_ELITES,
-			MUTATION_CHANCE, input, &visualization, CORRECT_ANS);
+			MUTATION_CHANCE, nia::ga::SELECTION::ROULETTE_WHEEL, input, &visualization, CORRECT_ANS);
 		auto end = std::chrono::high_resolution_clock::now();
 		std::ofstream out("output.txt");
 		out << "NUMBER_OF_CITIES " << NUMBER_OF_CITIES << "\n" << "NUMBER_OF_INDIVIDUALS " << NUMBER_OF_INDIVIDUALS << "\n"

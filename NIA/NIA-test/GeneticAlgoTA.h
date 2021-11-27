@@ -19,7 +19,7 @@ namespace gata {
 		}
 	};
 	template<int chromosome_size>
-	class Individual : public nia::IndividualInteface<City, chromosome_size, double> { // or Route
+	class Individual : public nia::ga::IndividualInteface<City, chromosome_size, double> { // or Route
 	public:
 		Individual() {
 			fitness = -1;
@@ -130,30 +130,31 @@ namespace gata {
 	}
 	template<int CHROMOSOME_SIZE>
 	double testTa (const int NUMBER_OF_INDIVIDUALS, const int NUMBER_OF_GENERATIONS, const int NUMBER_OF_ELITES,
-		const double MUTATION_CHANCE, City cities[]) {
+		const double MUTATION_CHANCE, nia::ga::SELECTION selection, City cities[]) {
 		Individual<CHROMOSOME_SIZE>* population = new Individual<CHROMOSOME_SIZE>[NUMBER_OF_INDIVIDUALS];
 		init_population(CHROMOSOME_SIZE, NUMBER_OF_INDIVIDUALS, population, cities);
-		Individual<CHROMOSOME_SIZE> the_fittest = nia::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
-			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed);
+		Individual<CHROMOSOME_SIZE> the_fittest = nia::ga::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
+			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed, selection);
 		std::cerr << "[          ] ";
 		for (int i = 0; i < CHROMOSOME_SIZE; i++) {
 			std::cerr << the_fittest.chromosome[i].num << " -> ";
 		}
-		return the_fittest.get_route_length();
 		delete[] population;
+		return the_fittest.get_route_length();
 	}
 
 	template<int CHROMOSOME_SIZE>
 	Individual<CHROMOSOME_SIZE> calc_ans(const int NUMBER_OF_INDIVIDUALS, const int NUMBER_OF_GENERATIONS, const int NUMBER_OF_ELITES,
-		const double MUTATION_CHANCE, City cities[], vis::Visualization* visualization_ptr = nullptr, const int correct_ans = -1) {
+		const double MUTATION_CHANCE, nia::ga::SELECTION selection, City cities[], vis::Visualization* visualization_ptr = nullptr, const int correct_ans = -1) {
 		double correct_fitness = -1;
 		if (correct_ans != -1) {
 			correct_fitness = 1 / ((double)correct_ans);
 		}
 		Individual<CHROMOSOME_SIZE>* population = new Individual<CHROMOSOME_SIZE>[NUMBER_OF_INDIVIDUALS];
 		init_population(CHROMOSOME_SIZE, NUMBER_OF_INDIVIDUALS, population, cities);
-		Individual<CHROMOSOME_SIZE> the_fittest = nia::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
-			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed, visualization_ptr, correct_fitness + 0.05*correct_fitness, correct_fitness);
+		Individual<CHROMOSOME_SIZE> the_fittest = nia::ga::GeneticAlgo<Individual<CHROMOSOME_SIZE>>::solve(NUMBER_OF_INDIVIDUALS,
+			NUMBER_OF_ELITES, NUMBER_OF_GENERATIONS, MUTATION_CHANCE, population, breed, selection, visualization_ptr,
+			correct_fitness + 0.05*correct_fitness, correct_fitness);
 		delete[] population;
 		return the_fittest;
 	}

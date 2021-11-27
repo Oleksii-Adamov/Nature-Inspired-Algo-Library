@@ -10,18 +10,28 @@ Header that contains implementation of genetic algorithm.
 {\ttfamily \#include $<$random$>$}\newline
 {\ttfamily \#include $<$algorithm$>$}\newline
 {\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
 {\ttfamily \#include \char`\"{}Visualization.\+h\char`\"{}}\newline
 \doxysubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \mbox{\hyperlink{classnia_1_1_individual_inteface}{nia\+::\+Individual\+Inteface$<$ Tgene, chromosome\+\_\+size, Tfitess $>$}}
+class \mbox{\hyperlink{classnia_1_1ga_1_1_individual_inteface}{nia\+::ga\+::\+Individual\+Inteface$<$ Tgene, chromosome\+\_\+size, Tfitess $>$}}
 \begin{DoxyCompactList}\small\item\em Interface for Individual. \end{DoxyCompactList}\item 
-class \mbox{\hyperlink{classnia_1_1_genetic_algo}{nia\+::\+Genetic\+Algo$<$ Individual $>$}}
+class \mbox{\hyperlink{classnia_1_1ga_1_1_genetic_algo}{nia\+::ga\+::\+Genetic\+Algo$<$ Individual $>$}}
 \begin{DoxyCompactList}\small\item\em Class that implements Genetic Algorithm in solve method. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacenia}{nia}}
+\item 
+namespace \mbox{\hyperlink{namespacenia_1_1ga}{nia\+::ga}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespacenia_1_1ga_ae498c860b98fee776bb3835bf9109567}{nia\+::ga\+::\+SELECTION}} \{ \mbox{\hyperlink{namespacenia_1_1ga_ae498c860b98fee776bb3835bf9109567a46ba89eb960127fef8af5df131a5212a}{nia\+::ga\+::\+TOURNAMENT}}
+, \mbox{\hyperlink{namespacenia_1_1ga_ae498c860b98fee776bb3835bf9109567ab9902cb6fbd07f4d204d8575e29193df}{nia\+::ga\+::\+ROULETTE\+\_\+\+WHEEL}}
+ \}
 \end{DoxyCompactItemize}
 
 

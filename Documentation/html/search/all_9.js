@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['vis_0',['vis',['../namespacevis.html',1,'']]],
-  ['visualization_1',['Visualization',['../classvis_1_1_visualization.html',1,'vis::Visualization'],['../classvis_1_1_visualization.html#a2019f9444f65392fa647853ee380921a',1,'vis::Visualization::Visualization()']]],
-  ['visualization_2ecpp_2',['Visualization.cpp',['../_visualization_8cpp.html',1,'']]],
-  ['visualization_2eh_3',['Visualization.h',['../_visualization_8h.html',1,'']]]
+  ['selection_0',['SELECTION',['../namespacenia_1_1ga.html#ae498c860b98fee776bb3835bf9109567',1,'nia::ga']]],
+  ['solve_1',['solve',['../classnia_1_1ga_1_1_genetic_algo.html#aac8787918196205bef3fb3333566560c',1,'nia::ga::GeneticAlgo']]]
 ];
