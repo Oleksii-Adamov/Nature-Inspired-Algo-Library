@@ -1,7 +1,7 @@
 #pragma once
 #include "Ant.h"
 #include <random>
-
+#include "Visualization.h"
 namespace nia {
 	namespace ant {
 		class AntColonyOptTSP
@@ -13,8 +13,9 @@ namespace nia {
 			static size_t next_vertex(Ant& ant, size_t trail_index, size_t number_of_vertecies, std::mt19937& gen, double** pheromone,
 				double exponent_of_pheromone, double** attractiveness, double chance_of_random_path);
 		public:
-			static Ant solve(double** graph, size_t number_of_vertecies, double exponent_of_pheromone, double exponent_of_distance, double evaporation_factor, double pheromone_left_by_ant,
-				double ant_factor, double chance_of_random_path, long long number_of_iterations);
+			static Ant solve(double** graph, size_t number_of_vertecies, double exponent_of_pheromone, double exponent_of_distance, double evaporation_factor,
+				double pheromone_left_by_ant, double ant_factor, double chance_of_random_path, long long number_of_iterations,
+				vis::Visualization* visualization_ptr = nullptr, const double max_dist = -1, const double ans = -1);
 		};
 	}
 }

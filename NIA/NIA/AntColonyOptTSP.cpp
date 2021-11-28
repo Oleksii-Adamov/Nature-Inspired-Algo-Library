@@ -85,7 +85,21 @@ namespace nia {
 			}
 		}
 		Ant AntColonyOptTSP::solve(double** graph, size_t number_of_vertecies, double exponent_of_pheromone, double exponent_of_distance,
-			double evaporation_factor, double pheromone_left_by_ant, double ant_factor, double chance_of_random_path, long long number_of_iterations) {
+			double evaporation_factor, double pheromone_left_by_ant, double ant_factor, double chance_of_random_path, long long number_of_iterations, 
+			vis::Visualization* visualization_ptr, const double max_dist, const double ans) {
+			
+			// initialization of visualization if needed
+			if (visualization_ptr != nullptr) {
+				if (max_dist < 0)
+					throw (std::string)"AntColonyOptTSP: max_dist < 0";
+				if (!(ans < 0)) {
+					visualization_ptr->init(number_of_iterations + 1, max_dist, ans);
+				}
+				else {
+					visualization_ptr->init(number_of_iterations + 1, max_dist);
+				}
+			}
+
 			// generating random sequence
 			std::random_device rd;  //Will be used to obtain a seed for the random number engine
 			std::seed_seq seed{ rd(), static_cast<unsigned int>(time(nullptr)) }; // in case random_device is not implemented, fall back to time(0)
@@ -128,9 +142,12 @@ namespace nia {
 					if (ants[j].get_trail_length(graph) < ants[best].get_trail_length(graph))
 						best = j;
 				}
-				if (i == 0 || best_ant.get_trail_length(graph) < ants[best].get_trail_length(graph))
+				if (i == 0 || ants[best].get_trail_length(graph) < best_ant.get_trail_length(graph))
 					best_ant = ants[best];
 				//std::cout << ants[best].get_trail_length(graph) << "\n";
+				if (visualization_ptr != nullptr) {
+					visualization_ptr->add_and_draw(ants[best].get_trail_length(graph));
+				}
 			}
 			
 			// deleting ants

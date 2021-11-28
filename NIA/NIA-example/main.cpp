@@ -50,11 +50,11 @@ void Ant_algo_example() {
 	std::ifstream in("input51.txt");
 	const int NUMBER_OF_CITIES = 51;
 	const double exponent_of_pheromone = 1;
-	const double exponent_of_distance = 5;
-	const double evaporation_factor = 0.1;
+	const double exponent_of_distance = 10;
+	const double evaporation_factor = 0.2;
 	const double pheromone_left_by_ant = 500;
-	const double ant_factor = 1;
-	const double chance_of_random_path = 0.001;
+	const double ant_factor = 5;
+	const double chance_of_random_path = 0.00001;
 	const long long number_of_iterations = 10000;
 	const int CORRECT_ANS = 426;
 	vis::Point<double> input[NUMBER_OF_CITIES];
@@ -64,7 +64,7 @@ void Ant_algo_example() {
 		in >> input[num - 1].x >> input[num - 1].y;
 	}
 	in.close();
-	
+	double max_dist = 0;
 	double** graph = new double* [NUMBER_OF_CITIES];
 	for (size_t i = 0; i < NUMBER_OF_CITIES; i++) {
 		graph[i] = new double[NUMBER_OF_CITIES];
@@ -72,13 +72,14 @@ void Ant_algo_example() {
 			double delta_x = input[i].x - input[j].x;
 			double delta_y = input[i].y - input[j].y;
 			graph[i][j] = sqrt(delta_x * delta_x + delta_y * delta_y);
+			max_dist = std::max(max_dist, graph[i][j]);
 		}
 	}
 
 	auto start = std::chrono::high_resolution_clock::now();
-	//vis::Visualization visualization;
+	vis::Visualization visualization;
 	nia::ant::Ant solution = nia::ant::AntColonyOptTSP::solve(graph, NUMBER_OF_CITIES, exponent_of_pheromone, exponent_of_distance, evaporation_factor,
-		pheromone_left_by_ant, ant_factor, chance_of_random_path, number_of_iterations);
+		pheromone_left_by_ant, ant_factor, chance_of_random_path, number_of_iterations, &visualization, max_dist * NUMBER_OF_CITIES, CORRECT_ANS);
 	auto end = std::chrono::high_resolution_clock::now();
 
 	std::ofstream out("output.txt");
@@ -94,13 +95,20 @@ void Ant_algo_example() {
 	solution.get_route(route);
 	out << "Route\n";
 	for (int i = 0; i < NUMBER_OF_CITIES; i++) {
-		out << route[i] << " -> ";
+		out << route[i] + 1 << " -> ";
 	}
 	out << route[NUMBER_OF_CITIES] << '\n';
 	
 	for (size_t i = 0; i < NUMBER_OF_CITIES; i++)
 		delete[] graph[i];
 	delete[] graph;
+	if (visualization.window != nullptr) {
+		std::cout << "Calculation is done, to exit close the graph window\n";
+		while (!glfwWindowShouldClose(visualization.window))
+		{
+			visualization.draw();
+		}
+	}
 }
 int main() {
 	try {
