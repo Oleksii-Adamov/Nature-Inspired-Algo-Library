@@ -6,3 +6,4 @@
 ### Commented threads because somehow they slow my program.
 ### Used unit testing for Genetic algo.
 ### Results word file contains results of running algorithms for euclidiean TSP with 52 vertecies.
+### Звіт-ретроспектива є.
