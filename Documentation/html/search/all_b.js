@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['vis_0',['vis',['../namespacevis.html',1,'']]],
-  ['visualization_1',['Visualization',['../classvis_1_1_visualization.html',1,'vis::Visualization'],['../classvis_1_1_visualization.html#a2019f9444f65392fa647853ee380921a',1,'vis::Visualization::Visualization()']]],
-  ['visualization_2ecpp_2',['Visualization.cpp',['../_visualization_8cpp.html',1,'']]],
-  ['visualization_2eh_3',['Visualization.h',['../_visualization_8h.html',1,'']]]
+  ['tournament_0',['TOURNAMENT',['../namespacenia_1_1ga.html#ae498c860b98fee776bb3835bf9109567a46ba89eb960127fef8af5df131a5212a',1,'nia::ga']]],
+  ['trail_1',['trail',['../classnia_1_1ant_1_1_ant.html#a74599827e34883857cd1aba5a6b50af8',1,'nia::ant::Ant']]]
 ];

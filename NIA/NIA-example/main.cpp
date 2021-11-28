@@ -11,8 +11,8 @@ void Genetic_algo_example() {
 	std::ifstream in("input51.txt");
 	const int NUMBER_OF_CITIES = 51;
 	const int NUMBER_OF_INDIVIDUALS = 500;
-	const double MUTATION_CHANCE = 0.0135;
-	const int NUMBER_OF_GENERATIONS = 100000;
+	const double MUTATION_CHANCE = 0.013;
+	const int NUMBER_OF_GENERATIONS = 10000;
 	const int NUMBER_OF_ELITES = 2;
 	const int CORRECT_ANS = 426;
 	gata::City input[NUMBER_OF_CITIES];

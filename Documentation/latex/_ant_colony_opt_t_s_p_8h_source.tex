@@ -1,0 +1,28 @@
+\hypertarget{_ant_colony_opt_t_s_p_8h_source}{}\doxysection{Ant\+Colony\+Opt\+TSP.\+h}
+\label{_ant_colony_opt_t_s_p_8h_source}\index{D:/University/3-\/sem/Programming-\/project/NIA/NIA/AntColonyOptTSP.h@{D:/University/3-\/sem/Programming-\/project/NIA/NIA/AntColonyOptTSP.h}}
+\mbox{\hyperlink{_ant_colony_opt_t_s_p_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_ant_8h}{Ant.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_visualization_8h}{Visualization.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacenia}{nia}} \{}
+\DoxyCodeLine{10     \textcolor{keyword}{namespace }ant \{}
+\DoxyCodeLine{11         \textcolor{keyword}{class }\mbox{\hyperlink{classnia_1_1ant_1_1_ant_colony_opt_t_s_p}{AntColonyOptTSP}}}
+\DoxyCodeLine{12         \{}
+\DoxyCodeLine{13         \textcolor{keyword}{private}:}
+\DoxyCodeLine{14             \textcolor{keyword}{static} \textcolor{keywordtype}{void} setup\_ants(\textcolor{keywordtype}{size\_t} number\_of\_vertecies, \textcolor{keywordtype}{size\_t} number\_of\_ants, \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} ants[], std::mt19937\& gen);}
+\DoxyCodeLine{15             \textcolor{keyword}{static} \textcolor{keywordtype}{void} move\_ants(\textcolor{keywordtype}{size\_t} number\_of\_vertecies, \textcolor{keywordtype}{size\_t} number\_of\_ants, \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} ants[], std::mt19937\& gen, \textcolor{keywordtype}{double}** pheromone,}
+\DoxyCodeLine{16                 \textcolor{keywordtype}{double} exponent\_of\_pheromone, \textcolor{keywordtype}{double}** attractiveness, \textcolor{keywordtype}{double} chance\_of\_random\_path);}
+\DoxyCodeLine{17             \textcolor{keyword}{static} \textcolor{keywordtype}{size\_t} next\_vertex(\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}\& ant, \textcolor{keywordtype}{size\_t} trail\_index, \textcolor{keywordtype}{size\_t} number\_of\_vertecies, std::mt19937\& gen, \textcolor{keywordtype}{double}** pheromone,}
+\DoxyCodeLine{18                 \textcolor{keywordtype}{double} exponent\_of\_pheromone, \textcolor{keywordtype}{double}** attractiveness, \textcolor{keywordtype}{double} chance\_of\_random\_path);}
+\DoxyCodeLine{19         \textcolor{keyword}{public}:}
+\DoxyCodeLine{35             \textcolor{keyword}{static} \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_colony_opt_t_s_p_a0b01402b69e98ed8eea0a1c19503f1ec}{solve}}(\textcolor{keywordtype}{double}** graph, \textcolor{keywordtype}{size\_t} number\_of\_vertecies, \textcolor{keywordtype}{double} exponent\_of\_pheromone, \textcolor{keywordtype}{double} exponent\_of\_distance, \textcolor{keywordtype}{double} evaporation\_factor,}
+\DoxyCodeLine{36                 \textcolor{keywordtype}{double} pheromone\_left\_by\_ant, \textcolor{keywordtype}{double} ant\_factor, \textcolor{keywordtype}{double} chance\_of\_random\_path, \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} number\_of\_iterations,}
+\DoxyCodeLine{37                 \mbox{\hyperlink{classvis_1_1_visualization}{vis::Visualization}}* visualization\_ptr = \textcolor{keyword}{nullptr}, \textcolor{keyword}{const} \textcolor{keywordtype}{double} max\_dist = -\/1, \textcolor{keyword}{const} \textcolor{keywordtype}{double} ans = -\/1);}
+\DoxyCodeLine{38         \};}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40 \}}
+\DoxyCodeLine{41 }
+
+\end{DoxyCode}

@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Implementation of Ant class.
+*/
 #include "Ant.h"
 namespace nia {
 	namespace ant {

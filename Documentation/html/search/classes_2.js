@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point_0',['Point',['../structvis_1_1_point.html',1,'vis']]]
+  ['individualinteface_0',['IndividualInteface',['../classnia_1_1ga_1_1_individual_inteface.html',1,'nia::ga']]]
 ];

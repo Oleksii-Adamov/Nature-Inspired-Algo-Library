@@ -1,0 +1,140 @@
+\hypertarget{classnia_1_1ant_1_1_ant}{}\doxysection{nia\+::ant\+::Ant Class Reference}
+\label{classnia_1_1ant_1_1_ant}\index{nia::ant::Ant@{nia::ant::Ant}}
+
+
+{\ttfamily \#include $<$Ant.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classnia_1_1ant_1_1_ant_af1eac612b657a1bdefadc72109ea424f}{Ant}} ()
+\item 
+void \mbox{\hyperlink{classnia_1_1ant_1_1_ant_ad9db87f21464058ab8e2eedfcd8f90c2}{set\+\_\+number\+\_\+of\+\_\+vertices}} (size\+\_\+t input\+\_\+number\+\_\+of\+\_\+vertices)
+\item 
+\mbox{\hyperlink{classnia_1_1ant_1_1_ant_a5caec6c4e28b91fd4e28d8515ad17eee}{$\sim$\+Ant}} ()
+\item 
+bool \mbox{\hyperlink{classnia_1_1ant_1_1_ant_ab8b266887d86268cf52390095482384c}{is\+\_\+visited}} (size\+\_\+t vertex)
+\item 
+void \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a4e45b5bd899b9d374787d6dbe0215f01}{visit}} (size\+\_\+t trail\+\_\+index, size\+\_\+t vertex)
+\item 
+double \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a5789f46c4c384aea9c02ea0773993858}{get\+\_\+trail\+\_\+length}} (double $\ast$$\ast$graph)
+\item 
+void \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a9ce778203ab0ae2a0c520a661442c8d8}{get\+\_\+route}} (size\+\_\+t $\ast$route\+\_\+buffer)
+\begin{DoxyCompactList}\small\item\em writes route of this ant in route\+\_\+buffer \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a145de8b346763e6ceef12172d325a3ab}{clear}} ()
+\item 
+\mbox{\hyperlink{classnia_1_1ant_1_1_ant_ae89d0380abfb75ec879f219c9d26241c}{Ant}} (const \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&other)
+\item 
+\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \& \mbox{\hyperlink{classnia_1_1ant_1_1_ant_abba08548d2e2bb1ba7229d37ab8996bc}{operator=}} (const \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&other)
+\item 
+\mbox{\hyperlink{classnia_1_1ant_1_1_ant_ae5c73a4ee7b0a59d3015adbef9f75749}{Ant}} (\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \& \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a82b376b3ffcbaf8262baac521eb26b11}{operator=}} (\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&\&other) noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t $\ast$ \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a74599827e34883857cd1aba5a6b50af8}{trail}} = nullptr
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_af1eac612b657a1bdefadc72109ea424f}\label{classnia_1_1ant_1_1_ant_af1eac612b657a1bdefadc72109ea424f}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!Ant@{Ant}}
+\index{Ant@{Ant}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{Ant()}{Ant()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily nia\+::ant\+::\+Ant\+::\+Ant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_a5caec6c4e28b91fd4e28d8515ad17eee}\label{classnia_1_1ant_1_1_ant_a5caec6c4e28b91fd4e28d8515ad17eee}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!````~Ant@{$\sim$Ant}}
+\index{````~Ant@{$\sim$Ant}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{$\sim$Ant()}{~Ant()}}
+{\footnotesize\ttfamily nia\+::ant\+::\+Ant\+::$\sim$\+Ant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_ae89d0380abfb75ec879f219c9d26241c}\label{classnia_1_1ant_1_1_ant_ae89d0380abfb75ec879f219c9d26241c}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!Ant@{Ant}}
+\index{Ant@{Ant}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{Ant()}{Ant()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily nia\+::ant\+::\+Ant\+::\+Ant (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_ae5c73a4ee7b0a59d3015adbef9f75749}\label{classnia_1_1ant_1_1_ant_ae5c73a4ee7b0a59d3015adbef9f75749}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!Ant@{Ant}}
+\index{Ant@{Ant}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{Ant()}{Ant()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily nia\+::ant\+::\+Ant\+::\+Ant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_a145de8b346763e6ceef12172d325a3ab}\label{classnia_1_1ant_1_1_ant_a145de8b346763e6ceef12172d325a3ab}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!clear@{clear}}
+\index{clear@{clear}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void nia\+::ant\+::\+Ant\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_a9ce778203ab0ae2a0c520a661442c8d8}\label{classnia_1_1ant_1_1_ant_a9ce778203ab0ae2a0c520a661442c8d8}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!get\_route@{get\_route}}
+\index{get\_route@{get\_route}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{get\_route()}{get\_route()}}
+{\footnotesize\ttfamily void nia\+::ant\+::\+Ant\+::get\+\_\+route (\begin{DoxyParamCaption}\item[{size\+\_\+t $\ast$}]{route\+\_\+buffer }\end{DoxyParamCaption})}
+
+
+
+writes route of this ant in route\+\_\+buffer 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em route\+\_\+buffer} & has to have size at least equal to number\+\_\+of\+\_\+vertices + 1 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_a5789f46c4c384aea9c02ea0773993858}\label{classnia_1_1ant_1_1_ant_a5789f46c4c384aea9c02ea0773993858}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!get\_trail\_length@{get\_trail\_length}}
+\index{get\_trail\_length@{get\_trail\_length}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{get\_trail\_length()}{get\_trail\_length()}}
+{\footnotesize\ttfamily double nia\+::ant\+::\+Ant\+::get\+\_\+trail\+\_\+length (\begin{DoxyParamCaption}\item[{double $\ast$$\ast$}]{graph }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_ab8b266887d86268cf52390095482384c}\label{classnia_1_1ant_1_1_ant_ab8b266887d86268cf52390095482384c}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!is\_visited@{is\_visited}}
+\index{is\_visited@{is\_visited}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{is\_visited()}{is\_visited()}}
+{\footnotesize\ttfamily bool nia\+::ant\+::\+Ant\+::is\+\_\+visited (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{vertex }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_a82b376b3ffcbaf8262baac521eb26b11}\label{classnia_1_1ant_1_1_ant_a82b376b3ffcbaf8262baac521eb26b11}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!operator=@{operator=}}
+\index{operator=@{operator=}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \& nia\+::ant\+::\+Ant\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_abba08548d2e2bb1ba7229d37ab8996bc}\label{classnia_1_1ant_1_1_ant_abba08548d2e2bb1ba7229d37ab8996bc}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!operator=@{operator=}}
+\index{operator=@{operator=}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \& nia\+::ant\+::\+Ant\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \&}]{other }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_ad9db87f21464058ab8e2eedfcd8f90c2}\label{classnia_1_1ant_1_1_ant_ad9db87f21464058ab8e2eedfcd8f90c2}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!set\_number\_of\_vertices@{set\_number\_of\_vertices}}
+\index{set\_number\_of\_vertices@{set\_number\_of\_vertices}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{set\_number\_of\_vertices()}{set\_number\_of\_vertices()}}
+{\footnotesize\ttfamily void nia\+::ant\+::\+Ant\+::set\+\_\+number\+\_\+of\+\_\+vertices (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{input\+\_\+number\+\_\+of\+\_\+vertices }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_a4e45b5bd899b9d374787d6dbe0215f01}\label{classnia_1_1ant_1_1_ant_a4e45b5bd899b9d374787d6dbe0215f01}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!visit@{visit}}
+\index{visit@{visit}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{visit()}{visit()}}
+{\footnotesize\ttfamily void nia\+::ant\+::\+Ant\+::visit (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{trail\+\_\+index,  }\item[{size\+\_\+t}]{vertex }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_a74599827e34883857cd1aba5a6b50af8}\label{classnia_1_1ant_1_1_ant_a74599827e34883857cd1aba5a6b50af8}} 
+\index{nia::ant::Ant@{nia::ant::Ant}!trail@{trail}}
+\index{trail@{trail}!nia::ant::Ant@{nia::ant::Ant}}
+\doxysubsubsection{\texorpdfstring{trail}{trail}}
+{\footnotesize\ttfamily size\+\_\+t$\ast$ nia\+::ant\+::\+Ant\+::trail = nullptr}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_ant_8h}{Ant.\+h}}\item 
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_ant_8cpp}{Ant.\+cpp}}\end{DoxyCompactItemize}

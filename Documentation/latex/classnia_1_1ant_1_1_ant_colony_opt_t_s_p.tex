@@ -1,0 +1,56 @@
+\hypertarget{classnia_1_1ant_1_1_ant_colony_opt_t_s_p}{}\doxysection{nia\+::ant\+::Ant\+Colony\+Opt\+TSP Class Reference}
+\label{classnia_1_1ant_1_1_ant_colony_opt_t_s_p}\index{nia::ant::AntColonyOptTSP@{nia::ant::AntColonyOptTSP}}
+
+
+{\ttfamily \#include $<$Ant\+Colony\+Opt\+TSP.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_colony_opt_t_s_p_a0b01402b69e98ed8eea0a1c19503f1ec}{solve}} (double $\ast$$\ast$graph, size\+\_\+t number\+\_\+of\+\_\+vertecies, double exponent\+\_\+of\+\_\+pheromone, double exponent\+\_\+of\+\_\+distance, double evaporation\+\_\+factor, double pheromone\+\_\+left\+\_\+by\+\_\+ant, double ant\+\_\+factor, double chance\+\_\+of\+\_\+random\+\_\+path, long long number\+\_\+of\+\_\+iterations, \mbox{\hyperlink{classvis_1_1_visualization}{vis\+::\+Visualization}} $\ast$visualization\+\_\+ptr=nullptr, const double max\+\_\+dist=-\/1, const double ans=-\/1)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classnia_1_1ant_1_1_ant_colony_opt_t_s_p_a0b01402b69e98ed8eea0a1c19503f1ec}\label{classnia_1_1ant_1_1_ant_colony_opt_t_s_p_a0b01402b69e98ed8eea0a1c19503f1ec}} 
+\index{nia::ant::AntColonyOptTSP@{nia::ant::AntColonyOptTSP}!solve@{solve}}
+\index{solve@{solve}!nia::ant::AntColonyOptTSP@{nia::ant::AntColonyOptTSP}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} nia\+::ant\+::\+Ant\+Colony\+Opt\+TSP\+::solve (\begin{DoxyParamCaption}\item[{double $\ast$$\ast$}]{graph,  }\item[{size\+\_\+t}]{number\+\_\+of\+\_\+vertecies,  }\item[{double}]{exponent\+\_\+of\+\_\+pheromone,  }\item[{double}]{exponent\+\_\+of\+\_\+distance,  }\item[{double}]{evaporation\+\_\+factor,  }\item[{double}]{pheromone\+\_\+left\+\_\+by\+\_\+ant,  }\item[{double}]{ant\+\_\+factor,  }\item[{double}]{chance\+\_\+of\+\_\+random\+\_\+path,  }\item[{long long}]{number\+\_\+of\+\_\+iterations,  }\item[{\mbox{\hyperlink{classvis_1_1_visualization}{vis\+::\+Visualization}} $\ast$}]{visualization\+\_\+ptr = {\ttfamily nullptr},  }\item[{const double}]{max\+\_\+dist = {\ttfamily -\/1},  }\item[{const double}]{ans = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em graph} & distance matrix of graph \\
+\hline
+\mbox{\texttt{ in}}  & {\em number\+\_\+of\+\_\+vertecies} & number of vertecies in graph \\
+\hline
+\mbox{\texttt{ in}}  & {\em exponent\+\_\+of\+\_\+pheromone} & exponent for exponentiation of pheromone on each edge of trail to decide where ant will go \\
+\hline
+\mbox{\texttt{ in}}  & {\em exponent\+\_\+of\+\_\+distance} & exponent for exponentiation of 1/dist on each edge of trail to decide where ant will go \\
+\hline
+\mbox{\texttt{ in}}  & {\em evaporation\+\_\+factor} & after every iteration pheromone on trail x = x $\ast$ (1 -\/ evaporation\+\_\+factor) \\
+\hline
+\mbox{\texttt{ in}}  & {\em pheromone\+\_\+left\+\_\+by\+\_\+ant} & contribution to trail = (pheromone left by ant) / (length of trail(tour)) \\
+\hline
+\mbox{\texttt{ in}}  & {\em ant\+\_\+factor} & number\+\_\+of\+\_\+ants = ant\+\_\+factor $\ast$ number\+\_\+of\+\_\+vertecies \\
+\hline
+\mbox{\texttt{ in}}  & {\em chance\+\_\+of\+\_\+random\+\_\+path} & chance that random path \\
+\hline
+\mbox{\texttt{ in}}  & {\em number\+\_\+of\+\_\+iterations} & number of iterations (number of times that ants will be spawn) \\
+\hline
+\mbox{\texttt{ in}}  & {\em visualization\+\_\+ptr} & pointer to uninitialized (method init haven\textquotesingle{}t been called) Visualization instance, pass nullptr or nothing, if you don\textquotesingle{}t want visualization \\
+\hline
+\mbox{\texttt{ in}}  & {\em max\+\_\+dist} & maximum distance that could be represented in visualization (must be initialized with value \texorpdfstring{$>$}{>} 0, otherwise std\+::string exception) \\
+\hline
+\mbox{\texttt{ in}}  & {\em ans} & optional parameter that represents distance of correct answer \texorpdfstring{$>$}{>} 0 (affects only visualization) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}} that done the best tour for number\+\_\+of\+\_\+iterations 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_ant_colony_opt_t_s_p_8h}{Ant\+Colony\+Opt\+TSP.\+h}}\item 
+D\+:/\+University/3-\/sem/\+Programming-\/project/\+NIA/\+NIA/\mbox{\hyperlink{_ant_colony_opt_t_s_p_8cpp}{Ant\+Colony\+Opt\+TSP.\+cpp}}\end{DoxyCompactItemize}

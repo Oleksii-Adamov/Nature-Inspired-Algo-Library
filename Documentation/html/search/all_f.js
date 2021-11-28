@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7evisualization_0',['~Visualization',['../classvis_1_1_visualization.html#a24a6dd86f519220173485e0e2ebb32dc',1,'vis::Visualization']]]
+  ['x_0',['x',['../structvis_1_1_point.html#aca2fcda1c33a94b0b1fbcbad1bfa14dd',1,'vis::Point']]]
 ];

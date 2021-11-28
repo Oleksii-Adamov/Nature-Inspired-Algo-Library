@@ -150,9 +150,6 @@ namespace nia {
 				const double max_fitness = -1, const double ans = -1
 			)
 			{
-				// comparing drawing and calculation time
-				//double average_calc_time = 0, max_draw_time, average_draw_time = 0;
-				//std::chrono::high_resolution_clock::time_point start, end;
 				
 				// initialization of visualization if needed
 				if (visualization_ptr != nullptr) {
@@ -189,7 +186,6 @@ namespace nia {
 				//		algo_thread.join();
 					size_t best = 0;
 				//	algo_thread = std::thread([&] {
-						//start = std::chrono::high_resolution_clock::now();
 						next_generation(NUMBER_OF_INDIVIDUALS, NUMBER_OF_ELITES, MUTATION_CHANCE, population, breed, selection, gen);
 						for (size_t j = 1; j < NUMBER_OF_INDIVIDUALS; j++) {
 							if (population[j].get_fitness() > population[best].get_fitness()) {
@@ -199,29 +195,18 @@ namespace nia {
 						if (population[best].get_fitness() > prev_best.get_fitness())
 							prev_best = population[best];
 						prev = population[best];
-						//end = std::chrono::high_resolution_clock::now();
-						//average_calc_time += ((double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()) / NUMBER_OF_GENERATIONS;
 					//	});
 
 					// drawing previous
 					if (visualization_ptr != nullptr) {
-						//start = std::chrono::high_resolution_clock::now();
 						visualization_ptr->add_and_draw(prev.get_fitness());
-						//end = std::chrono::high_resolution_clock::now();
-						//average_draw_time += ((double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()) / NUMBER_OF_GENERATIONS;
 					}
 				}
 			//	if (algo_thread.joinable())
 			//		algo_thread.join();
 				if (visualization_ptr != nullptr) {
-					//start = std::chrono::high_resolution_clock::now();
 					visualization_ptr->add_and_draw(prev.get_fitness());
-					//end = std::chrono::high_resolution_clock::now();
-					//max_draw_time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
 				}
-				//std::cout << "Average calculation(genetic algo) time " << average_calc_time << " microseconds\n";
-				//std::cout << "Average draw time " << average_draw_time << " microseconds\n";
-				//std::cout << "Maximum draw time " << max_draw_time << " microseconds\n";
 				delete[] population;
 				return prev_best;
 			}

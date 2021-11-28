@@ -1,0 +1,34 @@
+\hypertarget{_ant_8h_source}{}\doxysection{Ant.\+h}
+\label{_ant_8h_source}\index{D:/University/3-\/sem/Programming-\/project/NIA/NIA/Ant.h@{D:/University/3-\/sem/Programming-\/project/NIA/NIA/Ant.h}}
+\mbox{\hyperlink{_ant_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacenia}{nia}} \{}
+\DoxyCodeLine{7     \textcolor{keyword}{namespace }ant \{}
+\DoxyCodeLine{8         \textcolor{keyword}{class }\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}}
+\DoxyCodeLine{9         \{}
+\DoxyCodeLine{10         \textcolor{keyword}{private}:}
+\DoxyCodeLine{11             \textcolor{keywordtype}{bool}* visited = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{12             \textcolor{keywordtype}{size\_t} number\_of\_vertices;}
+\DoxyCodeLine{13             \textcolor{keywordtype}{double} trail\_length = -\/1;}
+\DoxyCodeLine{14             \textcolor{keywordtype}{void} calc\_trail\_length(\textcolor{keywordtype}{double}** graph);}
+\DoxyCodeLine{15         \textcolor{keyword}{public}:}
+\DoxyCodeLine{16             \textcolor{keywordtype}{size\_t}* \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a74599827e34883857cd1aba5a6b50af8}{trail}} = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{17             \mbox{\hyperlink{classnia_1_1ant_1_1_ant_af1eac612b657a1bdefadc72109ea424f}{Ant}}();}
+\DoxyCodeLine{18             \textcolor{keywordtype}{void} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_ad9db87f21464058ab8e2eedfcd8f90c2}{set\_number\_of\_vertices}}(\textcolor{keywordtype}{size\_t} input\_number\_of\_vertices);}
+\DoxyCodeLine{19             \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a5caec6c4e28b91fd4e28d8515ad17eee}{\string~Ant}}();}
+\DoxyCodeLine{20             \textcolor{keywordtype}{bool} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_ab8b266887d86268cf52390095482384c}{is\_visited}}(\textcolor{keywordtype}{size\_t} vertex);}
+\DoxyCodeLine{21             \textcolor{keywordtype}{void} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a4e45b5bd899b9d374787d6dbe0215f01}{visit}}(\textcolor{keywordtype}{size\_t} trail\_index, \textcolor{keywordtype}{size\_t} vertex);}
+\DoxyCodeLine{22             \textcolor{keywordtype}{double} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a5789f46c4c384aea9c02ea0773993858}{get\_trail\_length}}(\textcolor{keywordtype}{double}** graph);}
+\DoxyCodeLine{27             \textcolor{keywordtype}{void} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a9ce778203ab0ae2a0c520a661442c8d8}{get\_route}}(\textcolor{keywordtype}{size\_t}* route\_buffer);}
+\DoxyCodeLine{28             \textcolor{keywordtype}{void} \mbox{\hyperlink{classnia_1_1ant_1_1_ant_a145de8b346763e6ceef12172d325a3ab}{clear}}();}
+\DoxyCodeLine{29             \mbox{\hyperlink{classnia_1_1ant_1_1_ant_af1eac612b657a1bdefadc72109ea424f}{Ant}}(\textcolor{keyword}{const} \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}\& other);}
+\DoxyCodeLine{30             \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}\& \mbox{\hyperlink{classnia_1_1ant_1_1_ant_abba08548d2e2bb1ba7229d37ab8996bc}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}\& other);}
+\DoxyCodeLine{31             \mbox{\hyperlink{classnia_1_1ant_1_1_ant_af1eac612b657a1bdefadc72109ea424f}{Ant}}(\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}\&\& other) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{32             \mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}\& \mbox{\hyperlink{classnia_1_1ant_1_1_ant_abba08548d2e2bb1ba7229d37ab8996bc}{operator=}}(\mbox{\hyperlink{classnia_1_1ant_1_1_ant}{Ant}}\&\& other) \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{33         \};}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{35 \}}
+\DoxyCodeLine{36 }
+
+\end{DoxyCode}

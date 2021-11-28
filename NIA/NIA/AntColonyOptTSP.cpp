@@ -1,3 +1,7 @@
+/*!
+\file
+\brief Implementation of AntColonyOptTSP class.
+*/
 #include "AntColonyOptTSP.h"
 #include <ctime>
 #include <cmath>

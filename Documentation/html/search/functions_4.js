@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['messagecallback_0',['MessageCallback',['../namespacevis.html#abb9543e9beefd43bc5755e49b9346b2e',1,'vis']]],
-  ['mutate_1',['mutate',['../classnia_1_1ga_1_1_individual_inteface.html#a5428822545dbba8379c34c322e896861',1,'nia::ga::IndividualInteface']]]
+  ['init_0',['init',['../classvis_1_1_visualization.html#adc4e0ba6dce6119f19eecfcf76c74ac5',1,'vis::Visualization']]],
+  ['is_5fvisited_1',['is_visited',['../classnia_1_1ant_1_1_ant.html#ab8b266887d86268cf52390095482384c',1,'nia::ant::Ant']]]
 ];

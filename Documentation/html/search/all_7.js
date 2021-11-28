@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['point_0',['Point',['../structvis_1_1_point.html#af007d414b1c618b539aa8c093877f80f',1,'vis::Point::Point()'],['../structvis_1_1_point.html',1,'vis::Point&lt; T &gt;']]],
-  ['point_2eh_1',['Point.h',['../_point_8h.html',1,'']]]
+  ['operator_3d_0',['operator=',['../classnia_1_1ant_1_1_ant.html#abba08548d2e2bb1ba7229d37ab8996bc',1,'nia::ant::Ant::operator=(const Ant &amp;other)'],['../classnia_1_1ant_1_1_ant.html#a82b376b3ffcbaf8262baac521eb26b11',1,'nia::ant::Ant::operator=(Ant &amp;&amp;other) noexcept']]]
 ];
