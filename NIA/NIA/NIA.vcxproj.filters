@@ -27,12 +27,18 @@
     <ClInclude Include="AntColonyOptTSP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Visualization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AntColonyOptTSP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

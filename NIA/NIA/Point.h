@@ -17,6 +17,9 @@ namespace vis {
 		{
 
 		}
+		Point() {
+			// do nothing
+		}
 	};
 }
 

@@ -1,10 +1,13 @@
 NUMBER_OF_CITIES 51
-NUMBER_OF_INDIVIDUALS 500
-NUMBER_OF_GENERATIONS 100000
-NUMBER_OF_ELITES 2
-MUTATION_CHANCE 0.0135
-Has been done for 397.459 seconds
-min_length = 474.012
-Accuracy: 88.7296%
+number_of_iterations 10000
+exponent_of_pheromone 1
+exponent_of_distance 5
+evaporation_factor 0.1
+pheromone_left_by_ant 500
+ant_factor 1
+chance_of_random_path 0.001
+Has been done for 13.2854 seconds
+min_length = 1520.28
+Accuracy: -156.874%
 Route
-42 -> 19 -> 40 -> 41 -> 13 -> 47 -> 12 -> 11 -> 2 -> 20 -> 35 -> 36 -> 3 -> 28 -> 31 -> 22 -> 1 -> 32 -> 27 -> 46 -> 51 -> 25 -> 14 -> 24 -> 43 -> 23 -> 7 -> 26 -> 8 -> 48 -> 6 -> 18 -> 4 -> 17 -> 37 -> 5 -> 38 -> 49 -> 9 -> 50 -> 16 -> 29 -> 21 -> 34 -> 30 -> 10 -> 39 -> 33 -> 45 -> 15 -> 44 -> 42
+1 -> 16 -> 10 -> 6 -> 26 -> 37 -> 3 -> 50 -> 13 -> 32 -> 14 -> 20 -> 21 -> 25 -> 49 -> 7 -> 11 -> 19 -> 45 -> 0 -> 24 -> 4 -> 18 -> 22 -> 40 -> 48 -> 28 -> 38 -> 9 -> 8 -> 44 -> 17 -> 29 -> 27 -> 35 -> 33 -> 2 -> 42 -> 15 -> 34 -> 39 -> 12 -> 31 -> 43 -> 41 -> 36 -> 23 -> 46 -> 47 -> 5 -> 639550748464 -> 1

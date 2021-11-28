@@ -175,12 +175,14 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Ant.h" />
     <ClInclude Include="AntColonyOptTSP.h" />
     <ClInclude Include="GeneticAlgo.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Visualization.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ant.cpp" />
     <ClCompile Include="AntColonyOptTSP.cpp" />
     <ClCompile Include="Visualization.cpp" />
   </ItemGroup>
