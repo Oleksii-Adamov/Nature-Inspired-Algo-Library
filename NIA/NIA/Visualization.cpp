@@ -116,7 +116,24 @@ namespace vis {
 
     void Visualization::init_shader() {
         std::string vertex_shader, fragment_shader;
-        parse_shader("../Resources/Graph.shader", vertex_shader, fragment_shader);
+        //parse_shader("../Resources/Graph.shader", vertex_shader, fragment_shader);
+        vertex_shader =
+            "#version 330 core\n"
+            "\n"
+            "layout(location = 0) in vec4 position;\n"
+            "uniform mat4 u_proj;\n"
+            "uniform vec4 u_size;\n"
+            "void main() {\n"
+            "    gl_Position = u_proj * (position * u_size);\n"
+            "}\n";
+        fragment_shader =
+            "#version 330 core\n"
+            "\n"
+            "layout(location = 0) out vec4 color;\n"
+            "uniform vec4 u_color;\n"
+            "void main() {\n"
+            "    color = u_color;\n"
+            "}\n";
         program_shader = create_shader(vertex_shader, fragment_shader);
         glUseProgram(program_shader);
         u_size_location = glGetUniformLocation(program_shader, "u_size");

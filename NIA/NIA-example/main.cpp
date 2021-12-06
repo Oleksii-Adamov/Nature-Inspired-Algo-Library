@@ -6,7 +6,7 @@
 #include "Visualization.h"
 #include "Point.h"
 #include "AntColonyOptTSP.h"
-
+// github pages
 void Genetic_algo_example() {
 	std::ifstream in("input51.txt");
 	const int NUMBER_OF_CITIES = 51;
